@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Michiko Toyama — Pianist, Composer, Scientist</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1410;
+    --ink-light: #5a4a3a;
+    --paper: #f5f0e8;
+    --paper-warm: #ede5d4;
+    --red: #c0392b;
+    --red-dark: #8b2018;
+    --gold: #b8860b;
+    --border: rgba(26,20,16,0.15);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Cormorant Garamond', 'Noto Serif JP', Georgia, serif; background: var(--paper); color: var(--ink); line-height: 1.7; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 3rem; background: var(--paper); border-bottom: 1px solid var(--border);
+  }
+  .nav-name { font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; }
+  .nav-links a:hover { color: var(--red); }
+
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 60px; }
+  .hero-left {
+    background: var(--red); display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 4rem; position: relative; overflow: hidden;
+  }
+  .hero-left::before {
+    content: '外山'; position: absolute; top: 2rem; right: 2rem;
+    font-size: 120px; font-weight: 300; color: rgba(255,255,255,0.08);
+    font-family: 'Noto Serif JP', serif; line-height: 1;
+  }
+  .hero-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 1rem; font-family: 'DM Mono', monospace; }
+  .hero-name { font-size: clamp(48px, 7vw, 90px); font-weight: 300; line-height: 1; color: #fff; margin-bottom: 0.5rem; }
+  .hero-name-jp { font-family: 'Noto Serif JP', serif; font-size: 22px; font-weight: 300; color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; }
+  .hero-years { font-size: 15px; color: rgba(255,255,255,0.5); font-family: 'DM Mono', monospace; letter-spacing: 0.1em; }
+  .hero-right { background: var(--paper-warm); display: flex; flex-direction: column; justify-content: center; padding: 4rem; }
+  .hero-roles { display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 2.5rem; }
+  .hero-role { font-size: clamp(22px, 3vw, 36px); font-weight: 300; font-style: italic; color: var(--ink-light); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+  .hero-role:last-child { border-bottom: none; }
+  .hero-desc { font-size: 17px; line-height: 1.8; color: var(--ink-light); font-style: italic; }
+
+  .firsts-section { background: var(--ink); color: #fff; padding: 4rem 3rem; display: grid; grid-template-columns: repeat(2, 1fr); }
+  .first-item { padding: 2rem; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .first-item:nth-child(2n) { border-right: none; }
+  .first-item:nth-child(3), .first-item:nth-child(4) { border-bottom: none; }
+  .first-number { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); font-family: 'DM Mono', monospace; margin-bottom: 0.75rem; }
+  .first-title { font-size: 20px; font-weight: 300; line-height: 1.3; margin-bottom: 0.5rem; }
+  .first-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+  section { padding: 5rem 3rem; }
+  .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+  .section-num { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--red); letter-spacing: 0.1em; }
+  .section-title { font-size: 32px; font-weight: 300; }
+
+  #timeline { background: var(--paper); }
+  .timeline { display: flex; flex-direction: column; max-width: 760px; }
+  .tl { display: grid; grid-template-columns: 100px 1px 1fr; gap: 0 2rem; padding-bottom: 2.5rem; }
+  .tl-yr { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--red); padding-top: 4px; text-align: right; line-height: 1.4; }
+  .tl-line { display: flex; flex-direction: column; align-items: center; }
+  .tl-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); margin-top: 5px; flex-shrink: 0; }
+  .tl-bar { width: 1px; flex: 1; background: var(--border); margin-top: 5px; }
+  .tl:last-child .tl-bar { display: none; }
+  .tl-t { font-size: 17px; font-weight: 400; line-height: 1.3; margin-bottom: 0.4rem; }
+  .tl-d { font-size: 14px; color: var(--ink-light); line-height: 1.7; }
+  .tl-badge { display: inline-block; margin-top: 0.5rem; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'DM Mono', monospace; padding: 3px 10px; border: 1px solid var(--red); color: var(--red); }
+  .tl-badge-gold { border-color: var(--gold); color: var(--gold); }
+
+  #album { background: var(--paper-warm); }
+  .album-grid { display: grid; grid-template-columns: 380px 1fr; gap: 4rem; align-items: start; }
+  .album-cover { width: 100%; aspect-ratio: 1; box-shadow: 8px 8px 0 rgba(26,20,16,0.15); display: block; object-fit: cover; }
+  .album-title { font-size: 28px; font-weight: 300; line-height: 1.2; margin-bottom: 0.5rem; }
+  .album-subtitle { font-size: 14px; color: var(--ink-light); font-style: italic; margin-bottom: 0.5rem; }
+  .album-catalog { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--red); margin-bottom: 2rem; }
+  .album-desc { font-size: 16px; line-height: 1.8; color: var(--ink-light); margin-bottom: 2rem; }
+
+  .player { background: var(--ink); padding: 1.5rem; color: #fff; }
+  .player-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-family: 'DM Mono', monospace; color: rgba(255,255,255,0.4); margin-bottom: 0.5rem; }
+  .player-track { font-size: 16px; font-weight: 300; margin-bottom: 1rem; }
+  .player-controls { display: flex; align-items: center; gap: 1rem; }
+  .play-btn { width: 40px; height: 40px; border-radius: 50%; background: var(--red); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; flex-shrink: 0; }
+  .play-btn:hover { background: var(--red-dark); }
+  .progress-wrap { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .progress-bar-bg { height: 3px; background: rgba(255,255,255,0.15); cursor: pointer; position: relative; }
+  .progress-bar-fill { height: 100%; background: var(--red); width: 0%; transition: width 0.1s linear; }
+  .time-row { display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.4); }
+
+  .tracklist { margin-top: 1.5rem; }
+  .tracklist-title { font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+  .track { display: flex; gap: 1rem; padding: 0.4rem 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .track-n { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--red); min-width: 20px; padding-top: 2px; }
+
+  #research { background: var(--paper); }
+  .research-intro { font-size: 15px; color: var(--ink-light); font-style: italic; margin-bottom: 2rem; line-height: 1.7; }
+  .papers { display: flex; flex-direction: column; gap: 12px; }
+  .paper { display: grid; grid-template-columns: 60px 1fr; gap: 1rem; padding: 1.25rem; border: 1px solid var(--border); background: var(--paper-warm); }
+  .paper-year { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--red); padding-top: 2px; }
+  .paper-title { font-size: 15px; font-weight: 400; line-height: 1.4; margin-bottom: 0.25rem; }
+  .paper-venue { font-size: 13px; color: var(--ink-light); font-style: italic; }
+
+  #gallery { background: var(--paper-warm); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .gallery-item { position: relative; overflow: hidden; cursor: pointer; background: #1a1410; aspect-ratio: 3/4; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease, opacity 0.3s; opacity: 0.9; filter: sepia(20%); }
+  .gallery-item:hover img { transform: scale(1.04); opacity: 1; filter: sepia(0%); }
+  .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); color: rgba(255,255,255,0.85); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; font-family: 'DM Mono', monospace; padding: 1.5rem 0.75rem 0.6rem; opacity: 0; transition: opacity 0.3s; }
+  .gallery-item:hover .gallery-caption { opacity: 1; }
+
+  #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 1000; align-items: center; justify-content: center; flex-direction: column; }
+  .lb-close { position: absolute; top: 1.5rem; right: 2rem; background: none; border: none; color: #fff; font-size: 28px; cursor: pointer; }
+  .lb-prev { position: absolute; left: 1.5rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 36px; cursor: pointer; }
+  .lb-next { position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 36px; cursor: pointer; }
+  #lbImg { max-height: 80vh; max-width: 88vw; object-fit: contain; }
+  .lb-info { margin-top: 1rem; text-align: center; padding: 0 4rem; }
+  #lbLabel { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); font-family: 'DM Mono', monospace; margin-bottom: 0.4rem; }
+  #lbCaption { font-size: 15px; color: rgba(255,255,255,0.8); font-style: italic; max-width: 560px; margin: 0 auto; line-height: 1.6; }
+
+  #spirit { background: var(--red); color: #fff; padding: 5rem 3rem; }
+  .spirit-quote { font-size: clamp(28px, 4vw, 52px); font-weight: 300; font-style: italic; line-height: 1.3; max-width: 800px; margin: 0 auto; text-align: center; }
+  .spirit-attr { text-align: center; margin-top: 2rem; font-size: 14px; color: rgba(255,255,255,0.6); font-family: 'DM Mono', monospace; letter-spacing: 0.15em; text-transform: uppercase; }
+  .spirit-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 4rem; }
+  .spirit-card { background: rgba(255,255,255,0.08); padding: 1.5rem; }
+  .spirit-card-title { font-size: 16px; font-weight: 400; margin-bottom: 0.5rem; }
+  .spirit-card-desc { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+
+  footer { background: var(--ink); color: rgba(255,255,255,0.5); text-align: center; padding: 2.5rem; font-size: 13px; font-family: 'DM Mono', monospace; letter-spacing: 0.05em; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem; }
+    .nav-links { gap: 1rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 6rem 2rem 2rem; min-height: 50vh; }
+    .hero-right { padding: 2rem; }
+    .firsts-section { grid-template-columns: 1fr; }
+    .first-item { border-right: none; }
+    section { padding: 3rem 1.5rem; }
+    .album-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .spirit-cards { grid-template-columns: 1fr; }
+    .tl { grid-template-columns: 70px 1px 1fr; gap: 0 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Michiko Toyama</span>
+  <div class="nav-links">
+    <a href="#timeline">Timeline</a>
+    <a href="#album">Album</a>
+    <a href="#research">Research</a>
+    <a href="#gallery">Gallery</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">1912 — 2006</div>
+    <h1 class="hero-name">Michiko<br>Toyama</h1>
+    <div class="hero-name-jp">外山 道子</div>
+    <div class="hero-years">Osaka · Paris · New York · Tokyo</div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-roles">
+      <div class="hero-role">Pianist &amp; Composer</div>
+      <div class="hero-role">Conductor</div>
+      <div class="hero-role">Acoustic Physicist</div>
+    </div>
+    <p class="hero-desc">Born in Osaka, educated in Paris, celebrated in New York — she broke every barrier placed before her, and when she faced a challenge, she found a way.</p>
+  </div>
+</div>
+
+<div class="firsts-section">
+  <div class="first-item">
+    <div class="first-number">First · 01</div>
+    <div class="first-title">First Asian woman to win the ISCM Prize</div>
+    <div class="first-desc">International Society for Contemporary Music, Paris, 1937</div>
+  </div>
+  <div class="first-item">
+    <div class="first-number">First · 02</div>
+    <div class="first-title">First woman invited to Columbia-Princeton Electronic Music Center</div>
+    <div class="first-desc">New York City, 1956</div>
+  </div>
+  <div class="first-item">
+    <div class="first-number">Work · 03</div>
+    <div class="first-title">"The Voice of Yamato" — 50 years before Japan heard it</div>
+    <div class="first-desc">Her prize-winning 1937 composition wasn't performed in her homeland until ~1987</div>
+  </div>
+  <div class="first-item">
+    <div class="first-number">Science · 04</div>
+    <div class="first-title">Pioneering acoustic physicist of the Shakuhachi</div>
+    <div class="first-desc">Published numerous papers on bamboo pipe acoustics from 1971 onward</div>
+  </div>
+</div>
+
+<section id="timeline">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">A life across continents</h2>
+  </div>
+  <div class="timeline">
+    <div class="tl">
+      <div class="tl-yr">1912<br>Osaka</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-body">
+        <div class="tl-t">Born in Osaka, Japan</div>
+        <div class="tl-d">Born in Osaka to Sutezo and Haru (Haruko) Toyama, her story begins in Japan, where music and curiosity about sound took root from the earliest years.</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl-yr">1930s<br>Paris</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-body">
+        <div class="tl-t">Studied under Nadia Boulanger — École Normale de Musique</div>
+        <div class="tl-d">Trained by the legendary pedagogue Nadia Boulanger, whose students included Copland, Bernstein, and Piazzolla. Michiko earned her place among the world's most rigorously trained composers.</div>
+        <span class="tl-badge">École Normale de Musique, Paris</span>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl-yr">1937<br>Paris</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-body">
+        <div class="tl-t">Won the ISCM Prize — "The Voice of Yamato"</div>
+        <div class="tl-d">Her composition "The Voice of Yamato" won the International Society for Contemporary Music prize in Paris — making her the first Asian person and first woman ever to receive the honour. The work would not be heard in Japan for another 50 years.</div>
+        <span class="tl-badge tl-badge-gold">Historic first · ISCM Paris 1937</span>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl-yr">1939<br>Paris</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-body">
+        <div class="tl-t">Baptised in Paris — then returned to Japan</div>
+        <div class="tl-d">Just before war broke out in Europe, Michiko was baptised in Paris — a profound act of faith at the edge of catastrophe. She then returned to Japan in 1939, leaving behind the world she had built over nearly a decade in France.</div>
+        <span class="tl-badge">Paris, 1939</span>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl-yr">1940s<br>Japan</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-body">
+        <div class="tl-t">Married Kazuo — mother of Junko and Masashi</div>
+        <div class="tl-d">Back in Japan, she married Kazuo and built a family — their daughter Junko and son Masashi. The war took Kazuo from them. Left a widow with two young children, she faced grief and hardship with the same resolve that had carried her across continents.</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl-yr">Post-war<br>Paris</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-body">
+        <div class="tl-t">Returned to Paris — Milhaud &amp; Messiaen, and Pierre Schaeffer</div>
+        <div class="tl-d">In a remarkable act of determination, she returned to Paris after the war to resume her studies at the Paris National Conservatory of Music under Darius Milhaud and Olivier Messiaen. It was there that she encountered Pierre Schaeffer — the father of musique concrète — who introduced her to the world of electronic music, setting the course for everything that followed.</div>
+        <span class="tl-badge">Paris National Conservatoire · Pierre Schaeffer</span>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl-yr">1955<br>Tanglewood</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-body">
+        <div class="tl-t">Studied under Roger Sessions — Tanglewood Music Center</div>
+        <div class="tl-d">She continued her studies with the eminent American composer Roger Sessions at the Tanglewood Music Center in Massachusetts, further expanding her reach across continents and traditions.</div>
+        <span class="tl-badge">Tanglewood Music Center, 1955</span>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl-yr">1956<br>New York</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-body">
+        <div class="tl-t">First woman invited to the Columbia-Princeton Electronic Music Center</div>
+        <div class="tl-d">In a field entirely dominated by men, Michiko was the first woman ever invited to work at the Columbia-Princeton Electronic Music Center in New York — one of the world's foremost laboratories for avant-garde and electronic composition.</div>
+        <span class="tl-badge tl-badge-gold">Historic first · Columbia-Princeton EMC, 1956</span>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl-yr">Carnegie<br>Hall</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-body">
+        <div class="tl-t">Performed at Carnegie Hall</div>
+        <div class="tl-d">She took the stage at the world's most celebrated concert hall — a recognition of her singular gifts as both pianist and composer.</div>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl-yr">1960<br>Folkways</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-body">
+        <div class="tl-t">Album released — "Waka and Other Compositions" on Smithsonian Folkways</div>
+        <div class="tl-d">Her record "Waka and Other Compositions: Contemporary Music of Japan" (FW 8881) was released by Folkways Records — a landmark album of contemporary Japanese music rooted in traditional poetry and themes.</div>
+        <span class="tl-badge">Folkways Records FW 8881</span>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl-yr">1960s+<br>Japan</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-body">
+        <div class="tl-t">Returned to Japan — became an acoustic physicist</div>
+        <div class="tl-d">Back in Japan, she turned her trained musician's ear toward science. She analysed the acoustic properties of the Shakuhachi (traditional Japanese bamboo flute), publishing a series of scholarly papers across international conferences from 1971 through the 1980s.</div>
+        <span class="tl-badge">Shakuhachi acoustics research</span>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl-yr">~1987</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-body">
+        <div class="tl-t">"The Voice of Yamato" performed in Japan — 50 years later</div>
+        <div class="tl-d">Half a century after her historic ISCM prize, her composition was finally heard in her homeland. A moment of profound, long-delayed homecoming.</div>
+        <span class="tl-badge tl-badge-gold">50 years in the making</span>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl-yr">2006</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-body">
+        <div class="tl-t">Passed away, aged 94</div>
+        <div class="tl-d">A life of 94 years that spanned Japan, France, and America — concert halls, scientific laboratories, and every kind of barrier a woman of her time could face. She found a way through every one.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="album">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Waka and Other Compositions</h2>
+  </div>
+  <div class="album-grid">
+    <div>
+      <img class="album-cover" src="images/cover.jpg" alt="Waka and Other Compositions — Folkways Records FW 8881">
+    </div>
+    <div>
+      <div class="album-title">Waka and Other Compositions</div>
+      <div class="album-subtitle">Contemporary Music of Japan — Based on Traditional Japanese Themes and Poetry</div>
+      <div class="album-catalog">Folkways Records · FW 8881 · 1960</div>
+      <p class="album-desc">A landmark recording rooted in ancient Japanese waka poetry and folk tradition, reimagined through Michiko Toyama's singular compositional voice — shaped equally by Boulanger's Paris, Messiaen's harmonics, and the textures of her homeland.</p>
+      <div class="player">
+        <div class="player-label">Now playing</div>
+        <div class="player-track">The Voice of Yamato — The Death of Yakamaro</div>
+        <div class="player-controls">
+          <button class="play-btn" id="playBtn" onclick="togglePlay()">&#9654;</button>
+          <div class="progress-wrap">
+            <div class="progress-bar-bg" id="progressBg" onclick="seek(event)">
+              <div class="progress-bar-fill" id="progressFill"></div>
+            </div>
+            <div class="time-row">
+              <span id="currentTime">0:00</span>
+              <span id="duration">—</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <audio id="audio" src="voice_of_yamato.mp3"></audio>
+      <div class="tracklist">
+        <div class="tracklist-title">Tracklist</div>
+        <div class="track"><span class="track-n">01</span><span>Two Old Folk Songs with Koto</span></div>
+        <div class="track"><span class="track-n">02</span><span>Torianse and Takai Yama Kara — vocal by Hana Ito</span></div>
+        <div class="track"><span class="track-n">03</span><span>Aoi No Ue (Princess Hollyhock) — music drama for tape and narration</span></div>
+        <div class="track"><span class="track-n">04</span><span>Lullaby (Komori Uta)</span></div>
+        <div class="track"><span class="track-n">05</span><span>Boat Song (Ondo)</span></div>
+        <div class="track"><span class="track-n">06</span><span>Rice Husking Song (Mombiki Uta)</span></div>
+        <div class="track"><span class="track-n">07</span><span>Japanese Suite — Juilliard Orchestra conducted by Michiko Toyama</span></div>
+        <div class="track"><span class="track-n">08</span><span>Waka — music for tape and narration read by Beate Gordon</span></div>
+        <div class="track"><span class="track-n">09</span><span>Echo</span></div>
+        <div class="track"><span class="track-n">10</span><span>Spring</span></div>
+        <div class="track"><span class="track-n">11</span><span>Prayer</span></div>
+        <div class="track"><span class="track-n">12</span><span>The Death of Yakamaro — soprano &amp; orchestra, Juilliard Student Orchestra</span></div>
+        <div class="track"><span class="track-n">13</span><span>The Fairy Land of Yamato</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Acoustic research — the Shakuhachi papers</h2>
+  </div>
+  <p class="research-intro">Over nearly two decades, she developed increasingly sophisticated acoustic models of the Shakuhachi — from spectral analysis of wet and dry bamboo tone, to ARMA synthesis models, to pole-zero modelling. A composer who became a scientist without ever ceasing to be a musician.</p>
+  <div class="papers">
+    <div class="paper"><div class="paper-year">1971</div><div><div class="paper-title">Study of Timbre of Wet and Dry Japanese Bamboo Pipe, Shakuhachi</div><div class="paper-venue">7th International Congress on Acoustics (ICA) — Budapest, Hungary</div></div></div>
+    <div class="paper"><div class="paper-year">1977</div><div><div class="paper-title">Attack transients of wet and dry Japanese bamboo pipe, Shakuhachi</div><div class="paper-venue">9th International Congress on Acoustics (ICA) — Madrid, Spain</div></div></div>
+    <div class="paper"><div class="paper-year">1978</div><div><div class="paper-title">Synthesis by linear prediction of the bamboo tone, Shakuhachi</div><div class="paper-venue">Journal of the Acoustical Society of America (JASA) Vol.64 — Hawaii, USA</div></div></div>
+    <div class="paper"><div class="paper-year">1980</div><div><div class="paper-title">Parameters in the transient of the bamboo tone, Shakuhachi, by LP method and its synthesis</div><div class="paper-venue">10th International Congress on Acoustics (ICA) — Sydney, Australia</div></div></div>
+    <div class="paper"><div class="paper-year">1982</div><div><div class="paper-title">線形予測法を用いた尺八の過渡現象の分析と合成</div><div class="paper-venue">日本音響学会 昭和57年度春季研究発表会 — Japan</div></div></div>
+    <div class="paper"><div class="paper-year">1983</div><div><div class="paper-title">ARMAモデルによる尺八音の分析と合成</div><div class="paper-venue">日本音響学会 昭和58年度秋季研究発表会 — Japan</div></div></div>
+    <div class="paper"><div class="paper-year">1986</div><div><div class="paper-title">Study on Pole-Zero Modeling in Analysis-Synthesis of Bamboo Tone, Shakuhachi, and Its Transient</div><div class="paper-venue">1986 IEEE ASSP Workshop — Mohonk Mountain House, New York, USA</div></div></div>
+    <div class="paper"><div class="paper-year">1988</div><div><div class="paper-title">A study of the transient sounds of the Shakuhachi based on ARMA modeling with residual excitation</div><div class="paper-venue">Joint Meeting: Acoustical Society of America &amp; Acoustical Society of Japan — Honolulu, Hawaii</div></div></div>
+    <div class="paper"><div class="paper-year">1989</div><div><div class="paper-title">ARMAモデルによる尺八"かざいき"音の分析と合成</div><div class="paper-venue">日本音響学会 平成元年度春季研究発表会 — Japan</div></div></div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">A life in photographs</h2>
+  </div>
+  <div class="gallery-grid" id="galleryGrid"></div>
+</section>
+
+<div id="lightbox">
+  <button class="lb-close" onclick="closeLightbox()">&#x2715;</button>
+  <button class="lb-prev" onclick="prevPhoto()">&#8249;</button>
+  <button class="lb-next" onclick="nextPhoto()">&#8250;</button>
+  <img id="lbImg" src="" alt="">
+  <div class="lb-info">
+    <div id="lbLabel"></div>
+    <div id="lbCaption"></div>
+  </div>
+</div>
+
+<section id="spirit">
+  <div class="spirit-quote">"When she faced a challenge, she found a way."</div>
+  <div class="spirit-attr">— Her family</div>
+  <div class="spirit-cards">
+    <div class="spirit-card">
+      <div class="spirit-card-title">War &amp; loss</div>
+      <div class="spirit-card-desc">WWII took her husband and upended her world. She rebuilt her life and career across two continents, alone, with two children.</div>
+    </div>
+    <div class="spirit-card">
+      <div class="spirit-card-title">Barriers of race &amp; gender</div>
+      <div class="spirit-card-desc">As an Asian woman in 1930s–50s Europe and America, she walked through doors no one had opened before her — and left them open.</div>
+    </div>
+    <div class="spirit-card">
+      <div class="spirit-card-title">A second life in science</div>
+      <div class="spirit-card-desc">At an age when most rest on their achievements, she reinvented herself as a researcher — bringing a composer's ear to acoustic physics.</div>
+    </div>
+  </div>
+</section>
+
+<footer>Celebrating the life and legacy of Michiko Toyama &nbsp;·&nbsp; 1912 – 2006</footer>
+
+<script>
+const GALLERY = [
+  {src:"images/photo_00.jpg",label:"Japan, c.1918",caption:"Michiko as a young child in traditional kimono. The inscription reads 大正七年 — Taisho 7, 1918."},
+  {src:"images/photo_01.jpg",label:"With her mother, Haru (Haruko)",caption:"Young Michiko with her mother Haru (Haruko) — a tender early portrait, both in kimono."},
+  {src:"images/photo_02.jpg",label:"Formal portrait, c.1923",caption:"A composed studio portrait. The inscription reads 大正十二年 — 1923."},
+  {src:"images/photo_03.jpg",label:"Teenage years",caption:"A luminous teenage portrait — already the poise of a performer."},
+  {src:"images/photo_04.jpg",label:"At the piano, early years",caption:"Michiko stands beside an upright piano — her instrument and lifelong companion."},
+  {src:"images/photo_05.jpg",label:"Painted portrait",caption:"A painted likeness of Michiko at the piano, rendered in charcoal and ink."},
+  {src:"images/photo_06.jpg",label:"Young woman, c.1928",caption:"Michiko as a young woman. Inscription: 昭和三年 — Showa 3, 1928."},
+  {src:"images/photo_07.jpg",label:"Paris — baptism portrait, c.1939",caption:"Michiko photographed in Paris, wearing a veil and crucifix — baptised in Paris just before the war broke out."},
+  {src:"images/photo_08.jpg",label:"Paris — studying under Nadia Boulanger",caption:"Michiko in Paris during her studies at the École Normale de Musique under Nadia Boulanger."},
+  {src:"images/photo_09.jpg",label:"With Vladimir Ussachevsky, Columbia-Princeton EMC, 1956",caption:"Michiko with Vladimir Ussachevsky at the Columbia-Princeton Electronic Music Center, 1956. She was the first woman ever invited to work here."},
+  {src:"images/photo_10.jpg",label:"With her father, Sutezo Toyama",caption:"Michiko with her father Sutezo Toyama — seated together on a floral sofa with their dog."},
+  {src:"images/photo_11.jpg",label:"With her brother, Osamu",caption:"Michiko with her brother Osamu — a formal studio portrait, likely before her departure for Paris."},
+  {src:"images/photo_12.jpg",label:"On stage, KNAB grand piano",caption:"Michiko performing on stage — alone at a concert grand piano, captured from the audience."},
+  {src:"images/photo_13.jpg",label:"Departing for Europe, Nov 1932",caption:"On the ship's deck. Inscription: 昭和七年十一月、神戸の諏訪丸にて — November 1932, aboard the Suwa-maru, Kobe."},
+  {src:"images/photo_14.jpg",label:"With her mother, Haru (Haruko)",caption:"Michiko (standing) with her mother Haru (Haruko) — a formal studio portrait in kimono, taken before her departure for Paris."},
+  {src:"images/photo_15.jpg",label:"Post-concert gathering",caption:"Post-concert — students with bouquets alongside a Western pianist, likely Henri Gil-Marchex."},
+  {src:"images/photo_16.jpg",label:"A musician at the keys",caption:"A pianist at the grand piano — Michiko observing in the background."},
+  {src:"images/photo_17.jpg",label:"At the piano",caption:"Michiko at the keys, glancing back — composed and present."},
+  {src:"images/photo_18.jpg",label:"Henri Gil-Marchex atelier, Osaka Hamadera",caption:"Group photograph at the atelier, Osaka Hamadera."},
+  {src:"images/photo_19.jpg",label:"From her 1971 ICA Budapest paper",caption:"A page from her 1971 paper at the 7th International Congress on Acoustics, Budapest."},
+  {src:"images/photo_20.jpg",label:"From her 1983 acoustic research paper",caption:"A page from her 1983 ARMA model paper — spectral analysis of Shakuhachi tones."}
+];
+
+let current = 0;
+
+function buildGallery() {
+  const grid = document.getElementById("galleryGrid");
+  GALLERY.forEach((p, i) => {
+    const item = document.createElement("div");
+    item.className = "gallery-item";
+    item.innerHTML = `<img src="${p.src}" alt="${p.label}" loading="lazy"><div class="gallery-caption">${p.label}</div>`;
+    item.onclick = () => openLightbox(i);
+    grid.appendChild(item);
+  });
+}
+
+function openLightbox(i) {
+  current = i;
+  document.getElementById("lightbox").style.display = "flex";
+  document.body.style.overflow = "hidden";
+  updateLightbox();
+}
+function updateLightbox() {
+  const p = GALLERY[current];
+  document.getElementById("lbImg").src = p.src;
+  document.getElementById("lbLabel").textContent = p.label;
+  document.getElementById("lbCaption").textContent = p.caption;
+}
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+  document.body.style.overflow = "";
+}
+function prevPhoto() { current = (current - 1 + GALLERY.length) % GALLERY.length; updateLightbox(); }
+function nextPhoto() { current = (current + 1) % GALLERY.length; updateLightbox(); }
+document.addEventListener("keydown", e => {
+  if (document.getElementById("lightbox").style.display === "flex") {
+    if (e.key === "ArrowLeft") prevPhoto();
+    if (e.key === "ArrowRight") nextPhoto();
+    if (e.key === "Escape") closeLightbox();
+  }
+});
+
+const audio = document.getElementById("audio");
+function fmt(s) { return Math.floor(s/60)+":"+(Math.floor(s%60)<10?"0":"")+Math.floor(s%60); }
+audio.addEventListener("loadedmetadata", () => { document.getElementById("duration").textContent = fmt(audio.duration); });
+audio.addEventListener("timeupdate", () => {
+  if (audio.duration) {
+    document.getElementById("progressFill").style.width = (audio.currentTime/audio.duration*100)+"%";
+    document.getElementById("currentTime").textContent = fmt(audio.currentTime);
+  }
+});
+audio.addEventListener("ended", () => { document.getElementById("playBtn").innerHTML = "&#9654;"; });
+function togglePlay() {
+  if (audio.paused) { audio.play(); document.getElementById("playBtn").innerHTML = "&#9646;&#9646;"; }
+  else { audio.pause(); document.getElementById("playBtn").innerHTML = "&#9654;"; }
+}
+function seek(e) {
+  const bg = document.getElementById("progressBg");
+  const rect = bg.getBoundingClientRect();
+  audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+}
+
+buildGallery();
+</script>
+</body>
+</html>
