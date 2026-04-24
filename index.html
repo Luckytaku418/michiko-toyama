@@ -1,4 +1,3 @@
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -84,16 +83,7 @@
   .album-catalog { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--red); margin-bottom: 2rem; }
   .album-desc { font-size: 16px; line-height: 1.8; color: var(--ink-light); margin-bottom: 2rem; }
 
-  .player { background: var(--ink); padding: 1.5rem; color: #fff; }
-  .player-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-family: 'DM Mono', monospace; color: rgba(255,255,255,0.4); margin-bottom: 0.5rem; }
-  .player-track { font-size: 16px; font-weight: 300; margin-bottom: 1rem; }
-  .player-controls { display: flex; align-items: center; gap: 1rem; }
-  .play-btn { width: 40px; height: 40px; border-radius: 50%; background: var(--red); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; flex-shrink: 0; }
-  .play-btn:hover { background: var(--red-dark); }
-  .progress-wrap { flex: 1; display: flex; flex-direction: column; gap: 6px; }
-  .progress-bar-bg { height: 3px; background: rgba(255,255,255,0.15); cursor: pointer; position: relative; }
-  .progress-bar-fill { height: 100%; background: var(--red); width: 0%; transition: width 0.1s linear; }
-  .time-row { display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.4); }
+  .bandcamp-wrap { margin-bottom: 1.5rem; }
 
   .tracklist { margin-top: 1.5rem; }
   .tracklist-title { font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
@@ -338,24 +328,12 @@
       <div class="album-title">Waka and Other Compositions</div>
       <div class="album-subtitle">Contemporary Music of Japan — Based on Traditional Japanese Themes and Poetry</div>
       <div class="album-catalog">Folkways Records · FW 8881 · 1960</div>
-      <p class="album-desc">A landmark recording rooted in ancient Japanese waka poetry and folk tradition, reimagined through Michiko Toyama's singular compositional voice — shaped equally by Boulanger's Paris, Messiaen's harmonics, and the textures of her homeland.</p>
-      <div class="player">
-        <div class="player-label">Now playing</div>
-        <div class="player-track">The Voice of Yamato — The Death of Yakamaro</div>
-        <div class="player-controls">
-          <button class="play-btn" id="playBtn" onclick="togglePlay()">&#9654;</button>
-          <div class="progress-wrap">
-            <div class="progress-bar-bg" id="progressBg" onclick="seek(event)">
-              <div class="progress-bar-fill" id="progressFill"></div>
-            </div>
-            <div class="time-row">
-              <span id="currentTime">0:00</span>
-              <span id="duration">—</span>
-            </div>
-          </div>
-        </div>
+      <!-- ５）新しいアルバム説明文 -->
+      <p class="album-desc">A landmark recording, Waka and Other Compositions: Contemporary Music of Japan (FW 8881), released by Folkways Records in 1960, reworks ancient waka through a contemporary musical language. Michiko Toyama draws on traditional poetry and folk forms, integrating chamber ensemble and early electronic techniques.</p>
+      <!-- ６）Bandcamp埋め込み（カスタムプレーヤー削除） -->
+      <div class="bandcamp-wrap">
+        <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=711802826/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://michikotoyama.bandcamp.com/album/waka-and-other-compositions-contemporary-music-of-japan">Waka and Other Compositions: Contemporary Music of Japan by Michiko Toyama</a></iframe>
       </div>
-      <audio id="audio" src="voice_of_yamato.mp3"></audio>
       <div class="tracklist">
         <div class="tracklist-title">Tracklist</div>
         <div class="track"><span class="track-n">01</span><span>Two Old Folk Songs with Koto</span></div>
@@ -414,8 +392,9 @@
   </div>
 </div>
 
+<!-- １）名言変更 -->
 <section id="spirit">
-  <div class="spirit-quote">"When you face a challenge, you find a way."</div>
+  <div class="spirit-quote">"When you face a challenge, you find a way…or make one."</div>
   <div class="spirit-attr">— Michiko Toyama</div>
   <div class="spirit-cards">
     <div class="spirit-card">
@@ -437,7 +416,7 @@
 
 <script>
 const GALLERY = [
-   {src:"images/photo_00.jpg",label:"1918 · Age 6 · Hamadera, Osaka, Japan",caption:"1918  age 6 Hamadera Osaka, Japan"},
+  {src:"images/photo_00.jpg",label:"1918 · Age 6 · Hamadera, Osaka, Japan",caption:"1918  age 6 Hamadera Osaka, Japan"},
   {src:"images/photo_04.jpg",label:"1927 · Age 15 · Hamadera, Osaka, Japan",caption:"1927 age 15 at home in Hamadera, Osaka Japan; for a portrait by Sotaro Yasui"},
   {src:"images/photo_05.jpg",label:"Portrait by Sotaro Yasui · MoMAT, Tokyo",caption:"Michiko's portrait by Sotaro Yasui at the National Museum of Modern Art, Tokyo (MoMAT)"},
   {src:"images/photo_21.jpg",label:"Paris · 1937",caption:"1937, aged 25, around the time she won at the International Society for Contemporary Music Festival in Paris."},
@@ -446,7 +425,6 @@ const GALLERY = [
   {src:"images/photo_24.jpg",label:"7th International Congress on Acoustics · Budapest, 1971",caption:"Influenced by Torahiko Terada, a physicist and essayist whose work bridged science and the arts, Michiko turned to the study of the shakuhachi's sound. Her 1971 study, \"Timbre of Japanese Bamboo,\" presented at the 7th International Congress on Acoustics in Budapest."},
   {src:"images/photo_25.jpg",label:"日本音響学会講演論文 · 1989",caption:"Paper presented at the Acoustical Society of Japan (1989): Michiko Toyama, \"Analysis–synthesis of shakuhachi sound using ARMA modeling with synthesized noise excitation.\""},
   {src:"images/photo_26.jpg",label:"日本音響学会講演論文 · 1989",caption:"Paper presented at the Acoustical Society of Japan (1989): Michiko Toyama, \"Analysis–synthesis of shakuhachi sound using ARMA modeling with synthesized noise excitation.\""}
-
 ];
 
 let current = 0;
@@ -488,28 +466,9 @@ document.addEventListener("keydown", e => {
   }
 });
 
-const audio = document.getElementById("audio");
-function fmt(s) { return Math.floor(s/60)+":"+(Math.floor(s%60)<10?"0":"")+Math.floor(s%60); }
-audio.addEventListener("loadedmetadata", () => { document.getElementById("duration").textContent = fmt(audio.duration); });
-audio.addEventListener("timeupdate", () => {
-  if (audio.duration) {
-    document.getElementById("progressFill").style.width = (audio.currentTime/audio.duration*100)+"%";
-    document.getElementById("currentTime").textContent = fmt(audio.currentTime);
-  }
-});
-audio.addEventListener("ended", () => { document.getElementById("playBtn").innerHTML = "&#9654;"; });
-function togglePlay() {
-  if (audio.paused) { audio.play(); document.getElementById("playBtn").innerHTML = "&#9646;&#9646;"; }
-  else { audio.pause(); document.getElementById("playBtn").innerHTML = "&#9654;"; }
-}
-function seek(e) {
-  const bg = document.getElementById("progressBg");
-  const rect = bg.getBoundingClientRect();
-  audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
-}
-
 buildGallery();
- // ── TRANSLATIONS ──────────────────────────────────────────────
+
+// ── TRANSLATIONS ──────────────────────────────────────────────
 const TRANSLATIONS = {
   en: {
     navTimeline: "Timeline", navAlbum: "Album", navResearch: "Research", navGallery: "Gallery",
@@ -546,9 +505,11 @@ const TRANSLATIONS = {
     ],
     albumTitle: "Waka and Other Compositions",
     albumSub: "Contemporary Music of Japan — Based on Traditional Japanese Themes and Poetry",
-    albumDesc: "A landmark recording rooted in ancient Japanese waka poetry and folk tradition, reimagined through Michiko Toyama's singular compositional voice — shaped equally by Boulanger's Paris, Messiaen's harmonics, and the textures of her homeland.",
+    albumDesc: "A landmark recording, Waka and Other Compositions: Contemporary Music of Japan (FW 8881), released by Folkways Records in 1960, reworks ancient waka through a contemporary musical language. Michiko Toyama draws on traditional poetry and folk forms, integrating chamber ensemble and early electronic techniques.",
     researchIntro: "Over nearly two decades, she developed increasingly sophisticated acoustic models of the Shakuhachi — from spectral analysis of wet and dry bamboo tone, to ARMA synthesis models, to pole-zero modelling. A composer who became a scientist without ever ceasing to be a musician.",
-    spiritQuote: '"When you face a challenge, you find a way."',
+    secTitle3: "Acoustic research — the Shakuhachi papers",
+    // １）名言
+    spiritQuote: '"When you face a challenge, you find a way…or make one."',
     spiritAttr: "— Michiko Toyama",
     card1t: "War & loss", card1d: "WWII took her husband and upended her world. She rebuilt her life and career across two continents, alone, with two children.",
     card2t: "Barriers of race & gender", card2d: "As an Asian woman in 1930s–50s Europe and America, she walked through doors no one had opened before her — and left them open.",
@@ -561,7 +522,8 @@ const TRANSLATIONS = {
     heroCities: "大阪 · パリ · ニューヨーク · 東京",
     heroRole1: "ピアニスト・作曲家", heroRole2: "指揮者", heroRole3: "音響物理学者",
     heroDesc: "大阪に生まれ、パリで学び、ニューヨークで称えられた——あらゆる壁を乗り越え、困難に直面するたびに道を切り拓いた。",
-    first1title: "ISCMプライズを受賞した最初のアジア人女性",
+    // ２）「プライズ」を削除
+    first1title: "ISCMを受賞した最初のアジア人女性",
     first1desc: "国際現代音楽協会、パリ、1937年",
     first2title: "コロンビア・プリンストン電子音楽センターに招かれた最初の女性",
     first2desc: "ニューヨーク、1956年",
@@ -570,29 +532,37 @@ const TRANSLATIONS = {
     first4title: "尺八音響研究の先駆者",
     first4desc: "1971年以降、竹管の音響に関する多数の論文を発表",
     secTitle1: "大陸を越えた生涯",
+    // ３）「わか」→「和歌」
     secTitle2: "和歌とその他の作品",
+    // ４）音響研究セクション翻訳
     secTitle3: "音響研究——尺八論文",
     secTitle4: "写真で辿る生涯",
     tl: [
       { t: "大阪に誕生", d: "父・外山捨造、母・治子の子として大阪に生まれる。幼い頃から音楽と音への探究心が芽生えた。" },
       { t: "ナディア・ブーランジェに師事——エコール・ノルマル音楽院", d: "コープランド、バーンスタイン、ピアソラなどを育てた伝説的な教育者、ナディア・ブーランジェのもとで学び、世界最高水準の作曲教育を受けた。" },
-      { t: "ISCM受賞——「大和の声」", d: "「大和の声」がパリの国際現代音楽協会で受賞。アジア人として、そして女性として初めてこの栄誉を受けた。この作品が日本で演奏されるのは、さらに50年後のことだった。" },
+      // ２）「ISCMを受賞」（プライズなし）
+      { t: "ISCMを受賞——「大和の声」", d: "「大和の声」がパリの国際現代音楽協会で受賞。アジア人として、そして女性として初めてこの栄誉を受けた。この作品が日本で演奏されるのは、さらに50年後のことだった。" },
       { t: "パリで洗礼——そして帰国", d: "ヨーロッパで戦争が始まる直前、パリで洗礼を受けた。その後1939年に帰国し、約10年にわたって築いてきたパリでの生活を後にした。" },
       { t: "一雄と結婚——順子・正の母に", d: "帰国後、一雄と結婚し、娘・順子と息子・正をもうける。戦争で夫を失い、二人の幼い子を抱えて未亡人となった彼女は、それでも大陸を渡ってきたときと同じ意志で困難に立ち向かった。" },
       { t: "パリへ再留学——ミヨー、メシアン、シェフェールに師事", d: "戦後、驚くべき決意でパリに戻り、パリ国立音楽院でダリウス・ミヨーとオリヴィエ・メシアンに師事。そこでミュジーク・コンクレートの父、ピエール・シェフェールと出会い、電子音楽の世界への扉が開かれた。" },
       { t: "ロジャー・セッションズに師事——タングルウッド音楽センター", d: "マサチューセッツ州のタングルウッド音楽センターで、著名なアメリカ人作曲家ロジャー・セッションズに師事し、さらに活動の幅を広げた。" },
       { t: "コロンビア・プリンストン電子音楽センターに招かれた最初の女性", d: "男性が支配する分野において、道子はニューヨークのコロンビア・プリンストン電子音楽センターに招かれた最初の女性となった。" },
       { t: "カーネギーホールで演奏", d: "世界で最も有名なコンサートホールの指揮台に立ち、作曲家・指揮者としての卓越した才能が認められた。" },
-      { t: "スミソニアン・フォークウェイズよりアルバム発表——「わかとその他の作品」", d: "「Waka and Other Compositions: Contemporary Music of Japan」(FW 8881)がフォークウェイズ・レコードよりリリース。電子音楽技術と室内管弦楽を伝統詩歌と融合させた、日本の現代音楽の金字塔。" },
+      // ３）「和歌とその他の作品」
+      { t: "スミソニアン・フォークウェイズよりアルバム発表——「和歌とその他の作品」", d: "「Waka and Other Compositions: Contemporary Music of Japan」(FW 8881)がフォークウェイズ・レコードよりリリース。電子音楽技術と室内管弦楽を伝統詩歌と融合させた、日本の現代音楽の金字塔。" },
       { t: "帰国——音響物理学者へ", d: "日本に戻り、音楽家としての耳を科学に向けた。尺八の音響特性を研究し、1971年から1980年代にかけて国際会議で多数の論文を発表した。" },
-      { t: "「大和の声」日本初演——50年の時を経て", d: "ISCMプライズ受賞から半世紀が過ぎ、ようやくこの作品が故郷の地で演奏された。長い歳月を経た、深い意味を持つ帰還の瞬間だった。" },
+      // ２）「ISCMを受賞」
+      { t: "「大和の声」日本初演——50年の時を経て", d: "ISCMを受賞から半世紀が過ぎ、ようやくこの作品が故郷の地で演奏された。長い歳月を経た、深い意味を持つ帰還の瞬間だった。" },
       { t: "94歳で逝去", d: "日本、フランス、アメリカにまたがる94年の生涯——コンサートホール、科学の研究室、そして時代が女性の前に立ちはだけたあらゆる壁。彼女はその全てに道を見つけた。" }
     ],
-    albumTitle: "わかとその他の作品",
+    // ３）「和歌とその他の作品」
+    albumTitle: "和歌とその他の作品",
     albumSub: "日本の現代音楽——伝統的な和歌とテーマに基づく",
-    albumDesc: "古代の和歌と民俗の伝統に根ざし、ブーランジェのパリ、メシアンの和声、そして故郷の音の質感によって等しく形作られた、外山道子ならではの作曲の声で再構築された画期的な録音。",
+    albumDesc: "1960年にフォークウェイズ・レコードより発表された「和歌とその他の作品：日本の現代音楽」(FW 8881)は、古代の和歌を現代的な音楽言語で再解釈した画期的な録音です。外山道子は伝統詩歌と民俗的な音楽形式をもとに、室内楽アンサンブルと初期の電子音響技術を融合させています。",
+    // ４）音響研究セクション翻訳
     researchIntro: "約20年にわたり、尺八の音響モデルを発展させ続けた——湿った竹と乾いた竹のスペクトル分析から、ARMA合成モデル、極・零点モデリングまで。作曲家でありながら科学者となり、音楽家であることをやめなかった人。",
-    spiritQuote: "「困難に直面したとき、あなたは道を見つける。」",
+    // １）名言
+    spiritQuote: "「困難に直面したとき、あなたは道を見つける……それがなければ、自ら切り拓く。」",
     spiritAttr: "——外山道子",
     card1t: "戦争と喪失", card1d: "第二次世界大戦で夫を失い、世界が一変した。それでも二人の子を抱え、二つの大陸でひとりで人生とキャリアを再建した。",
     card2t: "人種と性別の壁", card2d: "1930〜50年代のヨーロッパとアメリカで、アジア人女性として誰も開けたことのない扉をくぐり、その扉を開けたままにしていった。",
@@ -634,9 +604,10 @@ const TRANSLATIONS = {
     ],
     albumTitle: "Waka et autres compositions",
     albumSub: "Musique contemporaine du Japon — D'après des thèmes et poèmes traditionnels japonais",
-    albumDesc: "Un enregistrement fondateur ancré dans l'ancienne poésie waka japonaise et la tradition populaire, réimaginé à travers la voix compositionnelle singulière de Michiko Toyama — façonnée à parts égales par le Paris de Boulanger, l'harmonie de Messiaen et les textures de sa terre natale.",
+    albumDesc: "Enregistrement fondateur, Waka and Other Compositions: Contemporary Music of Japan (FW 8881), publié par Folkways Records en 1960, réinterprète l'ancien waka à travers un langage musical contemporain. Michiko Toyama puise dans la poésie traditionnelle et les formes populaires, en intégrant ensemble de chambre et premières techniques électroniques.",
     researchIntro: "Pendant près de deux décennies, elle développa des modèles acoustiques de plus en plus sophistiqués du Shakuhachi — de l'analyse spectrale du son du bambou humide et sec aux modèles de synthèse ARMA et à la modélisation pôle-zéro. Une compositrice devenue scientifique sans jamais cesser d'être musicienne.",
-    spiritQuote: '"Face à un défi, tu trouves un chemin."',
+    // １）名言
+    spiritQuote: '"Face à un défi, tu trouves un chemin… ou tu en traces un."',
     spiritAttr: "— Michiko Toyama",
     card1t: "Guerre et perte", card1d: "La Seconde Guerre mondiale lui prit son mari et bouleversa son monde. Elle reconstruisit sa vie et sa carrière sur deux continents, seule, avec deux enfants.",
     card2t: "Barrières de race et de genre", card2d: "En tant que femme asiatique dans l'Europe et l'Amérique des années 1930–50, elle franchit des portes que personne n'avait ouvertes avant elle — et les laissa ouvertes.",
@@ -678,9 +649,10 @@ const TRANSLATIONS = {
     ],
     albumTitle: "Waka y otras composiciones",
     albumSub: "Música contemporánea de Japón — Basada en temas y poesía tradicional japonesa",
-    albumDesc: "Una grabación fundamental arraigada en la antigua poesía waka japonesa y la tradición popular, reimaginada a través de la singular voz compositiva de Michiko Toyama — moldeada a partes iguales por el París de Boulanger, la armonía de Messiaen y las texturas de su tierra natal.",
+    albumDesc: "Grabación fundamental, Waka and Other Compositions: Contemporary Music of Japan (FW 8881), publicada por Folkways Records en 1960, reinterpreta el antiguo waka a través de un lenguaje musical contemporáneo. Michiko Toyama se inspira en la poesía tradicional y las formas populares, integrando conjunto de cámara y técnicas electrónicas tempranas.",
     researchIntro: "Durante casi dos décadas, desarrolló modelos acústicos cada vez más sofisticados del Shakuhachi — desde el análisis espectral del tono de bambú húmedo y seco, hasta modelos de síntesis ARMA y modelado polo-cero. Una compositora que se convirtió en científica sin dejar nunca de ser músico.",
-    spiritQuote: '"Cuando enfrentas un desafío, encuentras el camino."',
+    // １）名言
+    spiritQuote: '"Cuando enfrentas un desafío, encuentras el camino… o lo abres tú misma."',
     spiritAttr: "— Michiko Toyama",
     card1t: "Guerra y pérdida", card1d: "La Segunda Guerra Mundial le quitó a su esposo y trastocó su mundo. Reconstruyó su vida y carrera en dos continentes, sola, con dos hijos.",
     card2t: "Barreras de raza y género", card2d: "Como mujer asiática en la Europa y América de los años 30 a 50, cruzó puertas que nadie había abierto antes — y las dejó abiertas.",
@@ -689,20 +661,17 @@ const TRANSLATIONS = {
   }
 };
 
-// ── LANGUAGE SWITCHER ─────────────────────────────────────────
 let currentLang = 'en';
 
 function applyLanguage(lang) {
   currentLang = lang;
   const t = TRANSLATIONS[lang];
 
-  // Nav
   document.querySelector('a[href="#timeline"]').textContent = t.navTimeline;
   document.querySelector('a[href="#album"]').textContent = t.navAlbum;
   document.querySelector('a[href="#research"]').textContent = t.navResearch;
   document.querySelector('a[href="#gallery"]').textContent = t.navGallery;
 
-  // Hero
   document.querySelector('.hero-eyebrow').textContent = t.heroEyebrow;
   document.querySelector('.hero-years').textContent = t.heroCities;
   const roles = document.querySelectorAll('.hero-role');
@@ -711,7 +680,6 @@ function applyLanguage(lang) {
   roles[2].textContent = t.heroRole3;
   document.querySelector('.hero-desc').textContent = t.heroDesc;
 
-  // Firsts
   const firstTitles = document.querySelectorAll('.first-title');
   const firstDescs = document.querySelectorAll('.first-desc');
   firstTitles[0].textContent = t.first1title; firstDescs[0].textContent = t.first1desc;
@@ -719,14 +687,12 @@ function applyLanguage(lang) {
   firstTitles[2].textContent = t.first3title; firstDescs[2].textContent = t.first3desc;
   firstTitles[3].textContent = t.first4title; firstDescs[3].textContent = t.first4desc;
 
-  // Section titles
   const secTitles = document.querySelectorAll('.section-title');
   secTitles[0].textContent = t.secTitle1;
   secTitles[1].textContent = t.secTitle2;
   secTitles[2].textContent = t.secTitle3;
   secTitles[3].textContent = t.secTitle4;
 
-  // Timeline
   const tlBodies = document.querySelectorAll('.tl-body');
   t.tl.forEach((item, i) => {
     if (tlBodies[i]) {
@@ -735,15 +701,12 @@ function applyLanguage(lang) {
     }
   });
 
-  // Album
   document.querySelector('.album-title').textContent = t.albumTitle;
   document.querySelector('.album-subtitle').textContent = t.albumSub;
   document.querySelector('.album-desc').textContent = t.albumDesc;
 
-  // Research
   document.querySelector('.research-intro').textContent = t.researchIntro;
 
-  // Spirit
   document.querySelector('.spirit-quote').textContent = t.spiritQuote;
   document.querySelector('.spirit-attr').textContent = t.spiritAttr;
   const cards = document.querySelectorAll('.spirit-card');
@@ -754,16 +717,13 @@ function applyLanguage(lang) {
   cards[2].querySelector('.spirit-card-title').textContent = t.card3t;
   cards[2].querySelector('.spirit-card-desc').textContent = t.card3d;
 
-  // Footer
   document.querySelector('footer').textContent = t.footer;
 
-  // Button states
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('lang-active', btn.dataset.lang === lang);
   });
 }
 
-// ── INJECT LANGUAGE BUTTONS INTO NAV ─────────────────────────
 (function injectLangButtons() {
   const style = document.createElement('style');
   style.textContent = `
