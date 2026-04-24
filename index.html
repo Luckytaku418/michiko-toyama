@@ -359,17 +359,7 @@
     <h2 class="section-title">Acoustic research — the Shakuhachi papers</h2>
   </div>
   <p class="research-intro">Over nearly two decades, she developed increasingly sophisticated acoustic models of the Shakuhachi — from spectral analysis of wet and dry bamboo tone, to ARMA synthesis models, to pole-zero modelling. A composer who became a scientist without ever ceasing to be a musician.</p>
-  <div class="papers">
-    <div class="paper"><div class="paper-year">1971</div><div><div class="paper-title">Study of Timbre of Wet and Dry Japanese Bamboo Pipe, Shakuhachi</div><div class="paper-venue">7th International Congress on Acoustics (ICA) — Budapest, Hungary</div></div></div>
-    <div class="paper"><div class="paper-year">1977</div><div><div class="paper-title">Attack transients of wet and dry Japanese bamboo pipe, Shakuhachi</div><div class="paper-venue">9th International Congress on Acoustics (ICA) — Madrid, Spain</div></div></div>
-    <div class="paper"><div class="paper-year">1978</div><div><div class="paper-title">Synthesis by linear prediction of the bamboo tone, Shakuhachi</div><div class="paper-venue">Journal of the Acoustical Society of America (JASA) Vol.64 — Hawaii, USA</div></div></div>
-    <div class="paper"><div class="paper-year">1980</div><div><div class="paper-title">Parameters in the transient of the bamboo tone, Shakuhachi, by LP method and its synthesis</div><div class="paper-venue">10th International Congress on Acoustics (ICA) — Sydney, Australia</div></div></div>
-    <div class="paper"><div class="paper-year">1982</div><div><div class="paper-title">線形予測法を用いた尺八の過渡現象の分析と合成</div><div class="paper-venue">日本音響学会 昭和57年度春季研究発表会 — Japan</div></div></div>
-    <div class="paper"><div class="paper-year">1983</div><div><div class="paper-title">ARMAモデルによる尺八音の分析と合成</div><div class="paper-venue">日本音響学会 昭和58年度秋季研究発表会 — Japan</div></div></div>
-    <div class="paper"><div class="paper-year">1986</div><div><div class="paper-title">Study on Pole-Zero Modeling in Analysis-Synthesis of Bamboo Tone, Shakuhachi, and Its Transient</div><div class="paper-venue">1986 IEEE ASSP Workshop — Mohonk Mountain House, New York, USA</div></div></div>
-    <div class="paper"><div class="paper-year">1988</div><div><div class="paper-title">A study of the transient sounds of the Shakuhachi based on ARMA modeling with residual excitation</div><div class="paper-venue">Joint Meeting: Acoustical Society of America &amp; Acoustical Society of Japan — Honolulu, Hawaii</div></div></div>
-    <div class="paper"><div class="paper-year">1989</div><div><div class="paper-title">ARMAモデルによる尺八"かざいき"音の分析と合成</div><div class="paper-venue">日本音響学会 平成元年度春季研究発表会 — Japan</div></div></div>
-  </div>
+  <div class="papers" id="papersGrid"></div>
 </section>
 
 <section id="gallery">
@@ -467,6 +457,74 @@ document.addEventListener("keydown", e => {
 
 buildGallery();
 
+// ── PAPERS DATA ───────────────────────────────────────────────
+const PAPERS = [
+  {
+    year: "1971",
+    en: { title: "Study of Timbre of Wet and Dry Japanese Bamboo Pipe, Shakuhachi", venue: "7th International Congress on Acoustics (ICA) — Budapest, Hungary" },
+    ja: { title: "尺八（湿竹・乾竹）の音色研究", venue: "第7回国際音響学会議（ICA）— ハンガリー、ブダペスト" }
+  },
+  {
+    year: "1977",
+    en: { title: "Attack transients of wet and dry Japanese bamboo pipe, Shakuhachi", venue: "9th International Congress on Acoustics (ICA) — Madrid, Spain" },
+    ja: { title: "尺八（湿竹・乾竹）の立ち上がり過渡現象", venue: "第9回国際音響学会議（ICA）— スペイン、マドリード" }
+  },
+  {
+    year: "1978",
+    en: { title: "Synthesis by linear prediction of the bamboo tone, Shakuhachi", venue: "Journal of the Acoustical Society of America (JASA) Vol.64 — Hawaii, USA" },
+    ja: { title: "線形予測による尺八音の合成", venue: "米国音響学会誌（JASA）第64巻 — ハワイ、アメリカ" }
+  },
+  {
+    year: "1980",
+    en: { title: "Parameters in the transient of the bamboo tone, Shakuhachi, by LP method and its synthesis", venue: "10th International Congress on Acoustics (ICA) — Sydney, Australia" },
+    ja: { title: "LP法による尺八音の過渡現象パラメータと合成", venue: "第10回国際音響学会議（ICA）— オーストラリア、シドニー" }
+  },
+  {
+    year: "1982",
+    ja: { title: "線形予測法を用いた尺八の過渡現象の分析と合成", venue: "日本音響学会 昭和57年度春季研究発表会 — 日本" },
+    en: { title: "Analysis and Synthesis of Shakuhachi Transients Using Linear Prediction", venue: "Acoustical Society of Japan, Spring Meeting 1982 — Japan" }
+  },
+  {
+    year: "1983",
+    ja: { title: "ARMAモデルによる尺八音の分析と合成", venue: "日本音響学会 昭和58年度秋季研究発表会 — 日本" },
+    en: { title: "Analysis and Synthesis of Shakuhachi Tones Using ARMA Modeling", venue: "Acoustical Society of Japan, Autumn Meeting 1983 — Japan" }
+  },
+  {
+    year: "1986",
+    en: { title: "Study on Pole-Zero Modeling in Analysis-Synthesis of Bamboo Tone, Shakuhachi, and Its Transient", venue: "1986 IEEE ASSP Workshop — Mohonk Mountain House, New York, USA" },
+    ja: { title: "尺八音とその過渡現象の分析・合成における極零点モデリングの研究", venue: "1986年 IEEE ASSP ワークショップ — ニューヨーク州モホンク・マウンテン・ハウス、アメリカ" }
+  },
+  {
+    year: "1988",
+    en: { title: "A study of the transient sounds of the Shakuhachi based on ARMA modeling with residual excitation", venue: "Joint Meeting: Acoustical Society of America & Acoustical Society of Japan — Honolulu, Hawaii" },
+    ja: { title: "残差励振ARMAモデルによる尺八過渡音の研究", venue: "米国音響学会・日本音響学会 合同大会 — ハワイ、ホノルル" }
+  },
+  {
+    year: "1989",
+    ja: { title: "ARMAモデルによる尺八「かざいき」音の分析と合成", venue: "日本音響学会 平成元年度春季研究発表会 — 日本" },
+    en: { title: "Analysis and Synthesis of Shakuhachi \"Kazaiki\" Tones Using ARMA Modeling", venue: "Acoustical Society of Japan, Spring Meeting 1989 — Japan" }
+  }
+];
+
+function buildPapers(lang) {
+  const grid = document.getElementById("papersGrid");
+  grid.innerHTML = "";
+  PAPERS.forEach(p => {
+    const primary = p[lang] || p.en;
+    const secondary = lang === 'ja' ? p.en : p.ja;
+    const secondaryLabel = lang === 'ja' ? 'en' : 'ja';
+    grid.innerHTML += `
+      <div class="paper">
+        <div class="paper-year">${p.year}</div>
+        <div>
+          <div class="paper-title">${primary.title}</div>
+          ${secondary ? `<div class="paper-title-sub">${secondary.title}</div>` : ''}
+          <div class="paper-venue">${primary.venue}</div>
+        </div>
+      </div>`;
+  });
+}
+
 // ── TRANSLATIONS ──────────────────────────────────────────────
 const TRANSLATIONS = {
   en: {
@@ -561,7 +619,7 @@ const TRANSLATIONS = {
     // ４）音響研究セクション翻訳
     researchIntro: "約20年にわたり、尺八の音響モデルを発展させ続けた——湿った竹と乾いた竹のスペクトル分析から、ARMA合成モデル、極・零点モデリングまで。作曲家でありながら科学者となり、音楽家であることをやめなかった人。",
     // １）名言
-    spiritQuote: "「困難に直面したとき、あなたは道を見つける……それがなければ、自ら切り拓く。」",
+    spiritQuote: "「困難に直面したとき、道を見つける……それがなければ、自ら切り拓く。」",
     spiritAttr: "——外山道子",
     card1t: "戦争と喪失", card1d: "第二次世界大戦で夫を失い、世界が一変した。それでも二人の子を抱え、二つの大陸でひとりで人生とキャリアを再建した。",
     card2t: "人種と性別の壁", card2d: "1930〜50年代のヨーロッパとアメリカで、アジア人女性として誰も開けたことのない扉をくぐり、その扉を開けたままにしていった。",
@@ -705,6 +763,7 @@ function applyLanguage(lang) {
   document.querySelector('.album-desc').textContent = t.albumDesc;
 
   document.querySelector('.research-intro').textContent = t.researchIntro;
+  buildPapers(lang);
 
   document.querySelector('.spirit-quote').textContent = t.spiritQuote;
   document.querySelector('.spirit-attr').textContent = t.spiritAttr;
@@ -745,6 +804,14 @@ function applyLanguage(lang) {
   `;
   document.querySelector('.nav-links').appendChild(switcher);
 })();
+
+// 論文を初期表示（英語）
+buildPapers('en');
+
+// paper-title-sub のスタイル追加
+const ps = document.createElement('style');
+ps.textContent = `.paper-title-sub { font-size: 13px; color: var(--ink-light); font-style: italic; margin-bottom: 0.25rem; }`;
+document.head.appendChild(ps);
 </script>
 </body>
 </html>
