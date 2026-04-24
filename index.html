@@ -506,19 +506,25 @@ const PAPERS = [
   }
 ];
 
+// jaOriginal: 元々日本語タイトルだった論文
+const JA_ORIGINAL = ["1982", "1983", "1989"];
+
 function buildPapers(lang) {
   const grid = document.getElementById("papersGrid");
   grid.innerHTML = "";
   PAPERS.forEach(p => {
+    const isJaOriginal = JA_ORIGINAL.includes(p.year);
     const primary = p[lang] || p.en;
+    // 英語表示：元々日本語の論文のみ英訳をイタリックで併記
+    // 日本語表示：元々英語の論文のみ日本語訳をイタリックで併記
+    const showSub = (lang === 'en' && isJaOriginal) || (lang === 'ja' && !isJaOriginal);
     const secondary = lang === 'ja' ? p.en : p.ja;
-    const secondaryLabel = lang === 'ja' ? 'en' : 'ja';
     grid.innerHTML += `
       <div class="paper">
         <div class="paper-year">${p.year}</div>
         <div>
           <div class="paper-title">${primary.title}</div>
-          ${secondary ? `<div class="paper-title-sub">${secondary.title}</div>` : ''}
+          ${showSub && secondary ? `<div class="paper-title-sub">${secondary.title}</div>` : ''}
           <div class="paper-venue">${primary.venue}</div>
         </div>
       </div>`;
