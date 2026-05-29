@@ -756,7 +756,8 @@ function applyLanguage(lang) {
 buildGallery('en');
 buildPapers('en');
 buildScoreList('en');
-applyLanguage('en');
+// 初期言語を英語に設定
+setTimeout(()=>applyLanguage('en'), 0);
 </script>
 </body>
 </html>
