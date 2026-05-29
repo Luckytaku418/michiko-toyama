@@ -265,9 +265,8 @@
 
   <!-- 楽譜画像とリクエストボックスを横並び -->
   <div style="display:flex; gap:2rem; align-items:flex-start; margin-bottom:1.5rem;">
-    <div class="score-image-wrap" style="margin-bottom:0; flex-shrink:0;">
-      <img src="images/score.jpg" alt="Fairyland of Yamato — manuscript score">
-      <div class="score-img-caption" id="scoreCaption"></div>
+    <div style="flex-shrink:0;">
+      <img src="images/score.jpg" alt="Fairyland of Yamato — manuscript score" style="width:150px;height:150px;object-fit:cover;object-position:top left;border:1px solid var(--border);box-shadow:3px 3px 0 rgba(26,20,16,0.1);">
     </div>
     <div class="score-request-box" style="flex:1;">
       <div class="score-request-label" id="scoreRequestLabel">Request a Score</div>
@@ -275,6 +274,9 @@
       <a class="score-request-btn" href="mailto:TheWaymakersForArt@gmail.com?subject=Score Request — Michiko Toyama" id="scoreRequestBtn">Application Form</a>
     </div>
   </div>
+
+  <!-- スコアリスト -->
+  <div class="score-list-wrap" id="scoreListGrid"></div>
 </section>
 
 <!-- 05 GALLERY -->
@@ -307,15 +309,14 @@
 // ── SCORE LIST ────────────────────────────────────────────────
 const SCORE_LIST = {
   en: [
-    // Waka and Other Compositions tracks
-    "Waka (Part 1 & 2) — narrator, fl, prepared pf",
+    "Waka (Part 1 & 2) — narrator, fl, pf",
     "Waka — narrator, fl, vc",
-    "The Voice of Yamato: The Death of Yakamaro — full score",
-    "The Voice of Yamato: The Fairy Land of Yamato — full score",
+    "The Voice of Yamato — (Full Score including The Death of Yakamaro, Spring, Echo, Prayer, and The Fairy Land of Yamato)",
+    "The Voice of Yamato: The Death of Yakamaro",
     "The Voice of Yamato: Spring",
     "The Voice of Yamato: Echo",
     "The Voice of Yamato: Prayer",
-    // Other works from archive
+    "The Voice of Yamato: The Fairy Land of Yamato",
     "やまとの声 (Voice of Yamato) — part score fl 1",
     "やまとの声 (Voice of Yamato) — part score fl 2",
     "やまとの声 (Voice of Yamato) — part score cl",
@@ -324,7 +325,6 @@ const SCORE_LIST = {
     "やまとうた (Yamato Uta) — Songs 1–3, 5",
     "Concerto for Violin — I",
     "Concerto for Violin — II–III",
-    "Suite: Japanese Folk Music — full score",
     "Suite: Japanese Folk Music — Komori-uta (v, orch)",
     "Suite: Japanese Folk Music — Oiwake (v, orch)",
     "Suite: Japanese Folk Music — Momihiki (v, orch)",
@@ -337,18 +337,19 @@ const SCORE_LIST = {
     "Menuet (pf)",
     "Variation humoristique (pf)",
     "無題 (Untitled) — fl, pf score & parts",
-    "Passacaille — score",
-    "Passacaille — part score bn",
-    "Passacaille — part score ob & cl",
+    "Passacaglia — score",
+    "Passacaglia — part score bn",
+    "Passacaglia — parts ob & cl",
   ],
   ja: [
-    "和歌（第1部・第2部）— 語り、フルート、プリペアードピアノ",
+    "和歌（第1部・第2部）— 語り、フルート、ピアノ",
     "和歌 — 語り、フルート、チェロ",
-    "やまとの声：やかまろの死 — フルスコア",
-    "やまとの声：やまとのおとぎの国 — フルスコア",
+    "やまとの声（フルスコア：やかまろの死、春、山びこ、祈り、おとぎの国の大和）",
+    "やまとの声：やかまろの死",
     "やまとの声：春",
-    "やまとの声：こだま",
+    "やまとの声：山びこ",
     "やまとの声：祈り",
+    "やまとの声：おとぎの国の大和",
     "やまとの声 — パート譜 フルート1",
     "やまとの声 — パート譜 フルート2",
     "やまとの声 — パート譜 クラリネット",
@@ -357,7 +358,6 @@ const SCORE_LIST = {
     "やまとうた — 第1〜3曲、第5曲",
     "ヴァイオリン協奏曲 — 第1楽章",
     "ヴァイオリン協奏曲 — 第2〜3楽章",
-    "日本民謡組曲 — フルスコア",
     "日本民謡組曲 — こもりうた（声楽・管弦楽）",
     "日本民謡組曲 — おいわけ（声楽・管弦楽）",
     "日本民謡組曲 — もみひき（声楽・管弦楽）",
@@ -370,18 +370,19 @@ const SCORE_LIST = {
     "メヌエット（ピアノ）",
     "ユーモラスな変奏曲（ピアノ）",
     "無題 — フルート・ピアノ スコア＆パート",
-    "パッサカイユ — スコア",
-    "パッサカイユ — パート譜 バスーン",
-    "パッサカイユ — パート譜 オーボエ＆クラリネット",
+    "パサカリア — スコア",
+    "パサカリア — パート譜 バスーン",
+    "パサカリア — パート譜 オーボエ＆クラリネット",
   ],
   fr: [
-    "Waka (Parties 1 & 2) — récitant, fl, pf préparé",
+    "Waka (Parties 1 & 2) — récitant, fl, pf",
     "Waka — récitant, fl, vc",
-    "La Voix du Yamato : La Mort de Yakamaro — partition complète",
-    "La Voix du Yamato : Le Pays des fées de Yamato — partition complète",
+    "La Voix du Yamato — (Partition complète : La Mort de Yakamaro, Printemps, Écho, Prière, Le Pays des fées de Yamato)",
+    "La Voix du Yamato : La Mort de Yakamaro",
     "La Voix du Yamato : Printemps",
     "La Voix du Yamato : Écho",
     "La Voix du Yamato : Prière",
+    "La Voix du Yamato : Le Pays des fées de Yamato",
     "やまとの声 (Voix du Yamato) — partie fl 1",
     "やまとの声 (Voix du Yamato) — partie fl 2",
     "やまとの声 (Voix du Yamato) — partie cl",
@@ -390,7 +391,6 @@ const SCORE_LIST = {
     "やまとうた (Chants de Yamato) — n° 1–3, 5",
     "Concerto pour violon — I",
     "Concerto pour violon — II–III",
-    "Suite : Musique folklorique japonaise — partition complète",
     "Suite : Musique folklorique japonaise — Komori-uta (v, orch)",
     "Suite : Musique folklorique japonaise — Oiwake (v, orch)",
     "Suite : Musique folklorique japonaise — Momihiki (v, orch)",
@@ -403,18 +403,19 @@ const SCORE_LIST = {
     "Menuet (pf)",
     "Variation humoristique (pf)",
     "Sans titre — fl, pf partition & parties",
-    "Passacaille — partition",
-    "Passacaille — partie bn",
-    "Passacaille — parties ob & cl",
+    "Passacaglia — partition",
+    "Passacaglia — partie bn",
+    "Passacaglia — parties ob & cl",
   ],
   es: [
-    "Waka (Partes 1 y 2) — narrador, fl, pf preparado",
+    "Waka (Partes 1 y 2) — narrador, fl, pf",
     "Waka — narrador, fl, vc",
-    "La Voz de Yamato: La Muerte de Yakamaro — partitura completa",
-    "La Voz de Yamato: El País de las Hadas de Yamato — partitura completa",
+    "La Voz de Yamato — (Partitura completa: La Muerte de Yakamaro, Primavera, Eco, Oración, El País de las Hadas de Yamato)",
+    "La Voz de Yamato: La Muerte de Yakamaro",
     "La Voz de Yamato: Primavera",
     "La Voz de Yamato: Eco",
     "La Voz de Yamato: Oración",
+    "La Voz de Yamato: El País de las Hadas de Yamato",
     "やまとの声 (Voz de Yamato) — parte fl 1",
     "やまとの声 (Voz de Yamato) — parte fl 2",
     "やまとの声 (Voz de Yamato) — parte cl",
@@ -423,7 +424,6 @@ const SCORE_LIST = {
     "やまとうた (Canciones de Yamato) — n° 1–3, 5",
     "Concierto para violín — I",
     "Concierto para violín — II–III",
-    "Suite: Música folclórica japonesa — partitura completa",
     "Suite: Música folclórica japonesa — Komori-uta (v, orch)",
     "Suite: Música folclórica japonesa — Oiwake (v, orch)",
     "Suite: Música folclórica japonesa — Momihiki (v, orch)",
@@ -436,9 +436,9 @@ const SCORE_LIST = {
     "Minueto (pf)",
     "Variación humorística (pf)",
     "Sin título — fl, pf partitura y partes",
-    "Passacaille — partitura",
-    "Passacaille — parte bn",
-    "Passacaille — partes ob y cl",
+    "Passacaglia — partitura",
+    "Passacaglia — parte bn",
+    "Passacaglia — partes ob y cl",
   ]
 };
 
