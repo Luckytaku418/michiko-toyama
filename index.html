@@ -727,11 +727,11 @@ function applyLanguage(lang) {
   document.querySelector('.research-intro').textContent=t.researchIntro;
   buildPapers(lang);
   document.getElementById('scoresIntro').textContent=t.scoresIntro;
-  document.getElementById('scoreCaption').textContent=t.scoreCaption;
-  document.getElementById('scoreRequestLabel').textContent=t.scoreRequestLabel;
-  document.getElementById('scoreRequestDesc').textContent=t.scoreRequestDesc;
+  if(document.getElementById('scoreCaption')) document.getElementById('scoreCaption').textContent=t.scoreCaption;
+  if(document.getElementById('scoreRequestLabel')) document.getElementById('scoreRequestLabel').textContent=t.scoreRequestLabel;
+  if(document.getElementById('scoreRequestDesc')) document.getElementById('scoreRequestDesc').textContent=t.scoreRequestDesc;
   const btn=document.getElementById('scoreRequestBtn');
-  btn.textContent=t.scoreRequestLabel;
+  if(btn) btn.textContent=t.scoreRequestLabel;
   buildScoreList(lang);
   buildGallery(lang);
   document.querySelector('.spirit-quote').textContent=t.spiritQuote;
@@ -749,13 +749,14 @@ function applyLanguage(lang) {
   style.textContent=`.lang-switcher{display:flex;gap:4px;margin-left:1.5rem}.lang-btn{font-size:11px;letter-spacing:0.1em;font-family:'DM Mono',monospace;padding:4px 10px;border:1px solid var(--border);background:transparent;color:var(--ink-light);cursor:pointer;border-radius:2px;transition:all .2s}.lang-btn:hover{border-color:var(--red);color:var(--red)}.lang-active{background:var(--red)!important;color:#fff!important;border-color:var(--red)!important}`;
   document.head.appendChild(style);
   const sw=document.createElement('div'); sw.className='lang-switcher';
-  sw.innerHTML=`<button class="lang-btn lang-active" data-lang="en" onclick="applyLanguage('en')">EN</button><button class="lang-btn" data-lang="ja" onclick="applyLanguage('ja')">日本語</button><button class="lang-btn" data-lang="fr" onclick="applyLanguage('fr')">FR</button><button class="lang-btn" data-lang="es" onclick="applyLanguage('es')">ES</button>`;
+  sw.innerHTML=`<button class="lang-btn" data-lang="en" onclick="applyLanguage('en')">EN</button><button class="lang-btn" data-lang="ja" onclick="applyLanguage('ja')">日本語</button><button class="lang-btn" data-lang="fr" onclick="applyLanguage('fr')">FR</button><button class="lang-btn" data-lang="es" onclick="applyLanguage('es')">ES</button>`;
   document.querySelector('.nav-links').appendChild(sw);
 })();
 
 buildGallery('en');
 buildPapers('en');
 buildScoreList('en');
+applyLanguage('en');
 </script>
 </body>
 </html>
