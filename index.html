@@ -88,19 +88,21 @@
 
   /* SCORES */
   #scores { background: var(--paper-warm); }
-  .score-image-wrap { margin-bottom: 2.5rem; }
-  /* (8) LPサイズに縮小 */
-  .score-image-wrap img { width: 100%; max-width: 320px; display: block; border: 1px solid var(--border); box-shadow: 6px 6px 0 rgba(26,20,16,0.1); }
-  .score-img-caption { margin-top: 0.75rem; font-family: 'DM Mono',monospace; font-size: 11px; color: var(--ink-light); letter-spacing: 0.08em; text-transform: uppercase; }
-  /* (7) 縦2列に分割 */
-  .score-list-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; margin-bottom: 2.5rem; }
+  /* SCORES — コンパクト化 (3) */
+  #scores { background: var(--paper-warm); }
+  .score-image-wrap { margin-bottom: 1.5rem; }
+  /* (2) 約4x4cm相当 */
+  .score-image-wrap img { width: 150px; height: 150px; object-fit: cover; object-position: top left; display: block; border: 1px solid var(--border); box-shadow: 3px 3px 0 rgba(26,20,16,0.1); cursor: pointer; }
+  .score-img-caption { margin-top: 0.4rem; font-family: 'DM Mono',monospace; font-size: 10px; color: var(--ink-light); letter-spacing: 0.08em; text-transform: uppercase; }
+  /* (7) 縦2列 */
+  .score-list-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; margin-bottom: 1.5rem; }
   .score-list-col { display: flex; flex-direction: column; }
-  .score-list-item { display: flex; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border); font-size: 13px; }
-  .score-list-num { font-family: 'DM Mono',monospace; font-size: 11px; color: var(--red); min-width: 28px; padding-top: 2px; flex-shrink: 0; }
-  .score-request-box { background: var(--paper); border: 1px solid var(--border); padding: 2rem; max-width: 620px; }
-  .score-request-label { font-family: 'DM Mono',monospace; font-size: 11px; color: var(--red); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.75rem; }
-  .score-request-desc { font-size: 15px; color: var(--ink-light); margin-bottom: 1.25rem; line-height: 1.7; }
-  .score-request-btn { display: inline-block; padding: 0.75rem 2rem; background: var(--red); color: #fff; font-family: 'DM Mono',monospace; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s; }
+  .score-list-item { display: flex; gap: 0.5rem; padding: 0.3rem 0; border-bottom: 1px solid var(--border); font-size: 12px; }
+  .score-list-num { font-family: 'DM Mono',monospace; font-size: 10px; color: var(--red); min-width: 24px; padding-top: 2px; flex-shrink: 0; }
+  .score-request-box { background: var(--paper); border: 1px solid var(--border); padding: 1.25rem 1.5rem; max-width: 480px; }
+  .score-request-label { font-family: 'DM Mono',monospace; font-size: 10px; color: var(--red); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .score-request-desc { font-size: 13px; color: var(--ink-light); margin-bottom: 1rem; line-height: 1.6; }
+  .score-request-btn { display: inline-block; padding: 0.5rem 1.5rem; background: var(--red); color: #fff; font-family: 'DM Mono',monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s; }
   .score-request-btn:hover { background: var(--red-dark); }
 
   #gallery { background: var(--paper); }
@@ -121,7 +123,7 @@
   #lbCaption { font-size: 15px; color: rgba(255,255,255,0.8); font-style: italic; max-width: 560px; margin: 0 auto; line-height: 1.6; }
 
   #spirit { background: var(--red); color: #fff; padding: 5rem 3rem; }
-  .spirit-quote { font-size: clamp(28px,4vw,52px); font-weight: 300; font-style: italic; line-height: 1.3; max-width: 800px; margin: 0 auto; text-align: center; }
+  .spirit-quote { font-size: clamp(28px,4vw,52px); font-weight: 300; font-style: italic; line-height: 1.3; max-width: 800px; margin: 0 auto; text-align: center; white-space: pre-line; }
   .spirit-attr { text-align: center; margin-top: 2rem; font-size: 14px; color: rgba(255,255,255,0.6); font-family: 'DM Mono',monospace; letter-spacing: 0.15em; text-transform: uppercase; }
   .spirit-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 4rem; }
   .spirit-card { background: rgba(255,255,255,0.08); padding: 1.5rem; }
@@ -596,7 +598,7 @@ scoreRequestDesc:"To request access to any of the scores listed above — for pe
     first2title:"コロンビア・プリンストン電子音楽センターに招かれた最初の外国人作曲家であり、最初の女性",first2desc:"ニューヨーク、1956年",
     first3title:"「やまとの声」——日本初演まで56年",first3desc:"1937年に受賞したこの作品が日本で演奏されたのは、1993年のことでした",
     first4title:"尺八音響研究の先駆者",first4desc:"1971年以降、尺八の音響に関する多数の論文を発表",
-    secTitle1:"三つの世界のあいだを生きて",secTitle2:"和歌とその他の作品",secTitle3:"音響研究——尺八論文",secTitle4:"写真で辿る生涯",
+    secTitle1:"三つの世界の間を生きて",secTitle2:"和歌とその他の作品",secTitle3:"音響研究——尺八論文",secTitle4:"写真で辿る生涯",
     tl:[
       {t:"大阪に誕生",d:"父・外山捨造、母・治子の子として大阪に生まれる。幼い頃から音楽と音への探究心が芽生えた。"},
       {t:"ナディア・ブーランジェに師事——エコール・ノルマル音楽院",d:"コープランド、バーンスタイン、ピアソラなどを育てた伝説的な教育者、ナディア・ブーランジェのもとで学び、世界最高水準の作曲教育を受けた。"},
@@ -618,7 +620,7 @@ scoreRequestDesc:"To request access to any of the scores listed above — for pe
     scoresSectionTitle:"楽譜のリクエスト",scoresIntro:"外山道子の直筆楽譜は申請によりご提供可能です。以下のリストに所蔵作品を掲載しています。楽譜をご希望の方は下記のメールアドレスまでお問い合わせください。",
     scoreCaption:"",
     scoreRequestLabel:"楽譜を申請する",scoreRequestDesc:"演奏・録音・出版・研究などの目的で楽譜の使用をご希望の方は、以下のメールアドレスまでご連絡ください：",
-    spiritQuote:"「困難に直面したとき、道を見つける……それがなければ、自ら切り拓く。」",spiritAttr:"——外山道子",
+    spiritQuote:"「困難に直面したとき、道を見つける……\nなければ、自ら切り拓く。」",spiritAttr:"——外山道子",
     card1t:"戦争と喪失",card1d:"戦後、夫はシベリアのソビエト強制労働収容所で命を落とした——彼女の世界を一変させた出来事だった。母の支えを得ながら、二人の子を育てつつ、二つの大陸にわたって人生とキャリアを再建した。",
     card2t:"人種と性別の壁",card2d:"1930〜50年代のヨーロッパとアメリカで、アジア人女性として誰も開けたことのない扉をくぐり、その扉を開けたままにしていった。",
     card3t:"科学者としての第二の人生",card3d:"多くの人が実績に安住する年齢になっても、自らを研究者として再発明し——作曲家の耳を音響物理学に持ち込んだ。",
