@@ -1,440 +1,540 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Michiko Toyama — Pianist, Composer, Scientist</title>
-  <style>
-    /* ── PASTE THIS ENTIRE FILE over your existing index.html ── */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Michiko Toyama — Pianist, Composer, Scientist</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1410; --ink-light: #5a4a3a; --paper: #f5f0e8;
+    --paper-warm: #ede5d4; --red: #c0392b; --red-dark: #8b2018;
+    --gold: #b8860b; --border: rgba(26,20,16,0.15);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Cormorant Garamond','Noto Serif JP',Georgia,serif; background: var(--paper); color: var(--ink); line-height: 1.7; }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1rem 3rem; background: var(--paper); border-bottom: 1px solid var(--border); }
+  .nav-name { font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; }
+  .nav-links a:hover { color: var(--red); }
 
-    :root {
-      --cream: #faf8f3;
-      --ink:   #1a1a1a;
-      --mid:   #555;
-      --light: #999;
-      --rule:  #ddd;
-      --teal:  #0f5f5a;
-    }
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 60px; }
+  .hero-left { background: var(--red); display: flex; flex-direction: column; justify-content: flex-end; padding: 4rem; position: relative; overflow: hidden; }
+  .hero-left::before {
+    content: '外山道子'; position: absolute; top: 2rem; right: 2rem;
+    font-size: 80px; font-weight: 300; color: rgba(255,255,255,0.12);
+    font-family: 'Noto Serif JP',serif; line-height: 1.1;
+    writing-mode: vertical-rl; letter-spacing: 0.05em;
+  }
+  .hero-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 1rem; font-family: 'DM Mono',monospace; }
+  .hero-name { font-size: clamp(48px,7vw,90px); font-weight: 300; line-height: 1; color: #fff; margin-bottom: 0.5rem; }
+  .hero-name-jp { font-family: 'Noto Serif JP',serif; font-size: 22px; font-weight: 300; color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; }
+  .hero-years { font-size: 15px; color: rgba(255,255,255,0.5); font-family: 'DM Mono',monospace; letter-spacing: 0.1em; }
+  .hero-right { background: var(--paper-warm); display: flex; flex-direction: column; justify-content: center; padding: 4rem; }
+  .hero-roles { display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 2.5rem; }
+  .hero-role { font-size: clamp(22px,3vw,36px); font-weight: 300; font-style: italic; color: var(--ink-light); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+  .hero-role:last-child { border-bottom: none; }
+  .hero-desc { font-size: 17px; line-height: 1.8; color: var(--ink-light); font-style: italic; }
 
-    html { scroll-behavior: smooth; }
+  .firsts-section { background: var(--ink); color: #fff; padding: 4rem 3rem; display: grid; grid-template-columns: repeat(2,1fr); }
+  .first-item { padding: 2rem; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .first-item:nth-child(2n) { border-right: none; }
+  .first-item:nth-child(3),.first-item:nth-child(4) { border-bottom: none; }
+  .first-number { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); font-family: 'DM Mono',monospace; margin-bottom: 0.75rem; }
+  .first-title { font-size: 20px; font-weight: 300; line-height: 1.3; margin-bottom: 0.5rem; }
+  .first-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; }
 
-    body {
-      font-family: Georgia, 'Times New Roman', serif;
-      background: var(--cream);
-      color: var(--ink);
-      line-height: 1.7;
-    }
+  section { padding: 5rem 3rem; }
+  .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+  .section-num { font-family: 'DM Mono',monospace; font-size: 11px; color: var(--red); letter-spacing: 0.1em; }
+  .section-title { font-size: 32px; font-weight: 300; }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: rgba(250,248,243,0.95);
-      backdrop-filter: blur(6px);
-      border-bottom: 0.5px solid var(--rule);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2rem;
-      height: 52px;
-    }
-    .nav-logo { font-size: 14px; font-weight: 700; letter-spacing: 0.05em; color: var(--ink); text-decoration: none; }
-    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-    .nav-links a { font-size: 13px; color: var(--mid); text-decoration: none; letter-spacing: 0.04em; }
-    .nav-links a:hover { color: var(--ink); }
+  #timeline { background: var(--paper); }
+  .timeline { display: flex; flex-direction: column; max-width: 760px; }
+  .tl { display: grid; grid-template-columns: 100px 1px 1fr; gap: 0 2rem; padding-bottom: 2.5rem; }
+  .tl-yr { font-family: 'DM Mono',monospace; font-size: 12px; color: var(--red); padding-top: 4px; text-align: right; line-height: 1.4; }
+  .tl-line { display: flex; flex-direction: column; align-items: center; }
+  .tl-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); margin-top: 5px; flex-shrink: 0; }
+  .tl-bar { width: 1px; flex: 1; background: var(--border); margin-top: 5px; }
+  .tl:last-child .tl-bar { display: none; }
+  .tl-t { font-size: 17px; font-weight: 400; line-height: 1.3; margin-bottom: 0.4rem; }
+  .tl-d { font-size: 14px; color: var(--ink-light); line-height: 1.7; }
+  .tl-badge { display: inline-block; margin-top: 0.5rem; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'DM Mono',monospace; padding: 3px 10px; border: 1px solid var(--red); color: var(--red); }
+  .tl-badge-gold { border-color: var(--gold); color: var(--gold); }
 
-    /* ── SECTIONS ── */
-    section { padding: 6rem 2rem; max-width: 860px; margin: 0 auto; }
-    section + section { border-top: 0.5px solid var(--rule); }
+  #album { background: var(--paper-warm); }
+  .album-grid { display: grid; grid-template-columns: 380px 1fr; gap: 4rem; align-items: start; }
+  .album-cover { width: 100%; aspect-ratio: 1; box-shadow: 8px 8px 0 rgba(26,20,16,0.15); display: block; object-fit: cover; }
+  .album-title { font-size: 28px; font-weight: 300; line-height: 1.2; margin-bottom: 0.5rem; }
+  .album-subtitle { font-size: 14px; color: var(--ink-light); font-style: italic; margin-bottom: 0.5rem; }
+  .album-catalog { font-family: 'DM Mono',monospace; font-size: 12px; color: var(--red); margin-bottom: 2rem; }
+  .album-desc { font-size: 16px; line-height: 1.8; color: var(--ink-light); margin-bottom: 2rem; }
+  .bandcamp-wrap { margin-bottom: 1.5rem; }
+  .tracklist { margin-top: 1.5rem; }
+  .tracklist-title { font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+  .track { display: flex; gap: 1rem; padding: 0.4rem 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .track-n { font-family: 'DM Mono',monospace; font-size: 11px; color: var(--red); min-width: 20px; padding-top: 2px; }
 
-    .section-num {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
-      color: var(--light); text-transform: uppercase; margin-bottom: 2rem;
-    }
-    h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 400; margin-bottom: 1.5rem; }
+  #research { background: var(--paper); }
+  .research-intro { font-size: 15px; color: var(--ink-light); font-style: italic; margin-bottom: 2rem; line-height: 1.7; }
+  .papers { display: flex; flex-direction: column; gap: 12px; }
+  .paper { display: grid; grid-template-columns: 60px 1fr; gap: 1rem; padding: 1.25rem; border: 1px solid var(--border); background: var(--paper-warm); }
+  .paper-year { font-family: 'DM Mono',monospace; font-size: 13px; color: var(--red); padding-top: 2px; }
+  .paper-title { font-size: 15px; font-weight: 400; line-height: 1.4; margin-bottom: 0.25rem; }
+  .paper-title-sub { font-size: 13px; color: var(--ink-light); font-style: italic; margin-bottom: 0.25rem; }
+  .paper-venue { font-size: 13px; color: var(--ink-light); font-style: italic; }
 
-    /* ── HERO ── */
-    #hero {
-      padding-top: 8rem;
-      min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .hero-name-ja { font-size: 13px; color: var(--light); letter-spacing: 0.15em; margin-bottom: 0.5rem; }
-    .hero-name { font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 400; line-height: 1.05; margin-bottom: 1rem; }
-    .hero-cities { font-size: 13px; color: var(--light); letter-spacing: 0.12em; margin-bottom: 2rem; }
-    .hero-roles { display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 2.5rem; }
-    .hero-role { font-size: 1rem; font-style: italic; color: var(--mid); }
-    .hero-bio { font-size: 1rem; line-height: 1.85; color: var(--mid); max-width: 560px; margin-bottom: 3rem; }
+  #scores { background: var(--paper-warm); }
+  .score-list-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; margin-bottom: 1.5rem; }
+  .score-list-col { display: flex; flex-direction: column; }
+  .score-list-item { display: flex; gap: 0.5rem; padding: 0.3rem 0; border-bottom: 1px solid var(--border); font-size: 12px; }
+  .score-list-num { font-family: 'DM Mono',monospace; font-size: 10px; color: var(--red); min-width: 24px; padding-top: 2px; flex-shrink: 0; }
+  .score-request-box { background: var(--paper); border: 1px solid var(--border); padding: 1.25rem 1.5rem; max-width: 480px; }
+  .score-request-label { font-family: 'DM Mono',monospace; font-size: 10px; color: var(--red); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .score-request-desc { font-size: 13px; color: var(--ink-light); margin-bottom: 1rem; line-height: 1.6; }
+  .score-request-btn { display: inline-block; padding: 0.5rem 1.5rem; background: var(--red); color: #fff; font-family: 'DM Mono',monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s; }
+  .score-request-btn:hover { background: var(--red-dark); }
 
-    .hero-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; border: 0.5px solid var(--rule); }
-    .hero-card { padding: 1.25rem; border: 0.5px solid var(--rule); }
-    .hero-card-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--teal); text-transform: uppercase; margin-bottom: 0.5rem; }
-    .hero-card-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; }
-    .hero-card-sub { font-size: 0.8rem; color: var(--light); }
+  #gallery { background: var(--paper); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
+  .gallery-item { position: relative; overflow: hidden; cursor: pointer; background: #1a1410; aspect-ratio: 3/4; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease,opacity 0.3s; opacity: 0.9; filter: sepia(20%); }
+  .gallery-item:hover img { transform: scale(1.04); opacity: 1; filter: sepia(0%); }
+  .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent,rgba(0,0,0,0.7)); color: rgba(255,255,255,0.85); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; font-family: 'DM Mono',monospace; padding: 1.5rem 0.75rem 0.6rem; opacity: 0; transition: opacity 0.3s; }
+  .gallery-item:hover .gallery-caption { opacity: 1; }
 
-    /* ── TIMELINE ── */
-    .timeline-item { display: grid; grid-template-columns: 100px 1fr; gap: 2rem; padding: 1.5rem 0; border-bottom: 0.5px solid var(--rule); }
-    .timeline-item:last-child { border-bottom: none; }
-    .tl-date { font-size: 0.85rem; color: var(--light); padding-top: 0.2rem; }
-    .tl-place { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: var(--teal); text-transform: uppercase; margin-bottom: 0.2rem; }
-    .tl-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
-    .tl-body { font-size: 0.88rem; color: var(--mid); line-height: 1.75; }
-    .tl-caption { font-size: 0.78rem; color: var(--light); font-style: italic; margin-top: 0.4rem; }
+  #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 1000; align-items: center; justify-content: center; flex-direction: column; }
+  .lb-close { position: absolute; top: 1.5rem; right: 2rem; background: none; border: none; color: #fff; font-size: 28px; cursor: pointer; }
+  .lb-prev { position: absolute; left: 1.5rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 36px; cursor: pointer; }
+  .lb-next { position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 36px; cursor: pointer; }
+  #lbImg { max-height: 80vh; max-width: 88vw; object-fit: contain; }
+  .lb-info { margin-top: 1rem; text-align: center; padding: 0 4rem; }
+  #lbLabel { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); font-family: 'DM Mono',monospace; margin-bottom: 0.4rem; }
+  #lbCaption { font-size: 15px; color: rgba(255,255,255,0.8); font-style: italic; max-width: 560px; margin: 0 auto; line-height: 1.6; }
 
-    /* ── ALBUM ── */
-    .album-grid { display: grid; grid-template-columns: 280px 1fr; gap: 3rem; align-items: start; }
-    .album-cover { width: 100%; border: 0.5px solid var(--rule); }
-    .album-label { font-size: 0.8rem; color: var(--light); margin-bottom: 0.3rem; }
-    .album-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.3rem; }
-    .album-sub { font-size: 0.9rem; color: var(--mid); margin-bottom: 1rem; }
-    .album-body { font-size: 0.9rem; color: var(--mid); line-height: 1.8; margin-bottom: 1.5rem; }
-    .tracklist { list-style: none; border-top: 0.5px solid var(--rule); }
-    .tracklist li { display: flex; gap: 1rem; font-size: 0.85rem; padding: 0.5rem 0; border-bottom: 0.5px solid var(--rule); color: var(--mid); }
-    .tracklist li span:first-child { color: var(--light); min-width: 24px; }
-    .player-embed { width: 100%; height: 120px; border: none; margin-bottom: 1.5rem; }
+  #spirit { background: var(--red); color: #fff; padding: 5rem 3rem; }
+  .spirit-quote { font-size: clamp(22px,3vw,38px); font-weight: 300; font-style: italic; line-height: 1.4; max-width: 800px; margin: 0 auto; text-align: center; white-space: pre-line; }
+  .spirit-attr { text-align: center; margin-top: 2rem; font-size: 14px; color: rgba(255,255,255,0.6); font-family: 'DM Mono',monospace; letter-spacing: 0.15em; text-transform: uppercase; }
+  .spirit-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 4rem; }
+  .spirit-card { background: rgba(255,255,255,0.08); padding: 1.5rem; }
+  .spirit-card-title { font-size: 16px; font-weight: 400; margin-bottom: 0.5rem; }
+  .spirit-card-desc { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.6; }
 
-    /* ── RESEARCH ── */
-    .research-body { font-size: 1rem; line-height: 1.9; color: var(--mid); }
+  /* ── ALLIANCE ── */
+  #alliance { background: var(--paper-warm); }
+  .wm-tagline { font-size: clamp(20px,2.5vw,28px); font-weight: 300; font-style: italic; line-height: 1.4; border-left: 3px solid var(--ink); padding-left: 1.25rem; margin-bottom: 1.5rem; }
+  .wm-mission { font-size: 16px; line-height: 1.9; color: var(--ink-light); margin-bottom: 0.85rem; }
+  .wm-sub { font-family: 'DM Mono',monospace; font-size: 11px; color: var(--red); letter-spacing: 0.15em; text-transform: uppercase; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  .wm-act { padding: 1rem 0; border-bottom: 1px solid var(--border); }
+  .wm-act:last-of-type { border-bottom: none; }
+  .wm-act-t { font-size: 16px; font-weight: 400; margin-bottom: 0.35rem; }
+  .wm-act-b { font-size: 14px; color: var(--ink-light); line-height: 1.8; }
+  .wm-future { margin-top: 0.75rem; padding: 1.25rem 1.5rem; border: 1px dashed rgba(26,20,16,0.25); background: var(--paper); }
+  .wm-future + .wm-future { margin-top: 0.75rem; }
+  .wm-badge { display: inline-block; font-family: 'DM Mono',monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px; margin-bottom: 0.6rem; }
+  .wm-badge-2026 { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+  .wm-badge-2027 { background: #dceeff; color: #1a4a7a; border: 1px solid #b8daff; }
+  .wm-future-t { font-size: 15px; font-weight: 400; color: var(--ink-light); margin-bottom: 0.35rem; }
+  .wm-future-b { font-size: 14px; color: var(--ink-light); line-height: 1.8; opacity: 0.8; }
 
-    /* ── SCORES ── */
-    .score-img { width: 100%; max-width: 400px; border: 0.5px solid var(--rule); margin-bottom: 1.5rem; }
-    .score-link { display: inline-block; font-size: 0.9rem; padding: 0.65rem 1.5rem; border: 1px solid var(--ink); color: var(--ink); text-decoration: none; letter-spacing: 0.06em; }
-    .score-link:hover { background: var(--ink); color: var(--cream); }
+  footer { background: var(--ink); color: rgba(255,255,255,0.5); text-align: center; padding: 2.5rem; font-size: 13px; font-family: 'DM Mono',monospace; letter-spacing: 0.05em; }
 
-    /* ── GALLERY ── */
-    .gallery-quote { font-size: 1.2rem; font-style: italic; line-height: 1.6; border-left: 3px solid var(--ink); padding-left: 1.25rem; margin-bottom: 2.5rem; }
-    .gallery-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
-    .gallery-item-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; }
-    .gallery-item-body { font-size: 0.85rem; color: var(--mid); line-height: 1.75; }
-
-    /* ── FOOTER ── */
-    footer { border-top: 0.5px solid var(--rule); padding: 2rem; text-align: center; font-size: 0.8rem; color: var(--light); }
-
-    /* ════════════════════════════════════════════
-       ALLIANCE SECTION
-    ════════════════════════════════════════════ */
-    #alliance { padding-top: 6rem; padding-bottom: 6rem; }
-
-    .wm-lang-switcher { display: flex; gap: 0.5rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
-    .wm-lang-btn {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-      padding: 4px 14px; border: 1px solid #ccc; border-radius: 20px;
-      background: transparent; cursor: pointer; color: var(--mid);
-      transition: all 0.2s; text-transform: uppercase;
-    }
-    .wm-lang-btn.active { background: var(--ink); border-color: var(--ink); color: var(--cream); }
-    .wm-lang-content { display: none; }
-    .wm-lang-content.active { display: block; }
-
-    .wm-tagline {
-      font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-style: italic;
-      line-height: 1.45; margin-bottom: 1.25rem;
-      border-left: 3px solid var(--ink); padding-left: 1.25rem;
-    }
-    .wm-mission-text { font-size: 1rem; line-height: 1.9; color: var(--mid); margin-bottom: 0.85rem; }
-    .wm-mission-text.ja { line-height: 2.1; }
-
-    .wm-sub-label {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--light);
-      margin: 2.5rem 0 1rem; padding-bottom: 0.5rem;
-      border-bottom: 0.5px solid var(--rule);
-    }
-    .wm-activity { padding: 1.1rem 0; border-bottom: 0.5px solid #eee; }
-    .wm-activity:last-of-type { border-bottom: none; }
-    .wm-activity-title { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.35rem; }
-    .wm-activity-body { font-size: 0.88rem; color: var(--mid); line-height: 1.75; }
-    .wm-activity-body.ja { line-height: 1.95; }
-
-    .wm-future {
-      margin-top: 0.75rem; padding: 1.15rem 1.4rem;
-      border: 1px dashed #bbb; border-radius: 6px; background: #fafafa;
-    }
-    .wm-badge {
-      display: inline-block; font-size: 10px; font-weight: 700;
-      letter-spacing: 0.08em; padding: 2px 10px; border-radius: 20px;
-      margin-bottom: 0.6rem;
-    }
-    .wm-badge-2026 { background: #d4edda; color: #155724; }
-    .wm-badge-2027 { background: #dceeff; color: #1a4a7a; }
-    .wm-future-title { font-size: 0.92rem; font-weight: 700; color: #666; margin-bottom: 0.35rem; }
-    .wm-future-body { font-size: 0.87rem; color: #888; line-height: 1.75; }
-    .wm-future-body.ja { line-height: 1.95; }
-
-    .wm-meta { display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 0.5px solid var(--rule); }
-    .wm-meta-item { flex: 1; min-width: 150px; }
-    .wm-meta-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light); margin-bottom: 0.3rem; }
-    .wm-meta-value { font-size: 0.88rem; color: var(--mid); }
-
-    @media (max-width: 600px) {
-      .album-grid { grid-template-columns: 1fr; }
-      .timeline-item { grid-template-columns: 70px 1fr; gap: 1rem; }
-      nav { padding: 0 1rem; }
-      .nav-links { gap: 1rem; }
-    }
-  </style>
+  @media (max-width: 768px) {
+    nav { padding: 1rem; } .nav-links { gap: 1rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 6rem 2rem 2rem; min-height: 50vh; }
+    .hero-right { padding: 2rem; }
+    .firsts-section { grid-template-columns: 1fr; }
+    .first-item { border-right: none; }
+    section { padding: 3rem 1.5rem; }
+    .album-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .score-list-wrap { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2,1fr); }
+    .spirit-cards { grid-template-columns: 1fr; }
+    .tl { grid-template-columns: 70px 1px 1fr; gap: 0 1rem; }
+  }
+</style>
 </head>
 <body>
 
-<!-- ── NAVIGATION ── -->
 <nav>
-  <a class="nav-logo" href="#">Michiko Toyama</a>
-  <ul class="nav-links">
-    <li><a href="#timeline">Timeline</a></li>
-    <li><a href="#album">Album</a></li>
-    <li><a href="#research">Research</a></li>
-    <li><a href="#scores">Scores</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#alliance">About Us</a></li>
-  </ul>
+  <span class="nav-name">Michiko Toyama</span>
+  <div class="nav-links">
+    <a href="#timeline">Timeline</a>
+    <a href="#album">Album</a>
+    <a href="#research">Research</a>
+    <a href="#scores">Scores</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#alliance" id="navAlliance">About Us</a>
+  </div>
 </nav>
 
-<!-- ── HERO ── -->
-<section id="hero">
-  <p class="hero-name-ja">外山 道子</p>
-  <h1 class="hero-name">Michiko&nbsp;&nbsp;Toyama</h1>
-  <p class="hero-cities">Osaka · Paris · New York · Tokyo</p>
-  <div class="hero-roles">
-    <span class="hero-role">Pianist</span>
-    <span class="hero-role">Composer &amp; Conductor</span>
-    <span class="hero-role">Acoustic Physicist</span>
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">1912 — 2006</div>
+    <h1 class="hero-name">Michiko<br>Toyama</h1>
+    <div class="hero-name-jp">外山 道子</div>
+    <div class="hero-years">Osaka · Paris · New York · Tokyo</div>
   </div>
-  <p class="hero-bio">Born in Osaka, educated in Paris, celebrated in New York — she broke every barrier placed before her, and when she faced a challenge, she found a way.</p>
-  <div class="hero-cards">
-    <div class="hero-card">
-      <p class="hero-card-tag">First · 01</p>
-      <p class="hero-card-title">First Asian woman to win the ISCM Prize</p>
-      <p class="hero-card-sub">International Society for Contemporary Music, Paris, 1937</p>
+  <div class="hero-right">
+    <div class="hero-roles">
+      <div class="hero-role">Pianist</div>
+      <div class="hero-role">Composer &amp; Conductor</div>
+      <div class="hero-role">Acoustic Physicist</div>
     </div>
-    <div class="hero-card">
-      <p class="hero-card-tag">First · 02</p>
-      <p class="hero-card-title">First foreign composer, and the first woman, invited to Columbia-Princeton Electronic Music Center</p>
-      <p class="hero-card-sub">New York City, 1956</p>
-    </div>
-    <div class="hero-card">
-      <p class="hero-card-tag">Work · 03</p>
-      <p class="hero-card-title">"The Voice of Yamato" — 56 years before Japan heard it</p>
-      <p class="hero-card-sub">Her prize-winning 1937 composition wasn't performed in her homeland until 1993</p>
-    </div>
-    <div class="hero-card">
-      <p class="hero-card-tag">Science · 04</p>
-      <p class="hero-card-title">Pioneering acoustic physicist of the Shakuhachi</p>
-      <p class="hero-card-sub">Published numerous papers on the acoustics of the Shakuhachi from 1971 onward</p>
-    </div>
+    <p class="hero-desc">Born in Osaka, educated in Paris, celebrated in New York — she broke every barrier placed before her, and when she faced a challenge, she found a way.</p>
   </div>
-</section>
+</div>
 
-<!-- ── TIMELINE ── -->
+<div class="firsts-section">
+  <div class="first-item"><div class="first-number">First · 01</div><div class="first-title">First Asian woman to win the ISCM Prize</div><div class="first-desc">International Society for Contemporary Music, Paris, 1937</div></div>
+  <div class="first-item"><div class="first-number">First · 02</div><div class="first-title">First foreign composer, and the first woman, invited to Columbia-Princeton Electronic Music Center</div><div class="first-desc">New York City, 1956</div></div>
+  <div class="first-item"><div class="first-number">Work · 03</div><div class="first-title">"The Voice of Yamato" — 56 years before Japan heard it</div><div class="first-desc">Her prize-winning 1937 composition wasn't performed in her homeland until 1993</div></div>
+  <div class="first-item"><div class="first-number">Science · 04</div><div class="first-title">Pioneering acoustic physicist of the Shakuhachi</div><div class="first-desc">Published numerous papers on the acoustics of the Shakuhachi from 1971 onward</div></div>
+</div>
+
 <section id="timeline">
-  <p class="section-num">01</p>
-  <h2>A Life Across Three Worlds</h2>
-  <div class="timeline-item"><div class="tl-date">1912<br>Osaka</div><div><p class="tl-place">Osaka</p><p class="tl-title">Born in Osaka, Japan</p><p class="tl-body">Born in Osaka to Sutezo and Haruko Toyama, her story begins in Japan, where music and curiosity about sound took root from the earliest years.</p></div></div>
-  <div class="timeline-item"><div class="tl-date">1930s<br>Paris</div><div><p class="tl-place">Paris</p><p class="tl-title">Studied under Nadia Boulanger — École Normale de Musique</p><p class="tl-body">Trained by the legendary pedagogue Nadia Boulanger, whose students included Copland, Bernstein, and Piazzolla. Michiko earned her place among the world's most rigorously trained composers.</p><p class="tl-caption">École Normale de Musique, Paris</p></div></div>
-  <div class="timeline-item"><div class="tl-date">1937<br>Paris</div><div><p class="tl-place">Paris</p><p class="tl-title">Won the ISCM Prize — "The Voice of Yamato"</p><p class="tl-body">Her composition "The Voice of Yamato" won the International Society for Contemporary Music prize in Paris — making her the first Asian person and first woman ever to receive the honour. The work would not be heard in Japan for another 56 years.</p><p class="tl-caption">Historic first · ISCM Paris 1937</p></div></div>
-  <div class="timeline-item"><div class="tl-date">1939<br>Paris</div><div><p class="tl-place">Paris</p><p class="tl-title">Baptised in Paris — then returned to Japan</p><p class="tl-body">Just before war broke out in Europe, Michiko was baptised in Paris and became a Christian. She then returned to Japan in 1939, leaving behind the world she had built over nearly a decade in France.</p><p class="tl-caption">Paris, 1939</p></div></div>
-  <div class="timeline-item"><div class="tl-date">1940s<br>Japan</div><div><p class="tl-place">Japan</p><p class="tl-title">Married Kazuo — mother of Junko and Masashi</p><p class="tl-body">Back in Japan, she married Kazuo and built a family — their daughter Junko and son Masashi. Kazuo survived the war, but was taken to a labour camp in Siberia, Soviet Union, where he passed away. She became a widow with two young children.</p></div></div>
-  <div class="timeline-item"><div class="tl-date">Post-war<br>Paris</div><div><p class="tl-place">Paris</p><p class="tl-title">Returned to Paris — Milhaud &amp; Messiaen, and Pierre Schaeffer</p><p class="tl-body">She returned to Paris after the war, leaving her two children in her mother's care, to resume her studies at the Paris National Conservatory of Music under Darius Milhaud and Olivier Messiaen. It was there that she encountered Pierre Schaeffer — the father of musique concrète — who introduced her to the world of electronic music, setting the course for everything that followed.</p><p class="tl-caption">Paris National Conservatoire · Pierre Schaeffer</p></div></div>
-  <div class="timeline-item"><div class="tl-date">1955<br>Tanglewood</div><div><p class="tl-place">Tanglewood</p><p class="tl-title">Studied under Roger Sessions — Tanglewood Music Center</p><p class="tl-body">She continued her studies with the American composer Roger Sessions at the Tanglewood Music Center in Massachusetts, the summer academy of the Boston Symphony Orchestra, further expanding her reach across continents and traditions.</p><p class="tl-caption">Tanglewood Music Center, 1955</p></div></div>
-  <div class="timeline-item"><div class="tl-date">1956<br>New York</div><div><p class="tl-place">New York</p><p class="tl-title">First foreign composer, and the first woman, invited to the Columbia-Princeton Electronic Music Center</p><p class="tl-body">In a field entirely dominated by men, Michiko was the first foreign composer, and the first woman, ever invited to work at the Columbia-Princeton Electronic Music Center in New York — one of the world's foremost laboratories for avant-garde and electronic composition.</p><p class="tl-caption">Historic first · Columbia-Princeton EMC, 1956</p></div></div>
-  <div class="timeline-item"><div class="tl-date">Carnegie<br>Hall</div><div><p class="tl-place">New York</p><p class="tl-title">Performed at Carnegie Hall</p><p class="tl-body">She had the opportunity to stand on the podium at a world-renowned concert hall, where her talent as a composer came to be recognized.</p></div></div>
-  <div class="timeline-item"><div class="tl-date">1960<br>Folkways</div><div><p class="tl-place">New York</p><p class="tl-title">LP released — "Waka and Other Compositions" on Folkways Records</p><p class="tl-body">Her record Waka and Other Compositions: Contemporary Music of Japan (FW 8881) was released by Folkways Records (now Smithsonian Folkways) — a landmark LP of contemporary Japanese music that integrates electronic techniques and chamber orchestra with traditional poetry and themes.</p><p class="tl-caption">Folkways Records FW 8881</p></div></div>
-  <div class="timeline-item"><div class="tl-date">1960s+<br>Japan</div><div><p class="tl-place">Japan</p><p class="tl-title">Returned to Japan — became an acoustic physicist</p><p class="tl-body">Back in Japan, she turned her trained musician's ear toward science. She analysed the acoustic properties of the Shakuhachi (traditional Japanese bamboo flute), publishing a series of scholarly papers across international conferences from 1971 through the 1980s.</p><p class="tl-caption">Shakuhachi acoustics research</p></div></div>
-  <div class="timeline-item"><div class="tl-date">1993</div><div><p class="tl-title">"The Voice of Yamato" performed in Japan — 56 years later</p><p class="tl-body">More than half a century after her historic ISCM prize, her composition was finally heard in her homeland. A moment of profound, long-delayed homecoming.</p><p class="tl-caption">56 years in the making</p></div></div>
-  <div class="timeline-item"><div class="tl-date">2006</div><div><p class="tl-title">Passed away, aged 94</p><p class="tl-body">A life of 94 years that spanned Japan, France, and America — concert halls, scientific laboratories, and every kind of barrier a woman of her time could face. She found a way through every one.</p></div></div>
+  <div class="section-header"><span class="section-num">01</span><h2 class="section-title">A Life Across Three Worlds</h2></div>
+  <div class="timeline">
+    <div class="tl"><div class="tl-yr">1912<br>Osaka</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><div class="tl-t">Born in Osaka, Japan</div><div class="tl-d">Born in Osaka to Sutezo and Haruko Toyama, her story begins in Japan, where music and curiosity about sound took root from the earliest years.</div></div></div>
+    <div class="tl"><div class="tl-yr">1930s<br>Paris</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><div class="tl-t">Studied under Nadia Boulanger — École Normale de Musique</div><div class="tl-d">Trained by the legendary pedagogue Nadia Boulanger, whose students included Copland, Bernstein, and Piazzolla. Michiko earned her place among the world's most rigorously trained composers.</div><span class="tl-badge">École Normale de Musique, Paris</span></div></div>
+    <div class="tl"><div class="tl-yr">1937<br>Paris</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><div class="tl-t">Won the ISCM Prize — "The Voice of Yamato"</div><div class="tl-d">Her composition "The Voice of Yamato" won the International Society for Contemporary Music prize in Paris — making her the first Asian person and first woman ever to receive the honour. The work would not be heard in Japan for another 56 years.</div><span class="tl-badge tl-badge-gold">Historic first · ISCM Paris 1937</span></div></div>
+    <div class="tl"><div class="tl-yr">1939<br>Paris</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><div class="tl-t">Baptised in Paris — then returned to Japan</div><div class="tl-d">Just before war broke out in Europe, Michiko was baptised in Paris and became a Christian. She then returned to Japan in 1939, leaving behind the world she had built over nearly a decade in France.</div><span class="tl-badge">Paris, 1939</span></div></div>
+    <div class="tl"><div class="tl-yr">1940s<br>Japan</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><div class="tl-t">Married Kazuo — mother of Junko and Masashi</div><div class="tl-d">Back in Japan, she married Kazuo and built a family — their daughter Junko and son Masashi. Kazuo survived the war, but was taken to a labour camp in Siberia, Soviet Union, where he passed away. She became a widow with two young children.</div></div></div>
+    <div class="tl"><div class="tl-yr">Post-war<br>Paris</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><div class="tl-t">Returned to Paris — Milhaud &amp; Messiaen, and Pierre Schaeffer</div><div class="tl-d">She returned to Paris after the war, leaving her two children in her mother's care, to resume her studies at the Paris National Conservatory of Music under Darius Milhaud and Olivier Messiaen. It was there that she encountered Pierre Schaeffer — the father of musique concrète — who introduced her to the world of electronic music, setting the course for everything that followed.</div><span class="tl-badge">Paris National Conservatoire · Pierre Schaeffer</span></div></div>
+    <div class="tl"><div class="tl-yr">1955<br>Tanglewood</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><div class="tl-t">Studied under Roger Sessions — Tanglewood Music Center</div><div class="tl-d">She continued her studies with the American composer Roger Sessions at the Tanglewood Music Center in Massachusetts, the summer academy of the Boston Symphony Orchestra, further expanding her reach across continents and traditions.</div><span class="tl-badge">Tanglewood Music Center, 1955</span></div></div>
+    <div class="tl"><div class="tl-yr">1956<br>New York</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><div class="tl-t">First foreign composer, and the first woman, invited to the Columbia-Princeton Electronic Music Center</div><div class="tl-d">In a field entirely dominated by men, Michiko was the first foreign composer, and the first woman, ever invited to work at the Columbia-Princeton Electronic Music Center in New York — one of the world's foremost laboratories for avant-garde and electronic composition.</div><span class="tl-badge tl-badge-gold">Historic first · Columbia-Princeton EMC, 1956</span></div></div>
+    <div class="tl"><div class="tl-yr">Carnegie<br>Hall</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><div class="tl-t">Performed at Carnegie Hall</div><div class="tl-d">She had the opportunity to stand on the podium at a world-renowned concert hall, where her talent as a composer came to be recognized.</div></div></div>
+    <div class="tl"><div class="tl-yr">1960<br>Folkways</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><div class="tl-t">LP released — "Waka and Other Compositions" on Folkways Records</div><div class="tl-d">Her record Waka and Other Compositions: Contemporary Music of Japan (FW 8881) was released by Folkways Records (now Smithsonian Folkways) — a landmark LP of contemporary Japanese music that integrates electronic techniques and chamber orchestra with traditional poetry and themes.</div><span class="tl-badge">Folkways Records FW 8881</span></div></div>
+    <div class="tl"><div class="tl-yr">1960s+<br>Japan</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><div class="tl-t">Returned to Japan — became an acoustic physicist</div><div class="tl-d">Back in Japan, she turned her trained musician's ear toward science. She analysed the acoustic properties of the Shakuhachi (traditional Japanese bamboo flute), publishing a series of scholarly papers across international conferences from 1971 through the 1980s.</div><span class="tl-badge">Shakuhachi acoustics research</span></div></div>
+    <div class="tl"><div class="tl-yr">1993</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><div class="tl-t">"The Voice of Yamato" performed in Japan — 56 years later</div><div class="tl-d">More than half a century after her historic ISCM prize, her composition was finally heard in her homeland. A moment of profound, long-delayed homecoming.</div><span class="tl-badge tl-badge-gold">56 years in the making</span></div></div>
+    <div class="tl"><div class="tl-yr">2006</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><div class="tl-t">Passed away, aged 94</div><div class="tl-d">A life of 94 years that spanned Japan, France, and America — concert halls, scientific laboratories, and every kind of barrier a woman of her time could face. She found a way through every one.</div></div></div>
+  </div>
 </section>
 
-<!-- ── ALBUM ── -->
 <section id="album">
-  <p class="section-num">02</p>
-  <h2>Waka and Other Compositions</h2>
+  <div class="section-header"><span class="section-num">02</span><h2 class="section-title">Waka and Other Compositions</h2></div>
   <div class="album-grid">
+    <div><img class="album-cover" src="images/cover.jpg" alt="Waka and Other Compositions — Folkways Records FW 8881"></div>
     <div>
-      <img class="album-cover" src="images/cover.jpg" alt="Waka and Other Compositions — Folkways Records FW 8881">
-    </div>
-    <div>
-      <p class="album-label">Folkways Records · FW 8881 · 1960</p>
-      <p class="album-title">Waka and Other Compositions</p>
-      <p class="album-sub">Contemporary Music of Japan — Based on Traditional Japanese Themes and Poetry</p>
-      <p class="album-body">Waka and Other Compositions: Contemporary Music of Japan (FW 8881), released by Folkways Records in 1960, reworks ancient waka through a contemporary musical language. Michiko Toyama draws on traditional poetry and folk forms, integrating chamber ensemble and electronic techniques.</p>
-      <iframe class="player-embed" src="https://bandcamp.com/EmbeddedPlayer/album=711802826/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless></iframe>
-      <ol class="tracklist">
-        <li><span>01</span><span>Waka (Part 1)</span></li>
-        <li><span>02</span><span>Waka (Part 2)</span></li>
-        <li><span>03</span><span>The Voice of Yamato: The Death of Yakamaro</span></li>
-        <li><span>04</span><span>The Voice of Yamato: Spring</span></li>
-        <li><span>05</span><span>The Voice of Yamato: Echo</span></li>
-        <li><span>06</span><span>The Voice of Yamato: Prayer</span></li>
-        <li><span>07</span><span>The Voice of Yamato: The Fairy Land of Yamato</span></li>
-        <li><span>08</span><span>Torianse (Let Us Pass) / Takai Yama Kara (From the High Mountain) (medley)</span></li>
-        <li><span>09</span><span>Aoi No Ue (Princess Hollyhock)</span></li>
-        <li><span>10</span><span>Japanese Suite: Lullaby</span></li>
-        <li><span>11</span><span>Japanese Suite: Oiwake</span></li>
-        <li><span>12</span><span>Japanese Suite: Rice Husking Song</span></li>
-      </ol>
+      <div class="album-title">Waka and Other Compositions</div>
+      <div class="album-subtitle">Contemporary Music of Japan — Based on Traditional Japanese Themes and Poetry</div>
+      <div class="album-catalog">Folkways Records · FW 8881 · 1960</div>
+      <p class="album-desc">Waka and Other Compositions: Contemporary Music of Japan (FW 8881), released by Folkways Records in 1960, reworks ancient waka through a contemporary musical language. Michiko Toyama draws on traditional poetry and folk forms, integrating chamber ensemble and electronic techniques.</p>
+      <div class="bandcamp-wrap">
+        <iframe style="border:0;width:100%;height:120px;" src="https://bandcamp.com/EmbeddedPlayer/album=711802826/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless><a href="https://michikotoyama.bandcamp.com/album/waka-and-other-compositions-contemporary-music-of-japan">Waka and Other Compositions by Michiko Toyama</a></iframe>
+      </div>
+      <div class="tracklist">
+        <div class="tracklist-title">Tracklist</div>
+        <div class="track"><span class="track-n">01</span><span>Waka (Part 1)</span></div>
+        <div class="track"><span class="track-n">02</span><span>Waka (Part 2)</span></div>
+        <div class="track"><span class="track-n">03</span><span>The Voice of Yamato: The Death of Yakamaro</span></div>
+        <div class="track"><span class="track-n">04</span><span>The Voice of Yamato: Spring</span></div>
+        <div class="track"><span class="track-n">05</span><span>The Voice of Yamato: Echo</span></div>
+        <div class="track"><span class="track-n">06</span><span>The Voice of Yamato: Prayer</span></div>
+        <div class="track"><span class="track-n">07</span><span>The Voice of Yamato: The Fairy Land of Yamato</span></div>
+        <div class="track"><span class="track-n">08</span><span>Torianse (Let Us Pass) / Takai Yama Kara (From the High Mountain) (medley)</span></div>
+        <div class="track"><span class="track-n">09</span><span>Aoi No Ue (Princess Hollyhock)</span></div>
+        <div class="track"><span class="track-n">10</span><span>Japanese Suite: Lullaby</span></div>
+        <div class="track"><span class="track-n">11</span><span>Japanese Suite: Oiwake</span></div>
+        <div class="track"><span class="track-n">12</span><span>Japanese Suite: Rice Husking Song</span></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ── RESEARCH ── -->
 <section id="research">
-  <p class="section-num">03</p>
-  <h2>Acoustic research — the Shakuhachi papers</h2>
-  <p class="research-body">Over nearly two decades, she developed increasingly sophisticated acoustic models of the Shakuhachi — from spectral analysis of wet and dry bamboo tone, to ARMA synthesis models, to pole-zero modelling. A composer who became a scientist without ever ceasing to be a musician.</p>
+  <div class="section-header"><span class="section-num">03</span><h2 class="section-title">Acoustic research — the Shakuhachi papers</h2></div>
+  <p class="research-intro">Over nearly two decades, she developed increasingly sophisticated acoustic models of the Shakuhachi — from spectral analysis of wet and dry bamboo tone, to ARMA synthesis models, to pole-zero modelling. A composer who became a scientist without ever ceasing to be a musician.</p>
+  <div class="papers" id="papersGrid"></div>
 </section>
 
-<!-- ── SCORES ── -->
 <section id="scores">
-  <p class="section-num">04</p>
-  <h2>Score Request</h2>
-  <p class="research-body" style="margin-bottom:1.5rem;">Original manuscript scores by Michiko Toyama are available upon request. The following works are held in the archive. To request a score, please contact us at the address below.</p>
-  <img class="score-img" src="images/score.jpg" alt="Fairyland of Yamato — manuscript score">
-  <p style="font-size:0.9rem;color:var(--mid);margin-bottom:1rem;">Request a Score — To request access to any of the scores listed above, please fill in the application form.</p>
-  <a class="score-link" href="score_application_form.docx">楽譜のリクエストフォーム</a>
+  <div class="section-header"><span class="section-num">04</span><h2 class="section-title" id="scoresSectionTitle">Score Request</h2></div>
+  <p class="research-intro" id="scoresIntro">Original manuscript scores by Michiko Toyama are available upon request. The following works are held in the archive. To request a score, please contact us at the address below.</p>
+  <div style="display:flex; gap:2rem; align-items:flex-start; margin-bottom:1.5rem;">
+    <div style="flex-shrink:0;">
+      <img src="images/score.jpg" alt="Fairyland of Yamato — manuscript score" style="width:150px;height:150px;object-fit:cover;object-position:top left;border:1px solid var(--border);box-shadow:3px 3px 0 rgba(26,20,16,0.1);">
+    </div>
+    <div class="score-request-box" style="flex:1;">
+      <div class="score-request-label" id="scoreRequestLabel">Request a Score</div>
+      <p class="score-request-desc" id="scoreRequestDesc">To request access to any of the scores listed above, please fill in the application form.</p>
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+        <a class="score-request-btn" href="score_application_form.docx" download id="scoreRequestBtn">楽譜のリクエストフォーム</a>
+      </div>
+    </div>
+  </div>
+  <div class="score-list-wrap" id="scoreListGrid"></div>
 </section>
 
-<!-- ── GALLERY ── -->
 <section id="gallery">
-  <p class="section-num">05</p>
-  <h2>A life in photographs</h2>
-  <blockquote class="gallery-quote">
-    "When you face a challenge, you find a way…or make one."<br>
-    <cite style="font-size:0.85rem;color:var(--light);">— Michiko Toyama</cite>
-  </blockquote>
-  <div class="gallery-items">
-    <div>
-      <p class="gallery-item-title">War &amp; loss</p>
-      <p class="gallery-item-body">She lost her husband in a Soviet labour camp in Siberia after the war — an event that upended her world. With the support of her mother, she rebuilt her life and career across two continents while raising two children.</p>
-    </div>
-    <div>
-      <p class="gallery-item-title">Barriers of race &amp; gender</p>
-      <p class="gallery-item-body">As an Asian woman in 1930s–50s Europe and America, she walked through doors no one had opened before her — and left them open.</p>
-    </div>
-    <div>
-      <p class="gallery-item-title">A second life in science</p>
-      <p class="gallery-item-body">At an age when most rest on their achievements, she reinvented herself as a researcher — bringing a composer's ear to acoustic physics.</p>
-    </div>
+  <div class="section-header"><span class="section-num">05</span><h2 class="section-title">A life in photographs</h2></div>
+  <div class="gallery-grid" id="galleryGrid"></div>
+</section>
+
+<div id="lightbox">
+  <button class="lb-close" onclick="closeLightbox()">&#x2715;</button>
+  <button class="lb-prev" onclick="prevPhoto()">&#8249;</button>
+  <button class="lb-next" onclick="nextPhoto()">&#8250;</button>
+  <img id="lbImg" src="" alt="">
+  <div class="lb-info"><div id="lbLabel"></div><div id="lbCaption"></div></div>
+</div>
+
+<section id="spirit">
+  <div class="spirit-quote">"When you face a challenge, you find a way…or make one."</div>
+  <div class="spirit-attr">— Michiko Toyama</div>
+  <div class="spirit-cards">
+    <div class="spirit-card"><div class="spirit-card-title">War &amp; loss</div><div class="spirit-card-desc">She lost her husband in a Soviet labour camp in Siberia after the war — an event that upended her world. With the support of her mother, she rebuilt her life and career across two continents while raising two children.</div></div>
+    <div class="spirit-card"><div class="spirit-card-title">Barriers of race &amp; gender</div><div class="spirit-card-desc">As an Asian woman in 1930s–50s Europe and America, she walked through doors no one had opened before her — and left them open.</div></div>
+    <div class="spirit-card"><div class="spirit-card-title">A second life in science</div><div class="spirit-card-desc">At an age when most rest on their achievements, she reinvented herself as a researcher — bringing a composer's ear to acoustic physics.</div></div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     ABOUT US — THE WAYMAKERS ALLIANCE
-══════════════════════════════════════════ -->
+<!-- 06 ALLIANCE / ABOUT US -->
 <section id="alliance">
-  <p class="section-num">06</p>
-  <h2>The Waymakers Alliance</h2>
-
-  <!-- 言語切り替え -->
-  <div class="wm-lang-switcher" role="tablist">
-    <button class="wm-lang-btn active" onclick="wmSetLang('ja')" role="tab" aria-selected="true">日本語</button>
-    <button class="wm-lang-btn" onclick="wmSetLang('en')" role="tab" aria-selected="false">English</button>
-    <button class="wm-lang-btn" onclick="wmSetLang('fr')" role="tab" aria-selected="false">Français</button>
-    <button class="wm-lang-btn" onclick="wmSetLang('es')" role="tab" aria-selected="false">Español</button>
-  </div>
-
-  <!-- ── 日本語 ── -->
-  <div class="wm-lang-content active" id="wm-ja" lang="ja">
-    <p class="wm-tagline">道を切り拓く人が、次の人のために光を灯す。</p>
-    <p class="wm-mission-text ja">The Waymakers Allianceは、日本人作曲家・音響物理学者である外山道子（1912–2006）の遺産を継承し、芸術・文化・教育・研究・社会貢献・社会事業、表彰制度などを通じて次世代の女性が自らの道を切り拓くことを支援する非営利団体です。</p>
-    <p class="wm-mission-text ja">時代を超えて道を示した人々の精神を、未来へと継承していきます。</p>
-
-    <p class="wm-sub-label">現在の活動</p>
-    <div class="wm-activity"><p class="wm-activity-title">外山道子の研究・普及活動</p><p class="wm-activity-body ja">日本・米国・フランスでの資料調査、未公開資料の収集・整理、演奏会・シンポジウム・出版活動を通じて、外山道子の功績を国内外に広く伝えます。</p></div>
-    <div class="wm-activity"><p class="wm-activity-title">文化・芸術振興事業</p><p class="wm-activity-body ja">女性作曲家や若手芸術家の支援、国際文化交流事業、レジデンス・研究支援プログラムを通じて、芸術と文化の発展に貢献します。</p></div>
-    <div class="wm-activity"><p class="wm-activity-title">人材育成・社会貢献・社会事業</p><p class="wm-activity-body ja">次世代女性リーダー、学生・若手研究者、起業家のためのメンタリング・ネットワーク形成を支援。社会貢献・社会事業活動を通じて、道を切り拓く人材が育つ環境をつくります。</p></div>
-
-    <p class="wm-sub-label">今後のビジョン</p>
-    <div class="wm-future"><span class="wm-badge wm-badge-2026">Coming 2026</span><p class="wm-future-title">トーク＆コンサート「外山道子 — その生涯と音楽」</p><p class="wm-future-body ja">2026年12月、東京・青山ウィメンズプラザにて、外山道子の没後20年を記念するトーク＆コンサートを開催します。その生涯と音楽を再考するとともに、女性作曲家を取り巻く環境と可能性を問い直します。</p></div>
-    <div class="wm-future" style="margin-top:0.75rem;"><span class="wm-badge wm-badge-2027">Coming 2027</span><p class="wm-future-title">国際レジデンス・プログラム — ニューヨーク大学との連携</p><p class="wm-future-body ja">ニューヨーク大学との連携により創設予定の国際レジデンス・プログラム。女性作曲家が国境を越えて活動を深める場を提供します。詳細は追ってご案内します。</p></div>
-
-    <div class="wm-meta">
-      <div class="wm-meta-item"><p class="wm-meta-label">設立</p><p class="wm-meta-value">2026年6月1日 — 東京</p></div>
-      <div class="wm-meta-item"><p class="wm-meta-label">代表</p><p class="wm-meta-value">齋藤順子・齋藤マキ</p></div>
-      <div class="wm-meta-item"><p class="wm-meta-label">活動拠点</p><p class="wm-meta-value">日本・米国・フランス</p></div>
-    </div>
-  </div>
-
-  <!-- ── English ── -->
-  <div class="wm-lang-content" id="wm-en" lang="en">
-    <p class="wm-tagline">We open paths so that others may follow.</p>
-    <p class="wm-mission-text">The Waymakers Alliance is a nonprofit organization that carries forward the legacy of Michiko Toyama (1912–2006) — composer, acoustical physicist, and pioneer — supporting the next generation of women in forging their own paths through arts, culture, education, research, social contribution, social enterprise, and recognition programs.</p>
-    <p class="wm-mission-text">We inherit the spirit of those who illuminated new directions across eras, and carry it forward into the future.</p>
-
-    <p class="wm-sub-label">Current Activities</p>
-    <div class="wm-activity"><p class="wm-activity-title">Research &amp; Preservation of Michiko Toyama's Legacy</p><p class="wm-activity-body">Archival research across Japan, the United States, and France; documentation of unpublished materials; symposia, concerts, and publications that bring Toyama's pioneering work to new audiences worldwide.</p></div>
-    <div class="wm-activity"><p class="wm-activity-title">Culture &amp; Arts Promotion</p><p class="wm-activity-body">Supporting women composers and emerging artists; international cultural exchange programs; residency and research support initiatives that foster creative and scholarly work across borders.</p></div>
-    <div class="wm-activity"><p class="wm-activity-title">Leadership, Social Contribution &amp; Next-Generation Development</p><p class="wm-activity-body">Mentoring and networking programs for the next generation of women leaders, students, and researchers — building communities of support through social contribution and social enterprise so that Waymakers can thrive.</p></div>
-
-    <p class="wm-sub-label">Looking Ahead</p>
-    <div class="wm-future"><span class="wm-badge wm-badge-2026">Coming 2026</span><p class="wm-future-title">Talk &amp; Concert — "Michiko Toyama: Her Life and Music"</p><p class="wm-future-body">In December 2026, we will hold a commemorative talk and concert at Aoyama Women's Plaza in Tokyo, marking the 20th anniversary of Michiko Toyama's passing. The event will revisit her life and music while opening new conversations about the world women composers inhabit — and the possibilities ahead.</p></div>
-    <div class="wm-future" style="margin-top:0.75rem;"><span class="wm-badge wm-badge-2027">Coming 2027</span><p class="wm-future-title">International Residency Program — in partnership with New York University</p><p class="wm-future-body">A residency program co-developed with New York University, offering emerging women composers an international platform to develop their work and connect across borders. Details to be announced.</p></div>
-
-    <div class="wm-meta">
-      <div class="wm-meta-item"><p class="wm-meta-label">Founded</p><p class="wm-meta-value">June 1, 2026 — Tokyo, Japan</p></div>
-      <div class="wm-meta-item"><p class="wm-meta-label">Representatives</p><p class="wm-meta-value">Junko Saito · Maki Saito</p></div>
-      <div class="wm-meta-item"><p class="wm-meta-label">Reach</p><p class="wm-meta-value">Japan · United States · France</p></div>
-    </div>
-  </div>
-
-  <!-- ── Français ── -->
-  <div class="wm-lang-content" id="wm-fr" lang="fr">
-    <p class="wm-tagline">Nous traçons des chemins pour que d'autres puissent les suivre.</p>
-    <p class="wm-mission-text">The Waymakers Alliance est une organisation à but non lucratif qui perpétue l'héritage de Michiko Toyama (1912–2006) — compositrice, physicienne acoustique et pionnière — en soutenant la prochaine génération de femmes qui tracent leur propre voie à travers les arts, la culture, l'éducation, la recherche, la contribution sociale, l'entrepreneuriat social et les programmes de reconnaissance.</p>
-    <p class="wm-mission-text">Nous héritons de l'esprit de celles et ceux qui ont illuminé de nouvelles directions à travers les époques, et nous le portons vers l'avenir.</p>
-
-    <p class="wm-sub-label">Activités actuelles</p>
-    <div class="wm-activity"><p class="wm-activity-title">Recherche et préservation de l'œuvre de Michiko Toyama</p><p class="wm-activity-body">Recherches d'archives au Japon, aux États-Unis et en France ; documentation de matériaux inédits ; symposiums, concerts et publications qui font connaître l'œuvre pionnière de Toyama à de nouveaux publics dans le monde entier.</p></div>
-    <div class="wm-activity"><p class="wm-activity-title">Promotion de la culture et des arts</p><p class="wm-activity-body">Soutien aux compositrices et aux artistes émergentes ; programmes d'échanges culturels internationaux ; initiatives de résidence et de soutien à la recherche favorisant la création et le travail académique au-delà des frontières.</p></div>
-    <div class="wm-activity"><p class="wm-activity-title">Leadership, contribution sociale et développement de la prochaine génération</p><p class="wm-activity-body">Programmes de mentorat et de réseautage pour la prochaine génération de femmes leaders, étudiantes et chercheuses — construire des communautés de soutien à travers la contribution et l'entrepreneuriat social pour que les Waymakers puissent s'épanouir.</p></div>
-
-    <p class="wm-sub-label">Notre vision</p>
-    <div class="wm-future"><span class="wm-badge wm-badge-2026">Coming 2026</span><p class="wm-future-title">Conférence &amp; Concert — « Michiko Toyama : sa vie et sa musique »</p><p class="wm-future-body">En décembre 2026, nous organiserons une conférence et un concert commémoratif à l'Aoyama Women's Plaza de Tokyo, à l'occasion du 20e anniversaire du décès de Michiko Toyama. L'événement reviendra sur sa vie et sa musique, tout en ouvrant de nouvelles réflexions sur l'environnement des compositrices et les possibilités qui s'offrent à elles.</p></div>
-    <div class="wm-future" style="margin-top:0.75rem;"><span class="wm-badge wm-badge-2027">Coming 2027</span><p class="wm-future-title">Programme de résidence internationale — en partenariat avec l'Université de New York</p><p class="wm-future-body">Un programme de résidence co-développé avec l'Université de New York, offrant aux compositrices émergentes une plateforme internationale pour développer leur travail et se connecter au-delà des frontières. Détails à venir.</p></div>
-
-    <div class="wm-meta">
-      <div class="wm-meta-item"><p class="wm-meta-label">Fondée</p><p class="wm-meta-value">1er juin 2026 — Tokyo, Japon</p></div>
-      <div class="wm-meta-item"><p class="wm-meta-label">Représentantes</p><p class="wm-meta-value">Junko Saito · Maki Saito</p></div>
-      <div class="wm-meta-item"><p class="wm-meta-label">Présence</p><p class="wm-meta-value">Japon · États-Unis · France</p></div>
-    </div>
-  </div>
-
-  <!-- ── Español ── -->
-  <div class="wm-lang-content" id="wm-es" lang="es">
-    <p class="wm-tagline">Abrimos caminos para que otros puedan seguirlos.</p>
-    <p class="wm-mission-text">The Waymakers Alliance es una organización sin fines de lucro que lleva adelante el legado de Michiko Toyama (1912–2006) — compositora, física acústica y pionera — apoyando a la próxima generación de mujeres que forjan sus propios caminos a través de las artes, la cultura, la educación, la investigación, la contribución social, el emprendimiento social y los programas de reconocimiento.</p>
-    <p class="wm-mission-text">Heredamos el espíritu de quienes iluminaron nuevas direcciones a través de las épocas, y lo llevamos hacia el futuro.</p>
-
-    <p class="wm-sub-label">Actividades actuales</p>
-    <div class="wm-activity"><p class="wm-activity-title">Investigación y preservación del legado de Michiko Toyama</p><p class="wm-activity-body">Investigación de archivos en Japón, Estados Unidos y Francia; documentación de materiales inéditos; simposios, conciertos y publicaciones que acercan la obra pionera de Toyama a nuevos públicos en todo el mundo.</p></div>
-    <div class="wm-activity"><p class="wm-activity-title">Promoción de la cultura y las artes</p><p class="wm-activity-body">Apoyo a compositoras y artistas emergentes; programas de intercambio cultural internacional; iniciativas de residencia y apoyo a la investigación que fomentan la creación y el trabajo académico más allá de las fronteras.</p></div>
-    <div class="wm-activity"><p class="wm-activity-title">Liderazgo, contribución social y desarrollo de la próxima generación</p><p class="wm-activity-body">Programas de mentoría y redes para la próxima generación de mujeres líderes, estudiantes e investigadoras — construyendo comunidades de apoyo a través de la contribución social y el emprendimiento social para que las Waymakers puedan prosperar.</p></div>
-
-    <p class="wm-sub-label">Nuestra visión</p>
-    <div class="wm-future"><span class="wm-badge wm-badge-2026">Coming 2026</span><p class="wm-future-title">Charla &amp; Concierto — "Michiko Toyama: su vida y su música"</p><p class="wm-future-body">En diciembre de 2026, celebraremos una charla y concierto conmemorativo en el Aoyama Women's Plaza de Tokio, con motivo del 20.º aniversario del fallecimiento de Michiko Toyama. El evento revisitará su vida y su música, al tiempo que abrirá nuevas reflexiones sobre el entorno de las compositoras y las posibilidades que les aguardan.</p></div>
-    <div class="wm-future" style="margin-top:0.75rem;"><span class="wm-badge wm-badge-2027">Coming 2027</span><p class="wm-future-title">Programa internacional de residencia — en asociación con la Universidad de Nueva York</p><p class="wm-future-body">Un programa de residencia co-desarrollado con la Universidad de Nueva York, que ofrece a las compositoras emergentes una plataforma internacional para desarrollar su trabajo y conectarse más allá de las fronteras. Detalles por anunciar.</p></div>
-
-    <div class="wm-meta">
-      <div class="wm-meta-item"><p class="wm-meta-label">Fundada</p><p class="wm-meta-value">1 de junio de 2026 — Tokio, Japón</p></div>
-      <div class="wm-meta-item"><p class="wm-meta-label">Representantes</p><p class="wm-meta-value">Junko Saito · Maki Saito</p></div>
-      <div class="wm-meta-item"><p class="wm-meta-label">Alcance</p><p class="wm-meta-value">Japón · Estados Unidos · Francia</p></div>
-    </div>
-  </div>
-
+  <div class="section-header"><span class="section-num">06</span><h2 class="section-title" id="allianceSectionTitle">The Waymakers Alliance</h2></div>
+  <p class="wm-tagline" id="wmTagline"></p>
+  <p class="wm-mission" id="wmMission1"></p>
+  <p class="wm-mission" id="wmMission2"></p>
+  <p class="wm-sub" id="wmLabelCurrent"></p>
+  <div class="wm-act"><div class="wm-act-t" id="wmAct1T"></div><div class="wm-act-b" id="wmAct1B"></div></div>
+  <div class="wm-act"><div class="wm-act-t" id="wmAct2T"></div><div class="wm-act-b" id="wmAct2B"></div></div>
+  <div class="wm-act"><div class="wm-act-t" id="wmAct3T"></div><div class="wm-act-b" id="wmAct3B"></div></div>
+  <p class="wm-sub" id="wmLabelAhead"></p>
+  <div class="wm-future"><span class="wm-badge wm-badge-2026">Coming 2026</span><div class="wm-future-t" id="wmEv2026T"></div><div class="wm-future-b" id="wmEv2026B"></div></div>
+  <div class="wm-future"><span class="wm-badge wm-badge-2027">Coming 2027</span><div class="wm-future-t" id="wmEv2027T"></div><div class="wm-future-b" id="wmEv2027B"></div></div>
 </section>
 
-<!-- ── FOOTER ── -->
-<footer>
-  Celebrating the life and legacy of Michiko Toyama · 1912 – 2006
-</footer>
+<footer>Celebrating the life and legacy of Michiko Toyama &nbsp;·&nbsp; 1912 – 2006</footer>
 
 <script>
-  function wmSetLang(lang) {
-    document.querySelectorAll('.wm-lang-content').forEach(function(el){ el.classList.remove('active'); });
-    document.querySelectorAll('.wm-lang-btn').forEach(function(btn){ btn.classList.remove('active'); btn.setAttribute('aria-selected','false'); });
-    document.getElementById('wm-' + lang).classList.add('active');
-    var btn = document.querySelector('[onclick="wmSetLang(\'' + lang + '\')"]');
-    if (btn) { btn.classList.add('active'); btn.setAttribute('aria-selected','true'); }
-  }
-</script>
+// ── SCORE LIST ────────────────────────────────────────────────
+const SCORE_LIST = {
+  en: ["Waka (Part 1 & 2) — narrator, fl, pf","Waka — narrator, fl, vc","The Voice of Yamato — (Full Score including The Death of Yakamaro, Spring, Echo, Prayer, and The Fairy Land of Yamato)","The Voice of Yamato: The Death of Yakamaro","The Voice of Yamato: Spring","The Voice of Yamato: Echo","The Voice of Yamato: Prayer","The Voice of Yamato: The Fairy Land of Yamato","やまとの声 (Voice of Yamato) — part score fl 1","やまとの声 (Voice of Yamato) — part score fl 2","やまとの声 (Voice of Yamato) — part score cl","やまとの声 (Voice of Yamato) — part score bn","やまとの声 (Voice of Yamato) — part score vc","やまとうた (Yamato Uta) — Songs 1–3, 5","Concerto for Violin — I","Concerto for Violin — II–III","Suite: Japanese Folk Music — Komori-uta (v, orch)","Suite: Japanese Folk Music — Oiwake (v, orch)","Suite: Japanese Folk Music — Momihiki (v, orch)","Suite: Japanese Folk Music (v, pf)","Komori-uta (pf)","Suite: Japanese Folk Music (vn, pf)","Torianse (Let Us Pass) — V, pf","Torianse (Let Us Pass) — V, koto","Kiso-bushi — V, pf","Menuet (pf)","Variation humoristique (pf)","無題 (Untitled) — fl, pf score & parts","Passacaglia — score","Passacaglia — part score bn","Passacaglia — parts ob & cl"],
+  ja: ["和歌（第1部・第2部）— 語り、フルート、ピアノ","和歌 — 語り、フルート、チェロ","やまとの声（フルスコア：やかまろの死、春、山びこ、祈り、おとぎの国の大和）","やまとの声：やかまろの死","やまとの声：春","やまとの声：山びこ","やまとの声：祈り","やまとの声：おとぎの国の大和","やまとの声 — パート譜 フルート1","やまとの声 — パート譜 フルート2","やまとの声 — パート譜 クラリネット","やまとの声 — パート譜 バスーン","やまとの声 — パート譜 チェロ","やまとうた — 第1〜3曲、第5曲","ヴァイオリン協奏曲 — 第1楽章","ヴァイオリン協奏曲 — 第2〜3楽章","日本民謡組曲 — こもりうた（声楽・管弦楽）","日本民謡組曲 — おいわけ（声楽・管弦楽）","日本民謡組曲 — もみひき（声楽・管弦楽）","日本民謡組曲（声楽・ピアノ）","こもりうた（ピアノ）","日本民謡組曲（ヴァイオリン・ピアノ）","通りゃんせ — 声楽・ピアノ","通りゃんせ — 声楽・箏","木曽節 — 声楽・ピアノ","メヌエット（ピアノ）","ユーモラスな変奏曲（ピアノ）","無題 — フルート・ピアノ スコア＆パート","パサカリア — スコア","パサカリア — パート譜 バスーン","パサカリア — パート譜 オーボエ＆クラリネット"],
+  fr: ["Waka (Parties 1 & 2) — récitant, fl, pf","Waka — récitant, fl, vc","La Voix du Yamato — (Partition complète : La Mort de Yakamaro, Printemps, Écho, Prière, Le Pays des fées de Yamato)","La Voix du Yamato : La Mort de Yakamaro","La Voix du Yamato : Printemps","La Voix du Yamato : Écho","La Voix du Yamato : Prière","La Voix du Yamato : Le Pays des fées de Yamato","やまとの声 (Voix du Yamato) — partie fl 1","やまとの声 (Voix du Yamato) — partie fl 2","やまとの声 (Voix du Yamato) — partie cl","やまとの声 (Voix du Yamato) — partie bn","やまとの声 (Voix du Yamato) — partie vc","やまとうた (Chants de Yamato) — n° 1–3, 5","Concerto pour violon — I","Concerto pour violon — II–III","Suite : Musique folklorique japonaise — Komori-uta (v, orch)","Suite : Musique folklorique japonaise — Oiwake (v, orch)","Suite : Musique folklorique japonaise — Momihiki (v, orch)","Suite : Musique folklorique japonaise (v, pf)","Komori-uta (pf)","Suite : Musique folklorique japonaise (vn, pf)","Torianse — V, pf","Torianse — V, koto","Kiso-bushi — V, pf","Menuet (pf)","Variation humoristique (pf)","Sans titre — fl, pf partition & parties","Passacaglia — partition","Passacaglia — partie bn","Passacaglia — parties ob & cl"],
+  es: ["Waka (Partes 1 y 2) — narrador, fl, pf","Waka — narrador, fl, vc","La Voz de Yamato — (Partitura completa: La Muerte de Yakamaro, Primavera, Eco, Oración, El País de las Hadas de Yamato)","La Voz de Yamato: La Muerte de Yakamaro","La Voz de Yamato: Primavera","La Voz de Yamato: Eco","La Voz de Yamato: Oración","La Voz de Yamato: El País de las Hadas de Yamato","やまとの声 (Voz de Yamato) — parte fl 1","やまとの声 (Voz de Yamato) — parte fl 2","やまとの声 (Voz de Yamato) — parte cl","やまとの声 (Voz de Yamato) — parte bn","やまとの声 (Voz de Yamato) — parte vc","やまとうた (Canciones de Yamato) — n° 1–3, 5","Concierto para violín — I","Concierto para violín — II–III","Suite: Música folclórica japonesa — Komori-uta (v, orch)","Suite: Música folclórica japonesa — Oiwake (v, orch)","Suite: Música folclórica japonesa — Momihiki (v, orch)","Suite: Música folclórica japonesa (v, pf)","Komori-uta (pf)","Suite: Música folclórica japonesa (vn, pf)","Torianse — V, pf","Torianse — V, koto","Kiso-bushi — V, pf","Minueto (pf)","Variación humorística (pf)","Sin título — fl, pf partitura y partes","Passacaglia — partitura","Passacaglia — parte bn","Passacaglia — partes ob y cl"]
+};
+function buildScoreList(lang) {
+  const wrap = document.getElementById('scoreListGrid');
+  const list = SCORE_LIST[lang] || SCORE_LIST.en;
+  const half = Math.ceil(list.length / 2);
+  const makeCol = (items, offset) => items.map((s, i) => `<div class="score-list-item"><span class="score-list-num">${String(offset+i+1).padStart(2,'0')}</span><span>${s}</span></div>`).join('');
+  wrap.innerHTML = `<div class="score-list-col">${makeCol(list.slice(0,half),0)}</div><div class="score-list-col">${makeCol(list.slice(half),half)}</div>`;
+}
 
+// ── GALLERY ───────────────────────────────────────────────────
+const GALLERY_DATA = {
+  en: [{src:"images/photo_00.jpg",label:"1918 · Age 6 · Hamadera, Osaka, Japan",caption:"1918, age 6, Hamadera, Osaka, Japan."},{src:"images/photo_04.jpg",label:"1927 · Age 15 · Hamadera, Osaka, Japan",caption:"1927, age 15, at home in Hamadera, Osaka, Japan; photographed for a portrait by Sotaro Yasui."},{src:"images/photo_05.jpg",label:"Portrait by Sotaro Yasui · MoMAT, Tokyo",caption:"Michiko's portrait by Sotaro Yasui at the National Museum of Modern Art, Tokyo (MoMAT)."},{src:"images/photo_21.jpg",label:"Paris · 1937",caption:"1937, aged 25, around the time she won at the International Society for Contemporary Music Festival in Paris."},{src:"images/photo_22.jpg",label:"7th International Congress on Acoustics · Budapest, 1971",caption:"Influenced by Torahiko Terada, Michiko turned to the study of the Shakuhachi's sound. Her 1971 paper was presented at the 7th International Congress on Acoustics in Budapest."},{src:"images/photo_23.jpg",label:"7th International Congress on Acoustics · Budapest, 1971",caption:"Michiko at the 7th International Congress on Acoustics, Budapest, 1971."},{src:"images/photo_24.jpg",label:"7th International Congress on Acoustics · Budapest, 1971",caption:"Michiko at the 7th International Congress on Acoustics, Budapest, 1971."},{src:"images/photo_25.jpg",label:"Acoustical Society of Japan · 1989",caption:"Paper presented at the Acoustical Society of Japan (1989): \"Analysis and Synthesis of Shakuhachi 'Kazaiki' Tones Using ARMA Modeling.\""},{src:"images/photo_26.jpg",label:"Acoustical Society of Japan · 1989",caption:"Paper presented at the Acoustical Society of Japan (1989): \"Analysis and Synthesis of Shakuhachi 'Kazaiki' Tones Using ARMA Modeling.\""}],
+  ja: [{src:"images/photo_00.jpg",label:"1918年 · 6歳 · 浜寺、大阪",caption:"1918年、6歳、大阪・浜寺にて。"},{src:"images/photo_04.jpg",label:"1927年 · 15歳 · 浜寺、大阪",caption:"1927年、15歳。大阪・浜寺の自宅にて。安井曾太郎による肖像画のために撮影された写真。"},{src:"images/photo_05.jpg",label:"安井曾太郎による肖像画 · 東京国立近代美術館",caption:"安井曾太郎が描いた道子の肖像画。東京国立近代美術館（MoMAT）所蔵。"},{src:"images/photo_21.jpg",label:"パリ · 1937年",caption:"1937年、25歳頃。パリの国際現代音楽協会（ISCM）で受賞した頃の写真。"},{src:"images/photo_22.jpg",label:"第7回国際音響学会議 · ブダペスト、1971年",caption:"寺田寅彦の影響を受け、道子は尺八の音響研究に取り組んだ。1971年論文をブダペストで発表。"},{src:"images/photo_23.jpg",label:"第7回国際音響学会議 · ブダペスト、1971年",caption:"1971年、ブダペストでの第7回国際音響学会議にて。"},{src:"images/photo_24.jpg",label:"第7回国際音響学会議 · ブダペスト、1971年",caption:"1971年、ブダペストでの第7回国際音響学会議にて。"},{src:"images/photo_25.jpg",label:"日本音響学会 · 1989年",caption:"1989年、日本音響学会にて発表：「ARMAモデルによる尺八『かざいき』音の分析と合成」。"},{src:"images/photo_26.jpg",label:"日本音響学会 · 1989年",caption:"1989年、日本音響学会にて発表：「ARMAモデルによる尺八『かざいき』音の分析と合成」。"}],
+  fr: [{src:"images/photo_00.jpg",label:"1918 · 6 ans · Hamadera, Osaka",caption:"1918, 6 ans, Hamadera, Osaka, Japon."},{src:"images/photo_04.jpg",label:"1927 · 15 ans · Hamadera, Osaka",caption:"1927, 15 ans, chez elle à Hamadera, Osaka ; pour un portrait par Sotaro Yasui."},{src:"images/photo_05.jpg",label:"Portrait par Sotaro Yasui · MoMAT, Tokyo",caption:"Portrait de Michiko par Sotaro Yasui au Musée national d'art moderne de Tokyo (MoMAT)."},{src:"images/photo_21.jpg",label:"Paris · 1937",caption:"1937, 25 ans environ, à l'époque de son prix ISCM à Paris."},{src:"images/photo_22.jpg",label:"7e Congrès international d'acoustique · Budapest, 1971",caption:"Influencée par Torahiko Terada, Michiko se tourna vers l'acoustique du Shakuhachi. Congrès de Budapest, 1971."},{src:"images/photo_23.jpg",label:"7e Congrès international d'acoustique · Budapest, 1971",caption:"Michiko au 7e Congrès international d'acoustique, Budapest, 1971."},{src:"images/photo_24.jpg",label:"7e Congrès international d'acoustique · Budapest, 1971",caption:"Michiko au 7e Congrès international d'acoustique, Budapest, 1971."},{src:"images/photo_25.jpg",label:"Société acoustique du Japon · 1989",caption:"Communication à la Société acoustique du Japon (1989) : \"Analyse et synthèse des sons 'Kazaiki' du Shakuhachi par modélisation ARMA\"."},{src:"images/photo_26.jpg",label:"Société acoustique du Japon · 1989",caption:"Communication à la Société acoustique du Japon (1989) : \"Analyse et synthèse des sons 'Kazaiki' du Shakuhachi par modélisation ARMA\"."}],
+  es: [{src:"images/photo_00.jpg",label:"1918 · 6 años · Hamadera, Osaka",caption:"1918, 6 años, Hamadera, Osaka, Japón."},{src:"images/photo_04.jpg",label:"1927 · 15 años · Hamadera, Osaka",caption:"1927, 15 años, en casa en Hamadera, Osaka; fotografiada para un retrato de Sotaro Yasui."},{src:"images/photo_05.jpg",label:"Retrato por Sotaro Yasui · MoMAT, Tokio",caption:"Retrato de Michiko por Sotaro Yasui en el MoMAT, Tokio."},{src:"images/photo_21.jpg",label:"París · 1937",caption:"1937, alrededor de 25 años, en la época de su premio ISCM en París."},{src:"images/photo_22.jpg",label:"7° Congreso Internacional de Acústica · Budapest, 1971",caption:"Influenciada por Torahiko Terada, Michiko estudió el sonido del Shakuhachi. Congreso de Budapest, 1971."},{src:"images/photo_23.jpg",label:"7° Congreso Internacional de Acústica · Budapest, 1971",caption:"Michiko en el 7° Congreso Internacional de Acústica, Budapest, 1971."},{src:"images/photo_24.jpg",label:"7° Congreso Internacional de Acústica · Budapest, 1971",caption:"Michiko en el 7° Congreso Internacional de Acústica, Budapest, 1971."},{src:"images/photo_25.jpg",label:"Sociedad Acústica de Japón · 1989",caption:"Comunicación en la Sociedad Acústica de Japón (1989): \"Análisis y síntesis de sonidos 'Kazaiki' del Shakuhachi mediante ARMA\"."},{src:"images/photo_26.jpg",label:"Sociedad Acústica de Japón · 1989",caption:"Comunicación en la Sociedad Acústica de Japón (1989): \"Análisis y síntesis de sonidos 'Kazaiki' del Shakuhachi mediante ARMA\"."}]
+};
+let current = 0, currentLang = 'en';
+function buildGallery(lang) {
+  const grid = document.getElementById("galleryGrid"); grid.innerHTML = "";
+  (GALLERY_DATA[lang]||GALLERY_DATA.en).forEach((p,i) => {
+    const item = document.createElement("div"); item.className = "gallery-item";
+    item.innerHTML = `<img src="${p.src}" alt="${p.label}" loading="lazy"><div class="gallery-caption">${p.label}</div>`;
+    item.onclick = () => openLightbox(i); grid.appendChild(item);
+  });
+}
+function openLightbox(i) { current=i; document.getElementById("lightbox").style.display="flex"; document.body.style.overflow="hidden"; updateLightbox(); }
+function updateLightbox() { const p=(GALLERY_DATA[currentLang]||GALLERY_DATA.en)[current]; document.getElementById("lbImg").src=p.src; document.getElementById("lbLabel").textContent=p.label; document.getElementById("lbCaption").textContent=p.caption; }
+function closeLightbox() { document.getElementById("lightbox").style.display="none"; document.body.style.overflow=""; }
+function prevPhoto() { const d=GALLERY_DATA[currentLang]||GALLERY_DATA.en; current=(current-1+d.length)%d.length; updateLightbox(); }
+function nextPhoto() { const d=GALLERY_DATA[currentLang]||GALLERY_DATA.en; current=(current+1)%d.length; updateLightbox(); }
+document.addEventListener("keydown",e=>{ if(document.getElementById("lightbox").style.display==="flex"){ if(e.key==="ArrowLeft")prevPhoto(); if(e.key==="ArrowRight")nextPhoto(); if(e.key==="Escape")closeLightbox(); }});
+
+// ── PAPERS ────────────────────────────────────────────────────
+const PAPERS=[
+  {year:"1971",en:{title:"Study of Timbre of Wet and Dry Japanese Bamboo Pipe, Shakuhachi",venue:"7th International Congress on Acoustics (ICA) — Budapest, Hungary"},ja:{title:"尺八（湿竹・乾竹）の音色研究",venue:"第7回国際音響学会議（ICA）— ハンガリー、ブダペスト"},fr:{title:"Study of Timbre of Wet and Dry Japanese Bamboo Pipe, Shakuhachi",venue:"7e Congrès international d'acoustique (ICA) — Budapest, Hongrie"},es:{title:"Study of Timbre of Wet and Dry Japanese Bamboo Pipe, Shakuhachi",venue:"7° Congreso Internacional de Acústica (ICA) — Budapest, Hungría"}},
+  {year:"1977",en:{title:"Attack transients of wet and dry Japanese bamboo pipe, Shakuhachi",venue:"9th International Congress on Acoustics (ICA) — Madrid, Spain"},ja:{title:"尺八（湿竹・乾竹）の立ち上がり過渡現象",venue:"第9回国際音響学会議（ICA）— スペイン、マドリード"},fr:{title:"Attack transients of wet and dry Japanese bamboo pipe, Shakuhachi",venue:"9e Congrès international d'acoustique (ICA) — Madrid, Espagne"},es:{title:"Attack transients of wet and dry Japanese bamboo pipe, Shakuhachi",venue:"9° Congreso Internacional de Acústica (ICA) — Madrid, España"}},
+  {year:"1978",en:{title:"Synthesis by linear prediction of the bamboo tone, Shakuhachi",venue:"Journal of the Acoustical Society of America (JASA) Vol.64 — Hawaii, USA"},ja:{title:"線形予測による尺八音の合成",venue:"米国音響学会誌（JASA）第64巻 — ハワイ、アメリカ"},fr:{title:"Synthesis by linear prediction of the bamboo tone, Shakuhachi",venue:"Journal of the Acoustical Society of America (JASA) Vol.64 — Hawaï"},es:{title:"Synthesis by linear prediction of the bamboo tone, Shakuhachi",venue:"Journal of the Acoustical Society of America (JASA) Vol.64 — Hawái"}},
+  {year:"1980",en:{title:"Parameters in the transient of the bamboo tone, Shakuhachi, by LP method and its synthesis",venue:"10th International Congress on Acoustics (ICA) — Sydney, Australia"},ja:{title:"LP法による尺八音の過渡現象パラメータと合成",venue:"第10回国際音響学会議（ICA）— オーストラリア、シドニー"},fr:{title:"Parameters in the transient of the bamboo tone, Shakuhachi, by LP method and its synthesis",venue:"10e Congrès international d'acoustique (ICA) — Sydney, Australie"},es:{title:"Parameters in the transient of the bamboo tone, Shakuhachi, by LP method and its synthesis",venue:"10° Congreso Internacional de Acústica (ICA) — Sídney, Australia"}},
+  {year:"1982",ja:{title:"線形予測法を用いた尺八の過渡現象の分析と合成",venue:"日本音響学会 昭和57年度春季研究発表会 — 日本"},en:{title:"Analysis and Synthesis of Shakuhachi Transients Using Linear Prediction",venue:"Acoustical Society of Japan, Spring Meeting 1982 — Japan"},fr:{title:"線形予測法を用いた尺八の過渡現象の分析と合成",venue:"Société acoustique du Japon, Réunion de printemps 1982"},es:{title:"線形予測法を用いた尺八の過渡現象の分析と合成",venue:"Sociedad Acústica de Japón, Reunión de primavera 1982"}},
+  {year:"1983",ja:{title:"ARMAモデルによる尺八音の分析と合成",venue:"日本音響学会 昭和58年度秋季研究発表会 — 日本"},en:{title:"Analysis and Synthesis of Shakuhachi Tones Using ARMA Modeling",venue:"Acoustical Society of Japan, Autumn Meeting 1983 — Japan"},fr:{title:"ARMAモデルによる尺八音の分析と合成",venue:"Société acoustique du Japon, Réunion d'automne 1983"},es:{title:"ARMAモデルによる尺八音の分析と合成",venue:"Sociedad Acústica de Japón, Reunión de otoño 1983"}},
+  {year:"1986",en:{title:"Study on Pole-Zero Modeling in Analysis-Synthesis of Bamboo Tone, Shakuhachi, and Its Transient",venue:"1986 IEEE ASSP Workshop — Mohonk Mountain House, New York, USA"},ja:{title:"尺八音とその過渡現象の分析・合成における極零点モデリングの研究",venue:"1986年 IEEE ASSP ワークショップ — ニューヨーク州モホンク・マウンテン・ハウス"},fr:{title:"Study on Pole-Zero Modeling in Analysis-Synthesis of Bamboo Tone, Shakuhachi, and Its Transient",venue:"Atelier IEEE ASSP 1986 — Mohonk Mountain House, New York"},es:{title:"Study on Pole-Zero Modeling in Analysis-Synthesis of Bamboo Tone, Shakuhachi, and Its Transient",venue:"Taller IEEE ASSP 1986 — Mohonk Mountain House, Nueva York"}},
+  {year:"1988",en:{title:"A study of the transient sounds of the Shakuhachi based on ARMA modeling with residual excitation",venue:"Joint Meeting: Acoustical Society of America & Acoustical Society of Japan — Honolulu, Hawaii"},ja:{title:"残差励振ARMAモデルによる尺八過渡音の研究",venue:"米国音響学会・日本音響学会 合同大会 — ハワイ、ホノルル"},fr:{title:"A study of the transient sounds of the Shakuhachi based on ARMA modeling with residual excitation",venue:"Réunion conjointe ASA & ASJ — Honolulu, Hawaï"},es:{title:"A study of the transient sounds of the Shakuhachi based on ARMA modeling with residual excitation",venue:"Reunión conjunta ASA & ASJ — Honolulu, Hawái"}},
+  {year:"1989",ja:{title:"ARMAモデルによる尺八「かざいき」音の分析と合成",venue:"日本音響学会 平成元年度春季研究発表会 — 日本"},en:{title:"Analysis and Synthesis of Shakuhachi \"Kazaiki\" Tones Using ARMA Modeling",venue:"Acoustical Society of Japan, Spring Meeting 1989 — Japan"},fr:{title:"ARMAモデルによる尺八「かざいき」音の分析と合成",venue:"Société acoustique du Japon, Réunion de printemps 1989"},es:{title:"ARMAモデルによる尺八「かざいき」音の分析と合成",venue:"Sociedad Acústica de Japón, Reunión de primavera 1989"}}
+];
+const JA_ORIGINAL=["1982","1983","1989"];
+function buildPapers(lang) {
+  const grid=document.getElementById("papersGrid"); grid.innerHTML="";
+  PAPERS.forEach(p=>{
+    const isJa=JA_ORIGINAL.includes(p.year);
+    const primary=p[lang]||p.en;
+    const showSub=(lang==='en'&&isJa)||(lang==='ja'&&!isJa);
+    const secondary=lang==='ja'?p.en:p.ja;
+    grid.innerHTML+=`<div class="paper"><div class="paper-year">${p.year}</div><div><div class="paper-title">${primary.title}</div>${showSub&&secondary?`<div class="paper-title-sub">${secondary.title}</div>`:''}<div class="paper-venue">${primary.venue}</div></div></div>`;
+  });
+}
+
+// ── ALLIANCE CONTENT ──────────────────────────────────────────
+const WM = {
+  en: {
+    sectionTitle:"The Waymakers Alliance", navLabel:"About Us",
+    tagline:"We open paths so that others may follow.",
+    m1:"The Waymakers Alliance is a nonprofit organization that carries forward the legacy of Michiko Toyama (1912–2006) — composer, acoustical physicist, and pioneer — supporting the next generation of women in forging their own paths through arts, culture, education, research, social contribution, social enterprise, and recognition programs.",
+    m2:"We inherit the spirit of those who illuminated new directions across eras, and carry it forward into the future.",
+    labelCurrent:"Current Activities",
+    act1t:"Research & Preservation of Michiko Toyama's Legacy",
+    act1b:"Archival research across Japan, the United States, and France; documentation of unpublished materials; symposia, concerts, and publications that bring Toyama's pioneering work to new audiences worldwide.",
+    act2t:"Culture & Arts Promotion",
+    act2b:"Supporting women composers and emerging artists; international cultural exchange programs; residency and research support initiatives that foster creative and scholarly work across borders.",
+    act3t:"Leadership, Social Contribution & Next-Generation Development",
+    act3b:"Mentoring and networking programs for the next generation of women leaders, students, and researchers — building communities of support through social contribution and social enterprise so that Waymakers can thrive.",
+    labelAhead:"Looking Ahead",
+    ev26t:"Talk & Concert — \"Michiko Toyama: Her Life and Music\"",
+    ev26b:"In December 2026, we will hold a commemorative talk and concert at Aoyama Women's Plaza in Tokyo, marking the 20th anniversary of Michiko Toyama's passing. The event will revisit her life and music while opening new conversations about the world women composers inhabit — and the possibilities ahead.",
+    ev27t:"International Residency Program — in partnership with New York University",
+    ev27b:"A residency program co-developed with New York University, offering emerging women composers an international platform to develop their work and connect across borders. Details to be announced."
+  },
+  ja: {
+    sectionTitle:"The Waymakers Alliance", navLabel:"活動について",
+    tagline:"道を切り拓く人が、次の人のために光を灯す。",
+    m1:"The Waymakers Allianceは、日本人作曲家・音響物理学者である外山道子（1912–2006）の遺産を継承し、芸術・文化・教育・研究・社会貢献・社会事業、表彰制度などを通じて次世代の女性が自らの道を切り拓くことを支援する非営利団体です。",
+    m2:"時代を超えて道を示した人々の精神を、未来へと継承していきます。",
+    labelCurrent:"現在の活動",
+    act1t:"外山道子の研究・普及活動",
+    act1b:"日本・米国・フランスでの資料調査、未公開資料の収集・整理、演奏会・シンポジウム・出版活動を通じて、外山道子の功績を国内外に広く伝えます。",
+    act2t:"文化・芸術振興事業",
+    act2b:"女性作曲家や若手芸術家の支援、国際文化交流事業、レジデンス・研究支援プログラムを通じて、芸術と文化の発展に貢献します。",
+    act3t:"人材育成・社会貢献・社会事業",
+    act3b:"次世代女性リーダー、学生・若手研究者、起業家のためのメンタリング・ネットワーク形成を支援。社会貢献・社会事業活動を通じて、道を切り拓く人材が育つ環境をつくります。",
+    labelAhead:"今後のビジョン",
+    ev26t:"トーク＆コンサート「外山道子 — その生涯と音楽」",
+    ev26b:"2026年12月、東京・青山ウィメンズプラザにて、外山道子の没後20年を記念するトーク＆コンサートを開催します。その生涯と音楽を再考するとともに、女性作曲家を取り巻く環境と可能性を問い直します。",
+    ev27t:"国際レジデンス・プログラム — ニューヨーク大学との連携",
+    ev27b:"ニューヨーク大学との連携により創設予定の国際レジデンス・プログラム。女性作曲家が国境を越えて活動を深める場を提供します。詳細は追ってご案内します。"
+  },
+  fr: {
+    sectionTitle:"The Waymakers Alliance", navLabel:"À propos",
+    tagline:"Nous traçons des chemins pour que d'autres puissent les suivre.",
+    m1:"The Waymakers Alliance est une organisation à but non lucratif qui perpétue l'héritage de Michiko Toyama (1912–2006) — compositrice, physicienne acoustique et pionnière — en soutenant la prochaine génération de femmes qui tracent leur propre voie à travers les arts, la culture, l'éducation, la recherche, la contribution sociale, l'entrepreneuriat social et les programmes de reconnaissance.",
+    m2:"Nous héritons de l'esprit de celles et ceux qui ont illuminé de nouvelles directions à travers les époques, et nous le portons vers l'avenir.",
+    labelCurrent:"Activités actuelles",
+    act1t:"Recherche et préservation de l'œuvre de Michiko Toyama",
+    act1b:"Recherches d'archives au Japon, aux États-Unis et en France ; documentation de matériaux inédits ; symposiums, concerts et publications qui font connaître l'œuvre pionnière de Toyama à de nouveaux publics dans le monde entier.",
+    act2t:"Promotion de la culture et des arts",
+    act2b:"Soutien aux compositrices et aux artistes émergentes ; programmes d'échanges culturels internationaux ; initiatives de résidence et de soutien à la recherche favorisant la création et le travail académique au-delà des frontières.",
+    act3t:"Leadership, contribution sociale et développement de la prochaine génération",
+    act3b:"Programmes de mentorat et de réseautage pour la prochaine génération de femmes leaders, étudiantes et chercheuses — construire des communautés de soutien à travers la contribution et l'entrepreneuriat social pour que les Waymakers puissent s'épanouir.",
+    labelAhead:"Notre vision",
+    ev26t:"Conférence & Concert — « Michiko Toyama : sa vie et sa musique »",
+    ev26b:"En décembre 2026, nous organiserons une conférence et un concert commémoratif à l'Aoyama Women's Plaza de Tokyo, à l'occasion du 20e anniversaire du décès de Michiko Toyama. L'événement reviendra sur sa vie et sa musique, tout en ouvrant de nouvelles réflexions sur l'environnement des compositrices et les possibilités qui s'offrent à elles.",
+    ev27t:"Programme de résidence internationale — en partenariat avec l'Université de New York",
+    ev27b:"Un programme de résidence co-développé avec l'Université de New York, offrant aux compositrices émergentes une plateforme internationale pour développer leur travail et se connecter au-delà des frontières. Détails à venir."
+  },
+  es: {
+    sectionTitle:"The Waymakers Alliance", navLabel:"Quiénes somos",
+    tagline:"Abrimos caminos para que otros puedan seguirlos.",
+    m1:"The Waymakers Alliance es una organización sin fines de lucro que lleva adelante el legado de Michiko Toyama (1912–2006) — compositora, física acústica y pionera — apoyando a la próxima generación de mujeres que forjan sus propios caminos a través de las artes, la cultura, la educación, la investigación, la contribución social, el emprendimiento social y los programas de reconocimiento.",
+    m2:"Heredamos el espíritu de quienes iluminaron nuevas direcciones a través de las épocas, y lo llevamos hacia el futuro.",
+    labelCurrent:"Actividades actuales",
+    act1t:"Investigación y preservación del legado de Michiko Toyama",
+    act1b:"Investigación de archivos en Japón, Estados Unidos y Francia; documentación de materiales inéditos; simposios, conciertos y publicaciones que acercan la obra pionera de Toyama a nuevos públicos en todo el mundo.",
+    act2t:"Promoción de la cultura y las artes",
+    act2b:"Apoyo a compositoras y artistas emergentes; programas de intercambio cultural internacional; iniciativas de residencia y apoyo a la investigación que fomentan la creación y el trabajo académico más allá de las fronteras.",
+    act3t:"Liderazgo, contribución social y desarrollo de la próxima generación",
+    act3b:"Programas de mentoría y redes para la próxima generación de mujeres líderes, estudiantes e investigadoras — construyendo comunidades de apoyo a través de la contribución social y el emprendimiento social para que las Waymakers puedan prosperar.",
+    labelAhead:"Nuestra visión",
+    ev26t:"Charla & Concierto — \"Michiko Toyama: su vida y su música\"",
+    ev26b:"En diciembre de 2026, celebraremos una charla y concierto conmemorativo en el Aoyama Women's Plaza de Tokio, con motivo del 20.º aniversario del fallecimiento de Michiko Toyama. El evento revisitará su vida y su música, al tiempo que abrirá nuevas reflexiones sobre el entorno de las compositoras y las posibilidades que les aguardan.",
+    ev27t:"Programa internacional de residencia — en asociación con la Universidad de Nueva York",
+    ev27b:"Un programa de residencia co-desarrollado con la Universidad de Nueva York, que ofrece a las compositoras emergentes una plataforma internacional para desarrollar su trabajo y conectarse más allá de las fronteras. Detalles por anunciar."
+  }
+};
+
+function applyAlliance(lang) {
+  const w = WM[lang] || WM.en;
+  document.getElementById('allianceSectionTitle').textContent = w.sectionTitle;
+  document.getElementById('navAlliance').textContent = w.navLabel;
+  document.getElementById('wmTagline').textContent = w.tagline;
+  document.getElementById('wmMission1').textContent = w.m1;
+  document.getElementById('wmMission2').textContent = w.m2;
+  document.getElementById('wmLabelCurrent').textContent = w.labelCurrent;
+  document.getElementById('wmAct1T').textContent = w.act1t;
+  document.getElementById('wmAct1B').textContent = w.act1b;
+  document.getElementById('wmAct2T').textContent = w.act2t;
+  document.getElementById('wmAct2B').textContent = w.act2b;
+  document.getElementById('wmAct3T').textContent = w.act3t;
+  document.getElementById('wmAct3B').textContent = w.act3b;
+  document.getElementById('wmLabelAhead').textContent = w.labelAhead;
+  document.getElementById('wmEv2026T').textContent = w.ev26t;
+  document.getElementById('wmEv2026B').textContent = w.ev26b;
+  document.getElementById('wmEv2027T').textContent = w.ev27t;
+  document.getElementById('wmEv2027B').textContent = w.ev27b;
+}
+
+// ── MAIN TRANSLATIONS ─────────────────────────────────────────
+const TRANSLATIONS={
+  en:{navTimeline:"Timeline",navAlbum:"Album",navResearch:"Research",navScores:"Scores",navGallery:"Gallery",heroRole1:"Pianist",heroRole2:"Composer & Conductor",heroRole3:"Acoustic Physicist",heroDesc:"Born in Osaka, educated in Paris, celebrated in New York — she broke every barrier placed before her, and when she faced a challenge, she found a way.",heroEyebrow:"1912 — 2006",heroCities:"Osaka · Paris · New York · Tokyo",first1title:"First Asian woman to win the ISCM Prize",first1desc:"International Society for Contemporary Music, Paris, 1937",first2title:"First foreign composer, and the first woman, invited to Columbia-Princeton Electronic Music Center",first2desc:"New York City, 1956",first3title:'"The Voice of Yamato" — 56 years before Japan heard it',first3desc:"Her prize-winning 1937 composition wasn't performed in her homeland until 1993",first4title:"Pioneering acoustic physicist of the Shakuhachi",first4desc:"Published numerous papers on the acoustics of the Shakuhachi from 1971 onward",secTitle1:"A Life Across Three Worlds",secTitle2:"Waka and Other Compositions",secTitle3:"Acoustic research — the Shakuhachi papers",secTitle4:"A life in photographs",tl:[{t:"Born in Osaka, Japan",d:"Born in Osaka to Sutezo and Haruko Toyama, her story begins in Japan, where music and curiosity about sound took root from the earliest years."},{t:"Studied under Nadia Boulanger — École Normale de Musique",d:"Trained by the legendary pedagogue Nadia Boulanger, whose students included Copland, Bernstein, and Piazzolla. Michiko earned her place among the world's most rigorously trained composers."},{t:'Won the ISCM Prize — "The Voice of Yamato"',d:'Her composition "The Voice of Yamato" won the International Society for Contemporary Music prize in Paris — making her the first Asian person and first woman ever to receive the honour. The work would not be heard in Japan for another 56 years.'},{t:"Baptised in Paris — then returned to Japan",d:"Just before war broke out in Europe, Michiko was baptised in Paris and became a Christian. She then returned to Japan in 1939, leaving behind the world she had built over nearly a decade in France."},{t:"Married Kazuo — mother of Junko and Masashi",d:"Back in Japan, she married Kazuo and built a family — their daughter Junko and son Masashi. Kazuo survived the war, but was taken to a labour camp in Siberia, Soviet Union, where he passed away. She became a widow with two young children."},{t:"Returned to Paris — Milhaud & Messiaen, and Pierre Schaeffer",d:"She returned to Paris after the war, leaving her two children in her mother's care, to resume her studies at the Paris National Conservatory of Music under Darius Milhaud and Olivier Messiaen. It was there that she encountered Pierre Schaeffer — the father of musique concrète — who introduced her to the world of electronic music, setting the course for everything that followed."},{t:"Studied under Roger Sessions — Tanglewood Music Center",d:"She continued her studies with the American composer Roger Sessions at the Tanglewood Music Center in Massachusetts, the summer academy of the Boston Symphony Orchestra, further expanding her reach across continents and traditions."},{t:"First foreign composer, and the first woman, invited to the Columbia-Princeton Electronic Music Center",d:"In a field entirely dominated by men, Michiko was the first foreign composer, and the first woman, ever invited to work at the Columbia-Princeton Electronic Music Center in New York — one of the world's foremost laboratories for avant-garde and electronic composition."},{t:"Performed at Carnegie Hall",d:"She had the opportunity to stand on the podium at a world-renowned concert hall, where her talent as a composer came to be recognized."},{t:'LP released — "Waka and Other Compositions" on Folkways Records',d:'Her record Waka and Other Compositions: Contemporary Music of Japan (FW 8881) was released by Folkways Records (now Smithsonian Folkways) — a landmark LP of contemporary Japanese music that integrates electronic techniques and chamber orchestra with traditional poetry and themes.'},{t:"Returned to Japan — became an acoustic physicist",d:"Back in Japan, she turned her trained musician's ear toward science. She analysed the acoustic properties of the Shakuhachi, publishing a series of scholarly papers across international conferences from 1971 through the 1980s."},{t:'"The Voice of Yamato" performed in Japan — 56 years later',d:"More than half a century after her historic ISCM prize, her composition was finally heard in her homeland. A moment of profound, long-delayed homecoming."},{t:"Passed away, aged 94",d:"A life of 94 years that spanned Japan, France, and America — concert halls, scientific laboratories, and every kind of barrier a woman of her time could face. She found a way through every one."}],albumTitle:"Waka and Other Compositions",albumSub:"Contemporary Music of Japan — Based on Traditional Japanese Themes and Poetry",albumDesc:"Waka and Other Compositions: Contemporary Music of Japan (FW 8881), released by Folkways Records in 1960, reworks ancient waka through a contemporary musical language. Michiko Toyama draws on traditional poetry and folk forms, integrating chamber ensemble and electronic techniques.",researchIntro:"Over nearly two decades, she developed increasingly sophisticated acoustic models of the Shakuhachi — from spectral analysis of wet and dry bamboo tone, to ARMA synthesis models, to pole-zero modelling. A composer who became a scientist without ever ceasing to be a musician.",scoresSectionTitle:"Score Request",scoresIntro:"Original manuscript scores by Michiko Toyama are available upon request. The following works are held in the archive. To request a score, please contact us at the address below.",scoreCaption:"",scoreRequestLabel:"Request a Score",scoreRequestDesc:"To request access to any of the scores listed above, please download the application form, fill it in, and send it to us.",spiritQuote:'"When you face a challenge, you find a way…or make one."',spiritAttr:"— Michiko Toyama",card1t:"War & loss",card1d:"She lost her husband in a Soviet labour camp in Siberia after the war — an event that upended her world. With the support of her mother, she rebuilt her life and career across two continents while raising two children.",card2t:"Barriers of race & gender",card2d:"As an Asian woman in 1930s–50s Europe and America, she walked through doors no one had opened before her — and left them open.",card3t:"A second life in science",card3d:"At an age when most rest on their achievements, she reinvented herself as a researcher — bringing a composer's ear to acoustic physics.",footer:"Celebrating the life and legacy of Michiko Toyama · 1912 – 2006"},
+  ja:{navTimeline:"年譜",navAlbum:"アルバム",navResearch:"研究",navScores:"楽譜",navGallery:"写真",heroRole1:"ピアニスト",heroRole2:"作曲家・指揮者",heroRole3:"音響物理学者",heroDesc:"大阪に生まれ、パリで学び、ニューヨークで称えられた——あらゆる壁を乗り越え、困難に直面するたびに道を切り拓いた。",heroEyebrow:"1912 — 2006",heroCities:"大阪 · パリ · ニューヨーク · 東京",first1title:"ISCMを受賞した最初のアジア人女性",first1desc:"国際現代音楽協会、パリ、1937年",first2title:"コロンビア・プリンストン電子音楽センターに招かれた最初の外国人作曲家であり、最初の女性",first2desc:"ニューヨーク、1956年",first3title:"「やまとの声」——日本初演まで56年",first3desc:"1937年に受賞したこの作品が日本で演奏されたのは、1993年のことでした",first4title:"尺八音響研究の先駆者",first4desc:"1971年以降、尺八の音響に関する多数の論文を発表",secTitle1:"三つの世界の間を生きて",secTitle2:"和歌とその他の作品",secTitle3:"音響研究——尺八論文",secTitle4:"写真で辿る生涯",tl:[{t:"大阪に誕生",d:"父・外山捨造、母・治子の子として大阪に生まれる。幼い頃から音楽と音への探究心が芽生えた。"},{t:"ナディア・ブーランジェに師事——エコール・ノルマル音楽院",d:"コープランド、バーンスタイン、ピアソラなどを育てた伝説的な教育者、ナディア・ブーランジェのもとで学び、世界最高水準の作曲教育を受けた。"},{t:"ISCMを受賞——「やまとの声」",d:"「やまとの声」がパリの国際現代音楽協会で受賞。アジア人として、そして女性として初めてこの栄誉を受けた。この作品が日本で演奏されるのは、さらに56年後のことだった。"},{t:"パリで洗礼——そして帰国",d:"ヨーロッパで戦争が始まる直前、パリで洗礼を受けクリスチャンになった。その後1939年に帰国し、約10年にわたって築いてきたパリでの生活を後にした。"},{t:"一雄と結婚——順子・正の母に",d:"帰国後、一雄と結婚し、娘・順子と息子・正をもうける。一雄は戦争を生き延びたが、ソビエト連邦シベリアの強制労働収容所に送られ、そこで亡くなった。彼女は二人の幼い子を抱えて未亡人となった。"},{t:"パリへ再留学——ミヨー、メシアン、シェフェールに師事",d:"戦後、母親に子ども二人を預け、パリ国立音楽院でダリウス・ミヨーとオリヴィエ・メシアンに師事するためパリに戻った。そこでミュジーク・コンクレートの父、ピエール・シェフェールと出会い、電子音楽の世界への扉が開かれた。"},{t:"ロジャー・セッションズに師事——タングルウッド音楽センター",d:"ボストン交響楽団の夏季アカデミーであるマサチューセッツ州のタングルウッド音楽センターで、アメリカ人作曲家ロジャー・セッションズに師事し、さらに活動の幅を広げた。"},{t:"コロンビア・プリンストン電子音楽センターに招かれた最初の外国人作曲家であり、最初の女性",d:"男性が支配する分野において、道子はニューヨークのコロンビア・プリンストン電子音楽センターに招かれた最初の外国人作曲家であり、最初の女性となった。"},{t:"カーネギーホールで演奏",d:"世界的に知られるコンサートホールの指揮台に立つ機会を得て、作曲家としての才能が認められた。"},{t:"フォークウェイズ・レコードよりLPを発表——「和歌とその他の作品」",d:"「Waka and Other Compositions：和歌とその他の作品：日本の現代音楽」(FW 8881)がフォークウェイズ・レコード（現：スミソニアン・フォークウェイズ）よりリリース。電子音楽技術と室内管弦楽を伝統詩歌と融合させた、日本の現代音楽の金字塔。"},{t:"帰国——音響物理学者へ",d:"日本に戻り、音楽家としての耳を科学に向けた。尺八の音響特性を研究し、1971年から1980年代にかけて国際会議で多数の論文を発表した。"},{t:"「やまとの声」日本初演——56年の時を経て",d:"ISCMを受賞から半世紀以上が過ぎ、1993年にようやくこの作品が故郷の地で演奏された。長い歳月を経た、深い意味を持つ帰還の瞬間だった。"},{t:"94歳で逝去",d:"日本、フランス、アメリカにまたがる94年の生涯——コンサートホール、科学の研究室、そして時代が女性の前に立ちはだけたあらゆる壁。彼女はその全てに道を見つけた。"}],albumTitle:"和歌とその他の作品",albumSub:"日本の現代音楽——伝統的な和歌とテーマに基づく",albumDesc:"「Waka and Other Compositions：和歌とその他の作品：日本の現代音楽」(FW 8881)がフォークウェイズ・レコード（現：スミソニアン・フォークウェイズ）より1960年にリリース。古代の和歌を現代的な音楽言語で再解釈した録音です。外山道子は伝統詩歌と民俗的な音楽形式をもとに、室内楽アンサンブルと電子音響技術を融合させています。",researchIntro:"約20年にわたり、尺八の音響モデルを発展させ続けた——湿った竹と乾いた竹のスペクトル分析から、ARMA合成モデル、極・零点モデリングまで。作曲家でありながら科学者となり、音楽家であることをやめなかった人。",scoresSectionTitle:"楽譜のリクエスト",scoresIntro:"外山道子の直筆楽譜は申請によりご提供可能です。以下のリストに所蔵作品を掲載しています。楽譜をご希望の方は下記のメールアドレスまでお問い合わせください。",scoreCaption:"",scoreRequestLabel:"楽譜のリクエスト",scoreRequestDesc:"楽譜をご希望の方は、申請書をダウンロードして必要事項を記入し、メールにてお送りください。",spiritQuote:"「困難に直面したとき、道を見つける……\nなければ、自ら切り拓く。」",spiritAttr:"——外山道子",card1t:"戦争と喪失",card1d:"戦後、夫はシベリアのソビエト強制労働収容所で命を落とした——彼女の世界を一変させた出来事だった。母の支えを得ながら、二人の子を育てつつ、二つの大陸にわたって人生とキャリアを再建した。",card2t:"人種と性別の壁",card2d:"1930〜50年代のヨーロッパとアメリカで、アジア人女性として誰も開けたことのない扉をくぐり、その扉を開けたままにしていった。",card3t:"科学者としての第二の人生",card3d:"多くの人が実績に安住する年齢になっても、自らを研究者として再発明し——作曲家の耳を音響物理学に持ち込んだ。",footer:"外山道子の生涯と遺産を讃えて · 1912 – 2006"},
+  fr:{navTimeline:"Chronologie",navAlbum:"Album",navResearch:"Recherche",navScores:"Partitions",navGallery:"Galerie",heroRole1:"Pianiste",heroRole2:"Compositrice & Chef d'orchestre",heroRole3:"Physicienne acoustique",heroDesc:"Née à Osaka, éduquée à Paris, célébrée à New York — elle a brisé toutes les barrières dressées devant elle, et face à chaque défi, elle a trouvé un chemin.",heroEyebrow:"1912 — 2006",heroCities:"Osaka · Paris · New York · Tokyo",first1title:"Première femme asiatique à remporter le Prix de l'ISCM",first1desc:"Société internationale de musique contemporaine, Paris, 1937",first2title:"Première compositrice étrangère, et première femme, invitée au Centre de musique électronique Columbia-Princeton",first2desc:"New York, 1956",first3title:'"La Voix du Yamato" — 56 ans avant que le Japon ne l\'entende',first3desc:"Sa composition primée de 1937 ne fut jouée dans son pays natal qu'en 1993",first4title:"Pionnière de la physique acoustique du Shakuhachi",first4desc:"Nombreuses publications sur l'acoustique du Shakuhachi à partir de 1971",secTitle1:"Une vie entre trois mondes",secTitle2:"Waka et autres compositions",secTitle3:"Recherche acoustique — les articles sur le Shakuhachi",secTitle4:"Une vie en photographies",tl:[{t:"Née à Osaka, Japon",d:"Née à Osaka de Sutezo et Haruko Toyama, son histoire commence au Japon, où la musique et la curiosité pour le son ont pris racine dès ses premières années."},{t:"Études auprès de Nadia Boulanger — École Normale de Musique",d:"Formée par la légendaire pédagogue Nadia Boulanger, dont les élèves comptaient Copland, Bernstein et Piazzolla."},{t:"Prix de l'ISCM — \"La Voix du Yamato\"",d:"Sa composition \"La Voix du Yamato\" remporta le prix ISCM à Paris — première personne asiatique et première femme à recevoir cet honneur. L'œuvre ne serait pas entendue au Japon avant 56 ans."},{t:"Baptisée à Paris — puis retour au Japon",d:"Juste avant que la guerre n'éclate, Michiko fut baptisée à Paris et devint chrétienne. Elle rentra au Japon en 1939."},{t:"Mariage avec Kazuo — mère de Junko et Masashi",d:"De retour au Japon, elle épousa Kazuo. Il survécut à la guerre, mais fut envoyé dans un camp de travail en Sibérie où il décéda. Elle devint veuve avec deux jeunes enfants."},{t:"Retour à Paris — Milhaud, Messiaen et Pierre Schaeffer",d:"Elle retourna à Paris après la guerre, confiant ses enfants à sa mère, pour étudier sous Milhaud et Messiaen. Elle y rencontra Pierre Schaeffer, le père de la musique concrète."},{t:"Études auprès de Roger Sessions — Tanglewood Music Center",d:"Elle poursuivit ses études avec Roger Sessions au Tanglewood Music Center, académie d'été de l'Orchestre symphonique de Boston."},{t:"Première compositrice étrangère, et première femme, invitée au Centre de musique électronique Columbia-Princeton",d:"Dans un domaine dominé par les hommes, Michiko fut la première compositrice étrangère et la première femme invitée au Columbia-Princeton Electronic Music Center."},{t:"Performance au Carnegie Hall",d:"Elle eut l'occasion de monter au podium d'une salle de concert de renommée mondiale, où son talent de compositrice fut reconnu."},{t:"LP — \"Waka et autres compositions\" chez Folkways Records",d:"Son disque (FW 8881) fut publié par Folkways Records (aujourd'hui Smithsonian Folkways) — un LP fondateur de musique japonaise contemporaine."},{t:"Retour au Japon — physicienne acoustique",d:"De retour au Japon, elle analysa les propriétés acoustiques du Shakuhachi, publiant des articles lors de conférences internationales de 1971 aux années 1980."},{t:"\"La Voix du Yamato\" jouée au Japon — 56 ans plus tard",d:"Plus d'un demi-siècle après son prix ISCM, sa composition fut enfin entendue dans sa patrie en 1993."},{t:"Décès à l'âge de 94 ans",d:"Une vie de 94 ans entre le Japon, la France et l'Amérique — concert halls, laboratoires et barrières de toutes sortes. Elle trouva un chemin à travers chacune."}],albumTitle:"Waka et autres compositions",albumSub:"Musique contemporaine du Japon — D'après des thèmes et poèmes traditionnels japonais",albumDesc:"Waka and Other Compositions: Contemporary Music of Japan (FW 8881), publié par Folkways Records en 1960, réinterprète l'ancien waka à travers un langage musical contemporain. Michiko Toyama intègre ensemble de chambre et techniques électroniques.",researchIntro:"Pendant près de deux décennies, elle développa des modèles acoustiques du Shakuhachi — de l'analyse spectrale aux modèles ARMA et à la modélisation pôle-zéro. Une compositrice devenue scientifique sans jamais cesser d'être musicienne.",scoresSectionTitle:"Demande de partitions",scoresIntro:"Les partitions manuscrites originales de Michiko Toyama sont disponibles sur demande. Veuillez remplir le formulaire de demande pour toute partition souhaitée.",scoreCaption:"",scoreRequestLabel:"Demande de partition",scoreRequestDesc:"Pour demander une partition, veuillez télécharger le formulaire, le remplir et nous l'envoyer par e-mail.",spiritQuote:'"Face à un défi, tu trouves un chemin… ou tu en traces un."',spiritAttr:"— Michiko Toyama",card1t:"Guerre et perte",card1d:"Elle perdit son mari dans un camp de travail soviétique en Sibérie. Avec le soutien de sa mère, elle reconstruisit sa vie sur deux continents tout en élevant ses deux enfants.",card2t:"Barrières de race et de genre",card2d:"En tant que femme asiatique dans l'Europe et l'Amérique des années 1930–50, elle franchit des portes que personne n'avait ouvertes avant elle — et les laissa ouvertes.",card3t:"Une seconde vie dans la science",card3d:"À un âge où la plupart se reposent, elle se réinventa chercheuse — apportant l'oreille d'une compositrice à la physique acoustique.",footer:"Célébrant la vie et l'héritage de Michiko Toyama · 1912 – 2006"},
+  es:{navTimeline:"Cronología",navAlbum:"Álbum",navResearch:"Investigación",navScores:"Partituras",navGallery:"Galería",heroRole1:"Pianista",heroRole2:"Compositora y Directora de orquesta",heroRole3:"Física acústica",heroDesc:"Nacida en Osaka, educada en París, celebrada en Nueva York — rompió todas las barreras y cuando enfrentó un desafío, encontró el camino.",heroEyebrow:"1912 — 2006",heroCities:"Osaka · París · Nueva York · Tokio",first1title:"Primera mujer asiática en ganar el Premio ISCM",first1desc:"Sociedad Internacional de Música Contemporánea, París, 1937",first2title:"Primera compositora extranjera, y primera mujer, invitada al Centro de Música Electrónica Columbia-Princeton",first2desc:"Ciudad de Nueva York, 1956",first3title:'"La Voz de Yamato" — 56 años antes de que Japón la escuchara',first3desc:"Su composición ganadora de 1937 no se interpretó en su patria hasta 1993",first4title:"Pionera en la física acústica del Shakuhachi",first4desc:"Publicó numerosos artículos sobre la acústica del Shakuhachi desde 1971",secTitle1:"Una vida entre tres mundos",secTitle2:"Waka y otras composiciones",secTitle3:"Investigación acústica — los artículos sobre el Shakuhachi",secTitle4:"Una vida en fotografías",tl:[{t:"Nacida en Osaka, Japón",d:"Nacida en Osaka, hija de Sutezo y Haruko Toyama, donde la música y la curiosidad por el sonido echaron raíces desde sus primeros años."},{t:"Estudió con Nadia Boulanger — École Normale de Musique",d:"Formada por la legendaria Nadia Boulanger, cuyos alumnos incluían a Copland, Bernstein y Piazzolla."},{t:"Ganó el Premio ISCM — \"La Voz de Yamato\"",d:"Su composición ganó el premio ISCM en París — convirtiéndola en la primera persona asiática y primera mujer en recibir este honor. La obra no sería escuchada en Japón hasta 56 años después."},{t:"Bautizada en París — luego regresó a Japón",d:"Justo antes de la guerra, Michiko fue bautizada en París y se convirtió al cristianismo. Regresó a Japón en 1939."},{t:"Se casó con Kazuo — madre de Junko y Masashi",d:"De vuelta en Japón, se casó con Kazuo. Kazuo sobrevivió la guerra, pero fue enviado a un campo de trabajo en Siberia donde falleció. Ella quedó viuda con dos hijos pequeños."},{t:"Regresó a París — Milhaud, Messiaen y Pierre Schaeffer",d:"Regresó a París tras la guerra, dejando a sus hijos con su madre, para estudiar con Milhaud y Messiaen. Allí conoció a Pierre Schaeffer, el padre de la musique concrète."},{t:"Estudió con Roger Sessions — Tanglewood Music Center",d:"Continuó sus estudios con Roger Sessions en el Tanglewood Music Center, academia de verano de la Orquesta Sinfónica de Boston."},{t:"Primera compositora extranjera, y primera mujer, invitada al Centro de Música Electrónica Columbia-Princeton",d:"En un campo dominado por hombres, Michiko fue la primera compositora extranjera y la primera mujer invitada al Centro Columbia-Princeton."},{t:"Actuó en el Carnegie Hall",d:"Tuvo la oportunidad de subir al podio de una sala de conciertos de renombre mundial, donde su talento como compositora llegó a ser reconocido."},{t:"LP publicado — \"Waka y otras composiciones\" en Folkways Records",d:"Su disco (FW 8881) fue publicado por Folkways Records (hoy Smithsonian Folkways) — un LP fundamental de música japonesa contemporánea."},{t:"Regresó a Japón — se convirtió en física acústica",d:"De vuelta en Japón, analizó las propiedades acústicas del Shakuhachi, publicando artículos en conferencias internacionales desde 1971."},{t:"\"La Voz de Yamato\" interpretada en Japón — 56 años después",d:"Más de medio siglo después de su premio ISCM, su composición fue escuchada en su tierra natal en 1993."},{t:"Falleció a los 94 años",d:"Una vida de 94 años entre Japón, Francia y América — salas de conciertos, laboratorios y barreras de todo tipo. Encontró el camino a través de cada una."}],albumTitle:"Waka y otras composiciones",albumSub:"Música contemporánea de Japón — Basada en temas y poesía tradicional japonesa",albumDesc:"Waka and Other Compositions: Contemporary Music of Japan (FW 8881), publicada por Folkways Records en 1960, reinterpreta el antiguo waka a través de un lenguaje musical contemporáneo. Michiko Toyama integra conjunto de cámara y técnicas electrónicas.",researchIntro:"Durante casi dos décadas, desarrolló modelos acústicos del Shakuhachi — desde el análisis espectral hasta modelos ARMA y modelado polo-cero. Una compositora que se convirtió en científica sin dejar de ser músico.",scoresSectionTitle:"Solicitud de partituras",scoresIntro:"Las partituras manuscritas originales de Michiko Toyama están disponibles bajo solicitud. Por favor complete el formulario de solicitud para las partituras deseadas.",scoreCaption:"",scoreRequestLabel:"Solicitud de partitura",scoreRequestDesc:"Para solicitar una partitura, descargue el formulario, complételo y envíenoslo por correo electrónico.",spiritQuote:'"Cuando enfrentas un desafío, encuentras el camino… o lo abres tú misma."',spiritAttr:"— Michiko Toyama",card1t:"Guerra y pérdida",card1d:"Perdió a su esposo en un campo de trabajo soviético en Siberia. Con el apoyo de su madre, reconstruyó su vida en dos continentes mientras criaba a sus dos hijos.",card2t:"Barreras de raza y género",card2d:"Como mujer asiática en la Europa y América de los años 30 a 50, cruzó puertas que nadie había abierto antes — y las dejó abiertas.",card3t:"Una segunda vida en la ciencia",card3d:"A una edad en que la mayoría descansa, se reinventó como investigadora — aportando el oído de una compositora a la física acústica.",footer:"Celebrando la vida y el legado de Michiko Toyama · 1912 – 2006"}
+};
+
+function applyLanguage(lang) {
+  currentLang=lang;
+  const t=TRANSLATIONS[lang];
+  document.querySelector('a[href="#timeline"]').textContent=t.navTimeline;
+  document.querySelector('a[href="#album"]').textContent=t.navAlbum;
+  document.querySelector('a[href="#research"]').textContent=t.navResearch;
+  document.querySelector('a[href="#scores"]').textContent=t.navScores;
+  document.querySelector('a[href="#gallery"]').textContent=t.navGallery;
+  document.querySelector('.hero-eyebrow').textContent=t.heroEyebrow;
+  document.querySelector('.hero-years').textContent=t.heroCities;
+  const roles=document.querySelectorAll('.hero-role');
+  roles[0].textContent=t.heroRole1; roles[1].textContent=t.heroRole2; roles[2].textContent=t.heroRole3;
+  document.querySelector('.hero-desc').textContent=t.heroDesc;
+  const fT=document.querySelectorAll('.first-title'),fD=document.querySelectorAll('.first-desc');
+  fT[0].textContent=t.first1title; fD[0].textContent=t.first1desc;
+  fT[1].textContent=t.first2title; fD[1].textContent=t.first2desc;
+  fT[2].textContent=t.first3title; fD[2].textContent=t.first3desc;
+  fT[3].textContent=t.first4title; fD[3].textContent=t.first4desc;
+  const sT=document.querySelectorAll('.section-title');
+  sT[0].textContent=t.secTitle1; sT[1].textContent=t.secTitle2; sT[2].textContent=t.secTitle3; sT[3].textContent=t.scoresSectionTitle; sT[4].textContent=t.secTitle4;
+  const tlB=document.querySelectorAll('.tl-body');
+  t.tl.forEach((item,i)=>{ if(tlB[i]){ tlB[i].querySelector('.tl-t').textContent=item.t; tlB[i].querySelector('.tl-d').textContent=item.d; }});
+  document.querySelector('.album-title').textContent=t.albumTitle;
+  document.querySelector('.album-subtitle').textContent=t.albumSub;
+  document.querySelector('.album-desc').textContent=t.albumDesc;
+  document.querySelector('.research-intro').textContent=t.researchIntro;
+  buildPapers(lang);
+  document.getElementById('scoresIntro').textContent=t.scoresIntro;
+  if(document.getElementById('scoreRequestLabel')) document.getElementById('scoreRequestLabel').textContent=t.scoreRequestLabel;
+  if(document.getElementById('scoreRequestDesc')) document.getElementById('scoreRequestDesc').textContent=t.scoreRequestDesc;
+  const btn=document.getElementById('scoreRequestBtn');
+  if(btn) btn.textContent=t.scoreRequestLabel;
+  buildScoreList(lang);
+  buildGallery(lang);
+  document.querySelector('.spirit-quote').textContent=t.spiritQuote;
+  document.querySelector('.spirit-attr').textContent=t.spiritAttr;
+  const cards=document.querySelectorAll('.spirit-card');
+  cards[0].querySelector('.spirit-card-title').textContent=t.card1t; cards[0].querySelector('.spirit-card-desc').textContent=t.card1d;
+  cards[1].querySelector('.spirit-card-title').textContent=t.card2t; cards[1].querySelector('.spirit-card-desc').textContent=t.card2d;
+  cards[2].querySelector('.spirit-card-title').textContent=t.card3t; cards[2].querySelector('.spirit-card-desc').textContent=t.card3d;
+  document.querySelector('footer').textContent=t.footer;
+  document.querySelectorAll('.lang-btn').forEach(btn=>btn.classList.toggle('lang-active',btn.dataset.lang===lang));
+  applyAlliance(lang);
+}
+
+(function injectLangButtons(){
+  const style=document.createElement('style');
+  style.textContent=`.lang-switcher{display:flex;gap:4px;margin-left:1.5rem}.lang-btn{font-size:11px;letter-spacing:0.1em;font-family:'DM Mono',monospace;padding:4px 10px;border:1px solid var(--border);background:transparent;color:var(--ink-light);cursor:pointer;border-radius:2px;transition:all .2s}.lang-btn:hover{border-color:var(--red);color:var(--red)}.lang-active{background:var(--red)!important;color:#fff!important;border-color:var(--red)!important}`;
+  document.head.appendChild(style);
+  const sw=document.createElement('div'); sw.className='lang-switcher';
+  sw.innerHTML=`<button class="lang-btn" data-lang="en" onclick="applyLanguage('en')">EN</button><button class="lang-btn" data-lang="ja" onclick="applyLanguage('ja')">日本語</button><button class="lang-btn" data-lang="fr" onclick="applyLanguage('fr')">FR</button><button class="lang-btn" data-lang="es" onclick="applyLanguage('es')">ES</button>`;
+  document.querySelector('.nav-links').appendChild(sw);
+})();
+
+buildGallery('en');
+buildPapers('en');
+buildScoreList('en');
+setTimeout(()=>applyLanguage('en'), 0);
+</script>
 </body>
 </html>
