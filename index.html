@@ -228,6 +228,12 @@
   .ev-badge { display: inline-block; font-family: 'DM Mono',monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; padding: 3px 10px; border: 1px solid var(--red); color: var(--red); margin-bottom: 0.6rem; }
   .ev-t { font-size: 22px; font-weight: 400; line-height: 1.25; }
   .ev-meta { display: flex; gap: 1.25rem; flex-wrap: wrap; font-family: 'DM Mono',monospace; font-size: 12.5px; color: var(--ink); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0.7rem 0; margin-bottom: 1rem; }
+  .ev-logos { margin-top: 2rem; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 1.5rem 2.5rem; }
+  .ev-logos img { display: block; height: 56px; width: auto; max-width: 100%; }
+  .ev-logos img.ev-logo-sq { height: 72px; }
+  .ev-logos img.ev-logo-wide { height: 52px; }
+  .ev-logos img.ev-logo-ccs { height: 76px; }
+  @media (max-width: 640px) { .ev-logos { gap: 1.25rem 1.75rem; } .ev-logos img { height: 44px; } .ev-logos img.ev-logo-sq { height: 60px; } .ev-logos img.ev-logo-wide { height: 40px; } .ev-logos img.ev-logo-ccs { height: 60px; } }
   .ev-future { margin-top: 3rem; padding: 1.35rem 1.6rem; border: 1px dashed rgba(26,20,16,0.28); background: var(--paper-warm); max-width: 900px; }
   .ev-future-badge { display: inline-block; font-family: 'DM Mono',monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px; margin-bottom: 0.6rem; background: #dceeff; color: #1a4a7a; border: 1px solid #b8daff; }
   .ev-future-t { font-size: 16px; margin-bottom: 0.35rem; }
@@ -451,8 +457,16 @@
     <div class="ev-cred-col" id="evVenueCol"></div>
     <div class="ev-cred-col" id="evOrgCol"></div>
   </div>
+  <div class="ev-logos" aria-label="Supporters">
+    <img src="images/logos/jsem.png" alt="Japanese Society for Electronic Music (JSEM) 日本電子音楽協会">
+    <img src="images/logos/geidai-iloveyou.png" alt="TOKYO GEIDAI I LOVE YOU project">
+    <img src="images/logos/geidai-mirai.jpg" alt="芸術未来研究場">
+    <img src="images/logos/geidai-mizuho.png" class="ev-logo-wide" alt="Tokyo Geidai × Mizuho">
+    <img src="images/logos/ccs-geidai.png" class="ev-logo-ccs" alt="CCS GEIDAI — Center for Curatorial Studies Geidai">
+    <img src="images/logos/ueno-fund.jpg" class="ev-logo-sq" alt="一般財団法人 上野千鶴子基金">
+  </div>
   <div class="ev-future">
-    <span class="ev-future-badge" id="evFutureBadge">Coming next</span>
+    <span class="ev-future-badge" id="evFutureBadge">In Development</span>
     <div class="ev-future-t" id="evFutureT"></div>
     <div class="ev-future-b" id="evFutureB"></div>
   </div>
@@ -479,7 +493,7 @@
 <footer>
   <div class="footer-main" id="footerMain">Celebrating the life and legacy of Michiko Toyama &nbsp;·&nbsp; 1912 – 2006</div>
   <div class="footer-note" id="footerNote">Research on Michiko Toyama is ongoing. If you have information or archival materials related to her life and work, we would be grateful to hear from you.</div>
-  <div class="footer-legal">© 2026 The Waymakers Alliance. All rights reserved. &nbsp;·&nbsp; <a href="terms.html">Terms of Use</a> &nbsp;·&nbsp; Last updated: September 24, 2026</div>
+  <div class="footer-legal">© 2026 The Waymakers Alliance. All rights reserved. &nbsp;·&nbsp; <a href="terms.html">Terms of Use</a> &nbsp;·&nbsp; Last updated: October 20, 2026</div>
 </footer>
 
 <script>
@@ -679,22 +693,22 @@ const REFS=[
 const EXTRA={
  en:{navMembers:"Members",navNews:"News",navEvents:"Events",navRefs:"References",navContact:"Contact",
   bioLabel:"Short Bio",bioName:"Michiko Toyama (1912–2006)",
-  bio:"Michiko Toyama was a Japanese composer, conductor, pianist, and acoustic researcher, born in Osaka, Japan. At seventeen she traveled alone to Paris, where she studied with Nadia Boulanger at the École Normale de Musique. In 1937 her work The Voice of Yamato was selected for and premiered at the festival of the International Society for Contemporary Music (ISCM) in Paris — the first time a Japanese composer had been recognized on the international stage. After the war she left her two children in her family's care and crossed to France once more, studying at the Paris Conservatoire with Olivier Messiaen and others. From 1955 she lived in New York, where she moved in a circle that included John Cage and Edgard Varèse, and worked as a visiting composer at Columbia University, making electronic music at a time when the medium was still in its infancy. In 1960 Folkways Records released her LP. After returning to Japan she turned to acoustics, studying the sound of the shakuhachi at the Faculty of Engineering of Kyoto University, the Radio Research Laboratories of the Ministry of Posts and Telecommunications, and the Faculty of Science of the University of Tokyo. She presented her work at international conferences in Budapest, Madrid, Sydney, New York, and Honolulu. She wrote her last paper at the age of seventy-six.",
+  bio:"Michiko Toyama was a Japanese composer, conductor, pianist, and acoustic researcher, born in Osaka, Japan. At seventeen she traveled alone to Paris, where she studied with Nadia Boulanger at the École Normale de Musique. In 1937 her work The Voice of Yamato was selected for the festival of the International Society for Contemporary Music (ISCM) in Paris, where she conducted the premiere herself — the first time a Japanese composer had been recognized on the international stage. After the war she left her two children in her family's care and crossed to France once more, studying at the Paris Conservatoire with Olivier Messiaen and others. From 1955 she lived in New York, where she moved in a circle that included John Cage and Edgard Varèse, and worked as a visiting composer at Columbia University, making electronic music at a time when the medium was still in its infancy. In 1960 Folkways Records released her LP. After returning to Japan she turned to acoustics, researching the sound of the shakuhachi at the Faculty of Engineering of Kyoto University, the Radio Research Laboratories of the Ministry of Posts and Telecommunications, and the Faculty of Science of the University of Tokyo. She presented her work at international conferences in Budapest, Madrid, Sydney, New York, Honolulu, and elsewhere. She wrote her last paper at the age of seventy-six.",
   membersTitle:"Members",membersAsOf:"As of September 2026",partnerLabel:"Partner Organization",pr1:"Director Emerita",pr2:"Executive Director",pr3:"Director",
   newsTitle:"News",newsKicker:"The Mainichi · English edition",newsHead:"Monthly English column on Michiko Toyama",
-  newsDesc:"A monthly column by Maki Saito runs in The Mainichi from September 19, 2026, through 2028, following Michiko Toyama across Osaka, Paris, New York, and Tokyo. Free to read.",
+  newsDesc:"A monthly column by Maki Saito runs in The Mainichi from September 19, 2026, through 2028, following Michiko Toyama across Osaka, Paris, New York, and Tokyo. Published on the third Sunday of each month. Free to read.",
   newsCta:"Read at mainichi.jp →",
   eventsTitle:"Looking Ahead",
   evLede:"Saturday, January 30, 2027 — two events in a single afternoon at Tokyo Women's Plaza Hall in Shibuya, Tokyo. Each is booked separately.",
-  evFutureBadge:"Coming next",
-  evFutureT:"International Residency Program — in partnership with New York University",
-  evFutureB:"A residency program co-developed with New York University, offering emerging women composers an international platform to develop their work and connect across borders. Details to be announced.",
+  evFutureBadge:"In Development",
+  evFutureT:"International Residency Program — Exploring a Potential Partnership with New York University (NYU)",
+  evFutureB:"Offering emerging women composers an international platform to develop their work and connect across borders. Details to be announced.",
   evVenue:"<b>Venue</b>Tokyo Women's Plaza Hall<br>5-53-67 Jingumae, Shibuya-ku, Tokyo<br>7 min. from Omotesando Station · 12 min. from Shibuya Station<br>Doors open 12:30 · seating is limited",
   evOrg:"<b>Organizer &amp; Support</b>Organized by The Waymakers Alliance<br>In partnership with IMJS: Institute for Japanese Cultural Heritage Initiatives, Columbia University<br>Supported by JSEM (Japanese Society for Electronic Music) and JWCM (Japanese Women Composers Meeting)<br>Funded by TOKYO GEIDAI “I LOVE YOU” project (C) (The collaborative research project “Art and Gender” by Center for Curatorial Studies Geidai×Mizuho Financial Group) and the Chizuko Ueno Fund (Part 2 only)",
   refsTitle:"References",
   refsIntro:"Writing that has introduced Michiko Toyama, grouped by kind and, within each group, newest first.",
   contactTitle:"Contact",contactLine:"For inquiries about Michiko Toyama, the archive, or The Waymakers Alliance:"},
- ja:{navMembers:"メンバー",navNews:"ニュース",navEvents:"今後の予定",navRefs:"参考文献",navContact:"お問い合わせ",bioLabel:"略歴",bioName:"外山道子（1912–2006）",bio:"外山道子は、大阪に生まれた日本の作曲家、指揮者、ピアニスト、音響研究者である。17歳で単身パリへ渡り、エコール・ノルマル音楽院でナディア・ブーランジェに師事した。1937年、作品《やまとの声》がパリで開かれた国際現代音楽協会（ISCM）の音楽祭に選ばれて初演され、日本人作曲家として初めて国際的な舞台で認められた。戦後、二人の子を家族に託して再び渡仏し、パリ音楽院でオリヴィエ・メシアンらに学ぶ。1955年からはニューヨークに暮らし、ジョン・ケージやエドガー・ヴァレーズらと交流しながら、コロンビア大学の客員作曲家として、まだ黎明期にあった電子音楽の制作に取り組んだ。1960年にはフォークウェイズ・レコードからLPが発売された。帰国後は音響学へ転じ、京都大学工学部、郵政省電波研究所、東京大学理学部で尺八の音を研究。ブダペスト、マドリード、シドニー、ニューヨーク、ホノルルの国際会議で研究を発表した。最後の論文を書いたのは、76歳のときである。",membersTitle:"メンバー",membersAsOf:"2026年9月時点",partnerLabel:"協力団体",pr1:"顧問",pr2:"副所長",pr3:"所長",newsTitle:"ニュース",newsKicker:"The Mainichi · 毎日新聞英語版",newsHead:"外山道子をめぐる英語の月例コラム",newsDesc:"2026年9月19日から2028年まで、毎日新聞の英語版「The Mainichi」で、斎藤槙による月1回のコラムを連載しています。大阪、パリ、ニューヨーク、東京と、外山道子の足跡をたどります。無料でお読みいただけます（英語）。",newsCta:"mainichi.jp で読む →",eventsTitle:"今後の予定",evLede:"2027年1月30日（土）、東京・渋谷の東京ウィメンズプラザホールで、同じ午後に2つのイベントを開催します。ご予約はそれぞれ別に承ります。",evFutureBadge:"準備中",evFutureT:"国際レジデンス・プログラム——ニューヨーク大学との連携",evFutureB:"ニューヨーク大学と共同で準備している国際レジデンス・プログラム。これからの女性作曲家に、国境を越えて作品を深め、つながりを広げる国際的な場を提供します。詳細は追ってお知らせします。",evVenue:"<b>会場</b>東京ウィメンズプラザホール<br>東京都渋谷区神宮前5-53-67<br>表参道駅から徒歩7分／渋谷駅から徒歩12分<br>12:30開場・座席数に限りがあります",evOrg:"<b>主催・協力・後援・助成</b>主催：The Waymakers Alliance<br>協力：コロンビア大学 中世日本研究所・日本文化戦略研究所<br>後援：日本電子音楽協会（JSEM）、女性作曲家会議（JWCM）<br>助成：東京藝大「I LOVE YOU」プロジェクト（C）（東京藝術大学キュレーション教育研究センター×みずほフィナンシャルグループ 共同研究企画「アートとジェンダー」）、上野千鶴子基金（Part 2のみ）",refsTitle:"参考文献",refsIntro:"外山道子を紹介してきた文献です。種類ごとにまとめ、各グループ内は新しいものから並べています。",contactTitle:"お問い合わせ",contactLine:"外山道子、資料アーカイブ、The Waymakers Allianceに関するお問い合わせは、下記までお寄せください。"},
+ ja:{navMembers:"メンバー",navNews:"ニュース",navEvents:"今後の予定",navRefs:"参考文献",navContact:"お問い合わせ",bioLabel:"略歴",bioName:"外山道子（1912–2006）",bio:"外山道子は、大阪に生まれた日本の作曲家、指揮者、ピアニスト、音響研究者である。17歳で単身パリへ渡り、エコール・ノルマル音楽院でナディア・ブーランジェに師事した。1937年、作品《やまとの声》がパリで開かれた国際現代音楽協会（ISCM）の音楽祭に選ばれ、自ら指揮して初演し、日本人作曲家として初めて国際的な舞台で認められた。戦後、二人の子を家族に託して再び渡仏し、パリ音楽院でオリヴィエ・メシアンらに学ぶ。1955年からはニューヨークに暮らし、ジョン・ケージやエドガー・ヴァレーズらと交流しながら、コロンビア大学の客員作曲家として、まだ黎明期にあった電子音楽の制作に取り組んだ。1960年にはフォークウェイズ・レコードからLPが発売された。帰国後は音響学へ転じ、京都大学工学部、郵政省電波研究所、東京大学理学部で尺八の音を研究。ブダペスト、マドリード、シドニー、ニューヨーク、ホノルルなどの国際学会で研究を発表した。最後の論文を書いたのは、76歳のときである。",membersTitle:"メンバー",membersAsOf:"2026年9月時点",partnerLabel:"協力団体",pr1:"顧問",pr2:"副所長",pr3:"所長",newsTitle:"ニュース",newsKicker:"The Mainichi · 毎日新聞英語版",newsHead:"外山道子をめぐる英語の月例コラム",newsDesc:"2026年9月19日から2028年まで、毎日新聞の英語版「The Mainichi」で、斎藤槙による月1回のコラムを連載しています。大阪、パリ、ニューヨーク、東京と、外山道子の足跡をたどります。毎月第3日曜日に掲載、無料でお読みいただけます（英語）。",newsCta:"mainichi.jp で読む →",eventsTitle:"今後の予定",evLede:"2027年1月30日（土）、東京・渋谷の東京ウィメンズプラザホールで、同じ午後に2つのイベントを開催します。ご予約はそれぞれ別に承ります。",evFutureBadge:"構想中",evFutureT:"国際レジデンシー・プログラム — ニューヨーク大学との連携の可能性を検討中",evFutureB:"これからの女性作曲家に、国境を越えて作品を深め、つながりを広げる国際的な場を提供します。詳細は追ってお知らせします。",evVenue:"<b>会場</b>東京ウィメンズプラザホール<br>東京都渋谷区神宮前5-53-67<br>表参道駅から徒歩7分／渋谷駅から徒歩12分<br>12:30開場・座席数に限りがあります",evOrg:"<b>主催・協力・後援・助成</b>主催：The Waymakers Alliance<br>協力：コロンビア大学 中世日本研究所・日本文化戦略研究所<br>後援：日本電子音楽協会（JSEM）、女性作曲家会議（JWCM）<br>助成：東京藝大「I LOVE YOU」プロジェクト（C）（東京藝術大学キュレーション教育研究センター×みずほフィナンシャルグループ 共同研究企画「アートとジェンダー」）、上野千鶴子基金（Part 2のみ）",refsTitle:"参考文献",refsIntro:"外山道子を紹介してきた文献です。種類ごとにまとめ、各グループ内は新しいものから並べています。",contactTitle:"お問い合わせ",contactLine:"外山道子、資料アーカイブ、The Waymakers Allianceに関するお問い合わせは、下記までお寄せください。"},
  fr:{navMembers:"Membres",navNews:"Actualités",navEvents:"Agenda",navRefs:"Références",navContact:"Contact",
   bioLabel:"Notice biographique",bioName:"Michiko Toyama (1912–2006)",
   bio:"Née à Osaka, au Japon. À dix-sept ans, elle part seule pour Paris et étudie auprès de Nadia Boulanger à l'École Normale de Musique. En 1937, son œuvre Yamato no koe (La Voix du Yamato) est distinguée au festival de la Société internationale de musique contemporaine (ISCM) à Paris — la première fois qu'une compositrice japonaise était reconnue sur la scène internationale. Après la guerre, laissant ses deux enfants à la garde de sa mère, elle repart en France et étudie au Conservatoire de Paris, notamment auprès d'Olivier Messiaen. À partir de 1955 elle vit à New York, fréquente le cercle de John Cage et d'Edgard Varèse et travaille comme compositrice invitée à l'université Columbia, où elle réalise de la musique électronique alors que le médium en est à ses débuts. En 1960, Folkways publie son disque. De retour au Japon, elle se tourne vers l'acoustique et étudie le son du shakuhachi à la faculté d'ingénierie de l'université de Kyoto, au laboratoire de recherche sur les ondes du ministère des Postes et Télécommunications et à la faculté des sciences de l'université de Tokyo. Elle présente ses travaux à Budapest, Madrid, Sydney, New York et Honolulu. Elle a écrit son dernier article à soixante-dix-sept ans.",
@@ -704,9 +718,9 @@ const EXTRA={
   newsCta:"Lire sur mainichi.jp →",
   eventsTitle:"Agenda",
   evLede:"Samedi 30 janvier 2027 — deux événements le même après-midi au Tokyo Women's Plaza Hall, à Shibuya. Réservation séparée pour chacun.",
-  evFutureBadge:"À venir",
-  evFutureT:"Programme de résidence internationale — en partenariat avec l'Université de New York",
-  evFutureB:"Un programme de résidence co-développé avec l'Université de New York, offrant aux compositrices émergentes une plateforme internationale pour développer leur travail et se connecter au-delà des frontières. Détails à venir.",
+  evFutureBadge:"En développement",
+  evFutureT:"Programme de résidence internationale — un partenariat potentiel avec l'Université de New York (NYU) à l'étude",
+  evFutureB:"Un programme offrant aux compositrices émergentes une plateforme internationale pour développer leur travail et se connecter au-delà des frontières. Détails à venir.",
   evVenue:"<b>Lieu</b>Tokyo Women's Plaza Hall<br>5-53-67 Jingumae, Shibuya-ku, Tokyo<br>7 min d'Omotesando · 12 min de Shibuya<br>Ouverture des portes 12h30 · places limitées",
   evOrg:"<b>Organisation &amp; soutiens</b>Organisé par The Waymakers Alliance<br>En partenariat avec l'IMJS, Columbia University<br>Avec le soutien de la JSEM et du JWCM<br>Financé par le projet « I LOVE YOU » de Tokyo Geidai, la Fondation Chizuko Ueno et d'autres",
   refsTitle:"Références",
@@ -721,9 +735,9 @@ const EXTRA={
   newsCta:"Leer en mainichi.jp →",
   eventsTitle:"Agenda",
   evLede:"Sábado 30 de enero de 2027 — dos eventos en una misma tarde en el Tokyo Women's Plaza Hall, Shibuya. Cada uno requiere reserva propia.",
-  evFutureBadge:"Próximamente",
-  evFutureT:"Programa internacional de residencia — en asociación con la Universidad de Nueva York",
-  evFutureB:"Un programa de residencia co-desarrollado con la Universidad de Nueva York, que ofrece a las compositoras emergentes una plataforma internacional para desarrollar su trabajo y conectarse más allá de las fronteras. Detalles por anunciar.",
+  evFutureBadge:"En desarrollo",
+  evFutureT:"Programa internacional de residencia — explorando una posible colaboración con la Universidad de Nueva York (NYU)",
+  evFutureB:"Un programa que ofrecería a las compositoras emergentes una plataforma internacional para desarrollar su trabajo y conectarse más allá de las fronteras. Detalles por anunciar.",
   evVenue:"<b>Sede</b>Tokyo Women's Plaza Hall<br>5-53-67 Jingumae, Shibuya-ku, Tokio<br>7 min de Omotesando · 12 min de Shibuya<br>Apertura de puertas 12:30 · aforo limitado",
   evOrg:"<b>Organización y apoyos</b>Organiza The Waymakers Alliance<br>En colaboración con IMJS, Columbia University<br>Con el apoyo de JSEM y JWCM<br>Financiado por el proyecto “I LOVE YOU” de Tokyo Geidai, la Fundación Chizuko Ueno y otros",
   refsTitle:"Referencias",
@@ -822,10 +836,10 @@ const WM = {
     labelAhead:"Looking Ahead",
     ev26t:"Talk & Concert — \"Michiko Toyama: Her Life and Music\"",
     ev26b:"In December 2026, we will hold a commemorative talk and concert at Aoyama Women's Plaza in Tokyo, marking the 20th anniversary of Michiko Toyama's passing. The event will revisit her life and music while opening new conversations about the world women composers inhabit — and the possibilities ahead.",
-    ev27t:"International Residency Program — in partnership with New York University",
-    ev27b:"A residency program co-developed with New York University, offering emerging women composers an international platform to develop their work and connect across borders. Details to be announced."
+    ev27t:"International Residency Program — Exploring a Potential Partnership with New York University (NYU)",
+    ev27b:"Offering emerging women composers an international platform to develop their work and connect across borders. Details to be announced."
   },
-  ja: {sectionTitle:"The Waymakers Alliance",navLabel:"私たちについて",tagline:"道を切り拓く人が、次の人のために光を灯す。",m1:"The Waymakers Allianceは、外山道子（1912–2006）の遺産を受け継ぎ、音楽、科学、教育、研究、イノベーションの分野で次世代の女性を支援する、独立した非営利のイニシアティブです。",m2:"境界を越え、後に続く人々のために新しい道を切り拓いた人々の精神を、未来へ受け継いでいきます。",labelCurrent:"ミッション",act1t:"外山道子の遺産の研究と保存",act1b:"資料調査、記録、演奏会、出版を通じて、外山の先駆的な仕事を世界の新しい聴き手に届けます。",act2t:"音楽・科学・イノベーション",act2b:"STEAM（科学・技術・工学・芸術・数学）、分野を越えた協働、国際交流を通じて、女性の音楽家、作曲家、研究者、科学者、イノベーターを支援します。",act3t:"リーダーシップと次世代の育成",act3b:"教育、起業、社会的インパクトを通じて、次世代の女性リーダーとWaymakersを育て、つなぎます。",labelAhead:"今後のビジョン",ev26t:"トーク＆コンサート「外山道子 — その生涯と音楽」",ev26b:"2026年12月、東京・青山ウィメンズプラザにて、外山道子の没後20年を記念するトーク＆コンサートを開催します。その生涯と音楽を再考するとともに、女性作曲家を取り巻く環境と可能性を問い直します。",ev27t:"国際レジデンス・プログラム——ニューヨーク大学との連携",ev27b:"ニューヨーク大学と共同で準備している国際レジデンス・プログラム。これからの女性作曲家に、国境を越えて作品を深め、つながりを広げる国際的な場を提供します。詳細は追ってお知らせします。"},
+  ja: {sectionTitle:"The Waymakers Alliance",navLabel:"私たちについて",tagline:"道を切り拓く人が、次の人のために光を灯す。",m1:"The Waymakers Allianceは、外山道子（1912–2006）の遺産を受け継ぎ、音楽、科学、教育、研究、イノベーションの分野で次世代の女性を支援する、独立した非営利のイニシアティブです。",m2:"境界を越え、後に続く人々のために新しい道を切り拓いた人々の精神を、未来へ受け継いでいきます。",labelCurrent:"ミッション",act1t:"外山道子の遺産の研究と保存",act1b:"資料調査、記録、演奏会、出版を通じて、外山の先駆的な仕事を世界の新しい聴き手に届けます。",act2t:"音楽・科学・イノベーション",act2b:"STEAM（科学・技術・工学・芸術・数学）、分野を越えた協働、国際交流を通じて、女性の音楽家、作曲家、研究者、科学者、イノベーターを支援します。",act3t:"リーダーシップと次世代の育成",act3b:"教育、起業、社会的インパクトを通じて、次世代の女性リーダーとWaymakersを育て、つなぎます。",labelAhead:"今後のビジョン",ev26t:"トーク＆コンサート「外山道子 — その生涯と音楽」",ev26b:"2026年12月、東京・青山ウィメンズプラザにて、外山道子の没後20年を記念するトーク＆コンサートを開催します。その生涯と音楽を再考するとともに、女性作曲家を取り巻く環境と可能性を問い直します。",ev27t:"国際レジデンシー・プログラム — ニューヨーク大学との連携の可能性を検討中",ev27b:"これからの女性作曲家に、国境を越えて作品を深め、つながりを広げる国際的な場を提供します。詳細は追ってお知らせします。"},
   fr: {
     sectionTitle:"The Waymakers Alliance", navLabel:"À propos",
     tagline:"Nous traçons des chemins pour que d'autres puissent les suivre.",
@@ -841,8 +855,8 @@ const WM = {
     labelAhead:"Notre vision",
     ev26t:"Conférence & Concert — « Michiko Toyama : sa vie et sa musique »",
     ev26b:"En décembre 2026, nous organiserons une conférence et un concert commémoratif à l'Aoyama Women's Plaza de Tokyo, à l'occasion du 20e anniversaire du décès de Michiko Toyama. L'événement reviendra sur sa vie et sa musique, tout en ouvrant de nouvelles réflexions sur l'environnement des compositrices et les possibilités qui s'offrent à elles.",
-    ev27t:"Programme de résidence internationale — en partenariat avec l'Université de New York",
-    ev27b:"Un programme de résidence co-développé avec l'Université de New York, offrant aux compositrices émergentes une plateforme internationale pour développer leur travail et se connecter au-delà des frontières. Détails à venir."
+    ev27t:"Programme de résidence internationale — un partenariat potentiel avec l'Université de New York (NYU) à l'étude",
+    ev27b:"Un programme offrant aux compositrices émergentes une plateforme internationale pour développer leur travail et se connecter au-delà des frontières. Détails à venir."
   },
   es: {
     sectionTitle:"The Waymakers Alliance", navLabel:"Quiénes somos",
@@ -859,8 +873,8 @@ const WM = {
     labelAhead:"Nuestra visión",
     ev26t:"Charla & Concierto — \"Michiko Toyama: su vida y su música\"",
     ev26b:"En diciembre de 2026, celebraremos una charla y concierto conmemorativo en el Aoyama Women's Plaza de Tokio, con motivo del 20.º aniversario del fallecimiento de Michiko Toyama. El evento revisitará su vida y su música, al tiempo que abrirá nuevas reflexiones sobre el entorno de las compositoras y las posibilidades que les aguardan.",
-    ev27t:"Programa internacional de residencia — en asociación con la Universidad de Nueva York",
-    ev27b:"Un programa de residencia co-desarrollado con la Universidad de Nueva York, que ofrece a las compositoras emergentes una plataforma internacional para desarrollar su trabajo y conectarse más allá de las fronteras. Detalles por anunciar."
+    ev27t:"Programa internacional de residencia — explorando una posible colaboración con la Universidad de Nueva York (NYU)",
+    ev27b:"Un programa que ofrecería a las compositoras emergentes una plataforma internacional para desarrollar su trabajo y conectarse más allá de las fronteras. Detalles por anunciar."
   }
 };
 
